@@ -1,0 +1,28 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 8080
+      envFrom:
+        - configMapRef:
+            name: app-config
+      env:
+        - name: APP_COLOR
+          valueFrom:
+            configMapKeyRef:
+              name: app-config
+              key: APP_COLOR
+        - name: APP_NAMEk
+          value: "MY_APP_NAME"
+  volumes:
+    - name: app-config-volume
+      configMap:
+        name: app-config
