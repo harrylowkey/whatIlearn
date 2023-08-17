@@ -1,0 +1,39 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+    type: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      ports:
+        - containerPort: 8080
+      readinessProbe:
+        httpGet:
+          path: /api/ready
+          port: 8080
+        tcpSocket:
+          port: 3306
+        exec:
+          command:
+            - cat
+            - /app/is_ready
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        failureThreshold: 10
+      livenessProbe:
+        httpGet:
+          path: /api/ready
+          port: 8080
+        tcpSocket:
+          port: 3306
+        exec:
+          command:
+            - cat
+            - /app/is_ready
+        initialDelaySeconds: 10
+        periodSeconds: 5
+        failureThreshold: 10

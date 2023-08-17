@@ -1,0 +1,17 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: reporting-error-cronjob
+spec:
+  schedule: "* * * * *"
+  jobTemplate:
+    spec:
+      completions: 3
+      parallelism: 3
+      template:
+        spec:
+          containers:
+            - name: random-error
+              image: random-error-image
+
+          restartPolicy: Never
