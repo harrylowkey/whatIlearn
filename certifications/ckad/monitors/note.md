@@ -1,4 +1,4 @@
-- Metrics SErver
+- Metrics Server
 - Prometheus
 - The Elastic Stack
 - Datadog
