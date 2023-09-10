@@ -37,4 +37,4 @@
 - curl http://"$(minikube ip):$NODE_PORT" # Test request to service
 - kubectl get services -l app=kubernetes-bootcamp # Filter service with label
 - kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- wget -O- http://nginx:80 --timeout 2 # This should be fine
-- kubectl run busybox --image=busybox --rm -it --restart=Never --labels=access=granted -- curl -m 2 http://nginx:80 # This should be fine
+- kubectl run busybox --image=nginx:alpine --rm -it --restart=Never --labels=access=granted -- curl -m 2 http://nginx:80 # This should be fine
