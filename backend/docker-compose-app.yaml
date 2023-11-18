@@ -1,0 +1,40 @@
+version: "3.3"
+services:
+  app:
+    build: ./
+    ports:
+      - 2009:2009
+    working_dir: /user/app
+    command: uvicorn src.main:app --host 0.0.0.0 --reload --port 2009
+    volumes:
+      - ./:/usr/app
+    networks:
+      - webnet
+  maildev:
+    image: maildev/maildev
+    ports:
+      - 8083:1080
+      - ${SMTP_PORT}:1025
+    networks:
+      - webnet
+  adminer:
+    image: adminer:latest
+    ports:
+      - 3083:8080
+    networks:
+      - webnet
+  keycloak:
+    image: quay.io/keycloak/keycloak:21.1.0
+    environment:
+      - KEYCLOAK_ADMIN=admin
+      - KEYCLOAK_ADMIN_PASSWORD=admin
+      - KC_FEATURES=token-exchange,admin-fine-grained-authz,client-secret-rotation,declarative-user-profile,openshift-integration,recovery-codes,scripts,update-email
+    ports:
+      - "8080:8080"
+    command: ["start-dev"]
+    networks:
+      - webnet
+networks:
+  webnet:
+volumes:
+  data-volume:
