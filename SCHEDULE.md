@@ -31,6 +31,7 @@ graph LR
 
 #### Dec-17
 - [ ] [Udemy] [CloudPractioner] Lesson 217 - 232
+- [ ] Research Ansible
 
 #### Dec-18
 - [ ] [Udemy] [CloudPractioner] Lesson 233 - 256
