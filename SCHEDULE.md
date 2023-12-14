@@ -41,7 +41,6 @@ graph LR
 #### Dec-20
 - [ ] [Udemy] [CloudPractioner] Lesson 271 - 281
 
-
 # 2024
 
 ## BackLogs
