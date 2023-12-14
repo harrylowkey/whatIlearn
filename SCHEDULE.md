@@ -1,6 +1,5 @@
 # Schedule
 
-
 ```mermaid
 ---
 title: Continuous Learning
@@ -11,15 +10,15 @@ graph LR
     R((Reflection)) --> T((Theory))
 ```
 
-## 2023
+# 2023
 
-### BackLogs
+## BackLogs
 - [x] CKAD Cerfiication
-- [ ] [Udemy] [CloudPractioner]
+- [ ] CloudPractioner Udemy Course
 - [ ] Terraform
 
 
-### Tasks
+## Tasks
 
 #### Dec-14
 - [ ] [Udemy] [CloudPractioner] Lesson 193 - 200
@@ -43,9 +42,9 @@ graph LR
 - [ ] [Udemy] [CloudPractioner] Lesson 271 - 281
 
 
-## 2024
+# 2024
 
-### BackLogs
+## BackLogs
 - [ ] AWS Developer Associate Certification
 - [ ] Design pattern book
 - [ ] Revamp base
