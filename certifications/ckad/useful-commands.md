@@ -75,6 +75,26 @@ kubectl port-forward svc/my-service <local-port>:<service-port> # listen on loca
 kubectl port-forward svc/my-service 5000:5000 # listen on local port 5000 and forward to port 5000 on Service backend
 kubectl port-forward deploy/my-deployment 5000:6000
 
+> We should forward svc to pulic access, not pod
+
+>In Kubernetes, when you want to expose an application to the external world, you generally do it through a Service rather than directly exposing a Pod's port. Here's why:
+
+>Abstraction and Decoupling:
+>A Service provides an abstraction layer that decouples the Pod (running your application) from the way it's accessed. This allows you to make changes to your Pods without affecting how clients connect to your application.
+
+>Load Balancing:
+>Services provide load balancing across multiple Pods. If you have multiple replicas of your application running, a Service will distribute the incoming traffic among them, helping to achieve high availability and scalability.
+
+>Service Types:
+>Services in Kubernetes come with different types, such as ClusterIP (only accessible within the cluster), NodePort (exposes the service on a specific port on all nodes in the cluster), and LoadBalancer (provisions an external load balancer in a cloud environment).
+
+>Security:
+>Exposing a Pod directly might not be the best practice from a security standpoint. A Service allows you to control and secure the access to your application.
+>Dynamic IP and DNS Management:
+
+>Services are assigned a stable IP address and DNS name within the cluster. This makes it easier for clients to discover and connect to your application.
+>Here's an example of how you might expose a Pod using a Service:
+
 ### Copy file to and from containers
 
 kubectl cp /tmp/foo_dir my-pod:/tmp/bar_dir # Copy /tmp/foo_dir local directory to /tmp/bar_dir in a remote pod in the current namespace
