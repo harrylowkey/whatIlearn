@@ -13,40 +13,48 @@ graph LR
 # 2023
 
 ## BackLogs
+
 - [x] CKAD Cerfiication
 - [ ] CloudPractioner Udemy Course
 - [ ] Terraform
 
-
 ## Tasks
 
 #### Dec-14
-- [ ] [Udemy] [CloudPractioner] Lesson 193 - 200
+
+- [x] [Udemy] [CloudPractioner] Lesson 193 - 200
 
 #### Dec-15
-- [ ] [Udemy] [CloudPractioner] Lesson 201 - 212
+
+- [x] [Udemy] [CloudPractioner] Lesson 201 - 212
 
 #### Dec-16
-- [ ] [Udemy] [CloudPractioner] Lesson 213 - 216
+
+- [x] [Udemy] [CloudPractioner] Lesson 213 - 216
 
 #### Dec-17
-- [ ] [Udemy] [CloudPractioner] Lesson 217 - 232
+
+- [x] [Udemy] [CloudPractioner] Lesson 217 - 232
 - [ ] Research Ansible
 
 #### Dec-18
-- [ ] [Udemy] [CloudPractioner] Lesson 233 - 256
+
+- [ ] [Udemy] [CloudPractioner] Lesson 233 - 237
 
 #### Dec-19
-- [ ] [Udemy] [CloudPractioner] Lesson 257 - 270
+
+- [ ] [Udemy] [CloudPractioner] Lesson 237 - 257
 
 #### Dec-20
-- [ ] [Udemy] [CloudPractioner] Lesson 271 - 281
+
+- [ ] [Udemy] [CloudPractioner] Lesson 257 - 281
 
 # 2024
 
 ## BackLogs
+
 - [ ] AWS Developer Associate Certification
 - [ ] Design pattern book
 - [ ] Revamp base
 - [ ] Database
-- [ ] Stocks 
+- [ ] Stocks
