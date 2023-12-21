@@ -16,9 +16,13 @@ graph LR
 
 - [x] CKAD Cerfiication
 - [x] CloudPractioner Udemy Course
-- [ ] Terraform
+- [ ] WAF Research and making plan recommendation
+- [ ] Deep dive into [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
+- [ ] Refactor fastapi-orm-helper
 
 ## Tasks
+
+### Done
 
 #### Dec-14
 
@@ -49,10 +53,15 @@ graph LR
 
 - [x] [Udemy] [CloudPractioner] Lesson 257 - 281
 
+### Dec-25
+
+- [ ] WAF
+
 # 2024
 
 ## BackLogs
 
+- [ ] Terraform
 - [ ] AWS Developer Associate Certification
 - [ ] AWS DevOps Engineer Professional
 - [ ] Design pattern book
