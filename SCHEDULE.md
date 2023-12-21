@@ -15,7 +15,7 @@ graph LR
 ## BackLogs
 
 - [x] CKAD Cerfiication
-- [ ] CloudPractioner Udemy Course
+- [x] CloudPractioner Udemy Course
 - [ ] Terraform
 
 ## Tasks
@@ -39,21 +39,22 @@ graph LR
 
 #### Dec-18
 
-- [ ] [Udemy] [CloudPractioner] Lesson 233 - 237
+- [x] [Udemy] [CloudPractioner] Lesson 233 - 237
 
 #### Dec-19
 
-- [ ] [Udemy] [CloudPractioner] Lesson 237 - 257
+- [x] [Udemy] [CloudPractioner] Lesson 237 - 257
 
-#### Dec-20
+#### Dec-20, 21
 
-- [ ] [Udemy] [CloudPractioner] Lesson 257 - 281
+- [x] [Udemy] [CloudPractioner] Lesson 257 - 281
 
 # 2024
 
 ## BackLogs
 
 - [ ] AWS Developer Associate Certification
+- [ ] AWS DevOps Engineer Professional
 - [ ] Design pattern book
 - [ ] Revamp base
 - [ ] Database
