@@ -14,8 +14,9 @@ graph LR
 
 ## BackLogs
 
-- [x] CKAD Cerfiication
+- [x] CKAD Certification
 - [x] CloudPractioner Udemy Course
+- [ ] Reseach TSDBs
 - [ ] WAF Research and making plan recommendation
 - [ ] Deep dive into [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
 - [ ] Refactor fastapi-orm-helper
@@ -62,9 +63,13 @@ graph LR
 ## BackLogs
 
 - [ ] Terraform
+- [ ] Design Pattern book
 - [ ] AWS Developer Associate Certification
 - [ ] AWS DevOps Engineer Professional
-- [ ] Design pattern book
-- [ ] Revamp base
 - [ ] Database
-- [ ] Stocks
+- [ ] Research Microservice Transactions
+  - [ ] 2 phases commits
+  - [ ] outbox transaction
+  - [ ] saga pattern
+- [ ] Read 1 microservice book
+- [ ] Revamp base
