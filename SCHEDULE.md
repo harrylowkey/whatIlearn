@@ -10,16 +10,57 @@ graph LR
     R((Reflection)) --> T((Theory))
 ```
 
+# 2024
+
+## BackLogs
+
+- [x] Socket.io
+- [ ] Time-series DB
+- [ ] WAF
+- [ ] Deep dive into [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
+- [ ] Refactor fastapi-orm-helper
+- [ ] Terraform (Jan/08 - Jan/31)
+- [ ] Design Pattern book
+- [ ] AWS Developer Associate Certification
+- [ ] AWS DevOps Engineer Professional
+- [ ] Database
+- [ ] Research Microservice Transactions
+  - [ ] 2 phases commits
+  - [ ] outbox transaction
+  - [ ] saga pattern
+- [ ] Read 1 microservice book
+- [ ] Revamp base
+- [ ] Document the renyoo media-handler service by drawing the chart
+- [ ] Refactor sns hook: SnsHandlerFactory
+
+## Tasks
+
+### Done
+
+#### Jan-01
+
+- [x] Research **socket.io** again
+
+### Jan-02
+
+- [x] Make docs for time-series database resesarch
+
+### Jan-03
+
+- [ ] Make docs for WAF research
+
+### Jan-08
+
+- [ ] [Terraform] Learn terraform
+
+---
+
 # 2023
 
 ## BackLogs
 
 - [x] CKAD Certification
 - [x] CloudPractioner Udemy Course
-- [ ] Reseach TSDBs
-- [ ] WAF Research and making plan recommendation
-- [ ] Deep dive into [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
-- [ ] Refactor fastapi-orm-helper
 
 ## Tasks
 
@@ -54,22 +95,6 @@ graph LR
 
 - [x] [Udemy] [CloudPractioner] Lesson 257 - 281
 
-### Dec-25
+#### Dec-25
 
 - [ ] WAF
-
-# 2024
-
-## BackLogs
-
-- [ ] Terraform
-- [ ] Design Pattern book
-- [ ] AWS Developer Associate Certification
-- [ ] AWS DevOps Engineer Professional
-- [ ] Database
-- [ ] Research Microservice Transactions
-  - [ ] 2 phases commits
-  - [ ] outbox transaction
-  - [ ] saga pattern
-- [ ] Read 1 microservice book
-- [ ] Revamp base
