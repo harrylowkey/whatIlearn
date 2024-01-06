@@ -1,0 +1,45 @@
+version: "3.3"
+services:
+  kafdrop:
+    image: obsidiandynamics/kafdrop # not support arm64 yet
+    restart: "no"
+    network_mode: "host"
+    environment:
+      KAFKA_BROKERCONNECT: "localhost:9092"
+      JVM_OPTS: "-Xms16M -Xmx48M -Xss180K -XX:-TieredCompilation -XX:+UseStringDeduplication -noverify -linux/arm64/v8"
+    depends_on:
+      - "kafka"
+  zookeeper:
+    image: zookeeper:latest
+    networks:
+      - kafka-net
+    ports:
+      - 2181:2181
+  kafka:
+    image: wurstmeister/kafka:2.12-2.5.0
+    depends_on:
+      - zookeeper
+    environment:
+      KAFKA_AUTO_CREATE_TOPICS_ENABLE: "true"
+      KAFKA_DELETE_TOPIC_ENABLE: "true"
+      KAFKA_ADVERTISED_HOST_NAME: localhost
+      KAFKA_CREATE_TOPICS: "esg-library:1:1,sum:1:1"
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_BROKER_ID: 1
+      KAFKA_MESSAGE_MAX_BYTES: 2000000
+    networks:
+      - kafka-net
+    ports:
+      - 9092:9092
+  nginx:
+    image: nginx:latest
+    network_mode: "host"
+    ports:
+      - 3002:3002
+    volumes:
+      - ./proxy/nginx/nginx.conf:/etc/nginx/nginx.conf
+networks:
+  kafka-net:
+    driver: bridge
+volumes:
+  data-volume:
