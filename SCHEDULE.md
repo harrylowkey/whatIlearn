@@ -18,18 +18,24 @@ graph LR
 - [ ] Time-series DB
 - [ ] WAF
 - [ ] Deep dive into [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
-- [ ] Refactor fastapi-orm-helper
 - [ ] Terraform (Jan/08 - Jan/31)
 - [ ] Design Pattern book
+- [ ] Refactor fastapi-orm-helper
 - [ ] AWS Developer Associate Certification
 - [ ] AWS DevOps Engineer Professional
 - [ ] Database
+  - [ ] Revamp SQL queries
+  - [ ] Query Plan
+  - [x] Transaction
+  - [x] Locking
+  - [ ] Sharding
+  - [ ] Partitioning
 - [ ] Research Microservice Transactions
   - [ ] 2 phases commits
   - [ ] outbox transaction
   - [ ] saga pattern
 - [ ] Read 1 microservice book
-- [ ] Revamp base
+- [ ] Revamp Computer Science Base
 - [ ] Document the renyoo media-handler service by drawing the chart
 - [ ] Refactor sns hook: SnsHandlerFactory
 
@@ -45,9 +51,15 @@ graph LR
 
 - [x] Make docs for time-series database resesarch
 
-### Jan-03
+### Jan-06
+
+- [x] Document Database Transactions
+- [x] Document Database Locking
+
+### Jan-07
 
 - [ ] Make docs for WAF research
+- [ ] Investigate InfluxDB, TimescaleDB, DruidDB
 
 ### Jan-08
 
@@ -94,7 +106,3 @@ graph LR
 #### Dec-20, 21
 
 - [x] [Udemy] [CloudPractioner] Lesson 257 - 281
-
-#### Dec-25
-
-- [ ] WAF
