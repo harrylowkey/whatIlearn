@@ -15,8 +15,9 @@ graph LR
 ## BackLogs
 
 - [x] Socket.io
-- [ ] Time-series DB
-- [ ] WAF
+- [x] Web Development Architecture
+- [x] Time-series DB (TimescaleDB extension)
+- [x] WAF
 - [ ] Deep dive into [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
 - [ ] Terraform (Jan/08 - Jan/31)
 - [ ] Design Pattern book
@@ -45,24 +46,26 @@ graph LR
 
 #### Jan-01
 
-- [x] Research **socket.io** again
+- [x] [Socket] Research **socket.io** again
 
 ### Jan-02
 
-- [x] Make docs for time-series database resesarch
+- [x] [Time-series DB] Make docs for time-series database resesarch
 
 ### Jan-06
 
-- [x] Document Database Transactions
-- [x] Document Database Locking
+- [x] [Database] Document Database Transactions
+- [x] [Database] Document Database Locking
 
 ### Jan-07
 
-- [ ] Make docs for WAF research
-- [ ] Investigate InfluxDB, TimescaleDB, DruidDB
+- [x] [Web Development Architecture] CSR vs SSR
+- [x] [Web Development Architecture] MVC
+- [x] [Socket] Socket event emitter, adapter
 
 ### Jan-08
 
+- [x] [WAF] WAF rate-limit proposal
 - [ ] [Terraform] Learn terraform
 
 ---

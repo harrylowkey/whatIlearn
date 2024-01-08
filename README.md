@@ -4,3 +4,5 @@
 - [Cloud Practioner](./certifications/cloud-practitioner/README.md)
 - [Helm](./devops/helm/README.md)
 - [k8s](./devops/k8s/README.md)
+- [Database](./databases/transactions.md)
+- [Architecture](./architectures/microservice.md)
