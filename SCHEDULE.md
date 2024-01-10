@@ -18,7 +18,9 @@ graph LR
 - [x] Web Development Architecture
 - [x] Time-series DB (TimescaleDB extension)
 - [x] WAF
-- [ ] Deep dive into [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
+- [x] SqlAlchemy
+  - [x] Transaction
+  - [ ] [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
 - [ ] Terraform (Jan/08 - Jan/31)
 - [ ] Design Pattern book
 - [ ] Refactor fastapi-orm-helper
@@ -66,6 +68,7 @@ graph LR
 ### Jan-08
 
 - [x] [WAF] WAF rate-limit proposal
+- [x] [SQLAlchemy] SQLAlchemy Transaction
 - [ ] [Terraform] Learn terraform
 
 ---
