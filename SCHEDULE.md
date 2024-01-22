@@ -42,6 +42,16 @@ graph LR
 - [ ] Document the renyoo media-handler service by drawing the chart
 - [ ] Refactor sns hook: SnsHandlerFactory
 
+- [x] Finish task tracking time spent
+- [x] Fix sprint bugs
+  - [x] Calculate file size
+  - [ ] Media mime type
+  - [x] Count unique view
+  - [x] Decrement view when delete attachments
+- [ ] Review API changed docs, merge refactor into microservice branch
+- [ ] Setup deployment for microservice
+- [ ] Move migration migrate data to command
+
 ## Tasks
 
 ### Done
