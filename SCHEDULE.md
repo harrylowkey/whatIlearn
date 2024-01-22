@@ -42,44 +42,51 @@ graph LR
 - [ ] Document the renyoo media-handler service by drawing the chart
 - [ ] Refactor sns hook: SnsHandlerFactory
 
-- [x] Finish task tracking time spent
-- [x] Fix sprint bugs
-  - [x] Calculate file size
-  - [ ] Media mime type
-  - [x] Count unique view
-  - [x] Decrement view when delete attachments
+- [ ] Move migration migrate data to command
 - [ ] Review API changed docs, merge refactor into microservice branch
 - [ ] Setup deployment for microservice
-- [ ] Move migration migrate data to command
 
 ## Tasks
 
 ### Done
 
-#### Jan-01
+#### Jan-23
 
-- [x] [Socket] Research **socket.io** again
+- [ ] Review API changed docs, merge refactor into microservice branch
+- [ ] Setup deployment for microservice
 
-### Jan-02
+#### Jan-22
 
-- [x] [Time-series DB] Make docs for time-series database resesarch
+- [x] Finish task tracking time spent
+- [x] Fix sprint bugs
+  - [x] Calculate file size
+  - [x] Count unique view
+  - [x] Decrement view when delete attachments
 
-### Jan-06
+#### Jan-08
 
-- [x] [Database] Document Database Transactions
-- [x] [Database] Document Database Locking
+- [x] [WAF] WAF rate-limit proposal
+- [x] [SQLAlchemy] SQLAlchemy Transaction
+- [ ] [Terraform] Learn terraform
 
-### Jan-07
+#### Jan-07
 
 - [x] [Web Development Architecture] CSR vs SSR
 - [x] [Web Development Architecture] MVC
 - [x] [Socket] Socket event emitter, adapter
 
-### Jan-08
+#### Jan-06
 
-- [x] [WAF] WAF rate-limit proposal
-- [x] [SQLAlchemy] SQLAlchemy Transaction
-- [ ] [Terraform] Learn terraform
+- [x] [Database] Document Database Transactions
+- [x] [Database] Document Database Locking
+
+#### Jan-02
+
+- [x] [Time-series DB] Make docs for time-series database resesarch
+
+#### Jan-01
+
+- [x] [Socket] Research **socket.io** again
 
 ---
 
