@@ -42,8 +42,6 @@ graph LR
 - [ ] Document the renyoo media-handler service by drawing the chart
 - [ ] Refactor sns hook: SnsHandlerFactory
 
-- [ ] Move migration migrate data to command
-- [ ] Review API changed docs, merge refactor into microservice branch
 - [ ] Setup deployment for microservice
 
 ## Tasks
@@ -52,7 +50,8 @@ graph LR
 
 #### Jan-23
 
-- [ ] Review API changed docs, merge refactor into microservice branch
+- [x] Move migration migrate data to command
+- [x] Review API changed docs, merge refactor into microservice branch
 - [ ] Setup deployment for microservice
 
 #### Jan-22
