@@ -21,11 +21,8 @@ graph LR
 - [x] SqlAlchemy
   - [x] Transaction
   - [ ] [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
-- [ ] Terraform (Jan/08 - Jan/31)
+- [ ] Terraform (Feb/01 - Feb/31)
 - [ ] Design Pattern book
-- [ ] Refactor fastapi-orm-helper
-- [ ] AWS Developer Associate Certification
-- [ ] AWS DevOps Engineer Professional
 - [ ] Database
   - [ ] Revamp SQL queries
   - [ ] Query Plan
@@ -33,6 +30,9 @@ graph LR
   - [x] Locking
   - [ ] Sharding
   - [ ] Partitioning
+- [ ] Refactor fastapi-orm-helper
+- [ ] AWS Developer Associate Certification
+- [ ] AWS DevOps Engineer Professional
 - [ ] Research Microservice Transactions
   - [ ] 2 phases commits
   - [ ] outbox transaction
@@ -42,11 +42,13 @@ graph LR
 - [ ] Document the renyoo media-handler service by drawing the chart
 - [ ] Refactor sns hook: SnsHandlerFactory
 
-- [ ] Setup deployment for microservice
-
 ## Tasks
 
 ### Done
+
+#### Jan-24, 25, 26
+
+- [x] Setup deployment for microservice
 
 #### Jan-23
 
