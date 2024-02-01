@@ -1,0 +1,30 @@
+
+version: 0.2
+
+phases:
+  pre_build:
+    commands:
+      - echo Logging in to Amazon ECR...
+      - aws ecr get-login-password --region $AWS_DEFAULT_REGION | docker login --username AWS --password-stdin $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com
+      - IMAGE_TAG=build-$CODEBUILD_BUILD_NUMBER
+      - LATEST_IMAGE=$IMAGE_REPO_NAME:latest
+      - cp environments/dev.env .env
+  build:
+    commands:
+      - echo Build started on `date`
+      - echo Building the Docker image...
+      - docker build -t $IMAGE_REPO_NAME:latest -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+  post_build:
+    commands:
+      - echo Build completed on `date`
+      - echo Pushing the Docker images...
+      - docker push $IMAGE_REPO_NAME:latest
+      - docker push $IMAGE_REPO_NAME:$IMAGE_TAG
+      - echo Writing image definitions file...
+      - cat appspec.yaml | sed -e "s/<CONTAINER_NAME>/${CONTAINER_NAME}/" > appspec.yaml
+      - printf '[{"imageUri":"%s","name":"%s"}]' $IMAGE_REPO_NAME:$IMAGE_TAG $CONTAINER_NAME > imagedefinitions.json
+
+artifacts:
+  files:
+    - 'appspec.yaml'
+    - 'imagedefinitions.json'
