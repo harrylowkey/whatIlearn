@@ -12,7 +12,7 @@ pg_dump --file=renyoo-dev-microservice-02-02.sql --format=p --dbname=pixerlens_m
 ```bash
 psql -h host -U db-user -d db-name < file-name
 psql -h renyoo-dev-rds.cluster-cbshcbhm3sxz.ap-southeast-1.rds.amazonaws.com -U root -d renyoo-dev < renyoo-dev-27-02.sql
-psql -h localhost -U postgres -d pixerlens-dev -p 5432 < renyoo-microservice-02-02.sql
+psql -h localhost -U postgres -d pixerlens-core-dev -p 5432 < renyoo-microservice-02-02.sql
 ```
 
 # Login

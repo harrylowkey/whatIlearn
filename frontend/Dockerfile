@@ -15,4 +15,3 @@ ADD nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=development /usr/src/app/public /usr/share/nginx/html
 EXPOSE 2000
 # it is nginx port that has been defined in nginx.conf file
-

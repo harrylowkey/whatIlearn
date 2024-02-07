@@ -14,6 +14,20 @@ graph LR
 
 ## BackLogs
 
+*High priority tasks*:
+
+- [ ] Fix SNS subscription issues
+- [ ] Fix socket issues
+- [ ] Setup deployment for dev
+- [ ] Setup deployment for client-org env
+- [ ] Write deployment docs
+- [ ] Prepare migration, setup env for client-org 
+- [ ] Refactor helm chart templates
+- [ ] Write tasks description for sprint 20
+
+---
+*Medium priority tasks*:
+
 - [x] Socket.io
 - [x] Web Development Architecture
 - [x] Time-series DB (TimescaleDB extension)
@@ -24,7 +38,7 @@ graph LR
 - [ ] Terraform (Feb/01 - Feb/31)
 - [ ] Design Pattern book
 - [ ] Database
-  - [ ] Revamp SQL queries
+  - [x] Revamp SQL queries
   - [ ] Query Plan
   - [x] Transaction
   - [x] Locking
@@ -38,15 +52,19 @@ graph LR
   - [ ] outbox transaction
   - [ ] saga pattern
 - [ ] Read 1 microservice book
+
+---
+*Low priority tasks*:
+
 - [ ] Revamp Computer Science Base
-- [ ] Document the renyoo media-handler service by drawing the chart
 - [ ] Refactor sns hook: SnsHandlerFactory
+- [ ] Document the renyoo media-handler service by drawing the chart
 
 ## Tasks
 
 ### Done
 
-#### Jan-24, 25, 26
+#### Jan-24, 25, 26 until Feb-07
 
 - [x] Setup deployment for microservice
 
