@@ -16,14 +16,8 @@ graph LR
 
 *High priority tasks*:
 
-- [ ] Fix SNS subscription issues
-- [ ] Fix socket issues
-- [ ] Setup deployment for dev
-- [ ] Setup deployment for client-org env
 - [ ] Write deployment docs
-- [ ] Prepare migration, setup env for client-org 
 - [ ] Refactor helm chart templates
-- [ ] Write tasks description for sprint 20
 
 ---
 *Medium priority tasks*:
@@ -63,6 +57,18 @@ graph LR
 ## Tasks
 
 ### Done
+
+
+#### Feb-24, 25
+- [ ] Write deployment docs
+
+#### Tet holiday
+
+- [x] Fix SNS subscription issues
+- [x] Fix socket issues
+- [x] Setup deployment for dev
+- [x] Setup deployment for client-org env
+- [x] Prepare migration, setup env for client-org
 
 #### Jan-24, 25, 26 until Feb-07
 
