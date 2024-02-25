@@ -17,6 +17,7 @@ graph LR
 *High priority tasks*:
 
 - [ ] Write deployment docs
+- [ ] Implement Admin Guard
 - [ ] Refactor helm chart templates
 
 ---
