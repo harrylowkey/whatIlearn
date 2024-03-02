@@ -16,10 +16,6 @@ graph LR
 
 *High priority tasks*:
 
-- [ ] Write deployment docs
-- [ ] Implement Admin Guard
-- [ ] Refactor helm chart templates
-
 ---
 *Medium priority tasks*:
 
@@ -59,9 +55,20 @@ graph LR
 
 ### Done
 
+#### Mar-03, 04
+- [ ] Refactor helm chart templates
+- [ ] Update deployment docs
+
+#### Mar-02
+- [ ] Move UAT to new infra
+- [ ] Setup client-org env
+
+#### Mar-01
+- [x] Implement Admin Guard
+
 
 #### Feb-24, 25
-- [ ] Write deployment docs
+- [x] Write deployment docs
 
 #### Tet holiday
 
