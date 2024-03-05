@@ -12,22 +12,30 @@ graph LR
 
 # 2024
 
-## BackLogs
+## Ongoing tasks:
 
-*High priority tasks*:
+- [ ] [Learning] AWS Developer Associate Certification (Mar/06 - Mar/30)
+- [ ] [Preparing] AWS Developer Associate Certification (Apr/01 - April/15)
+- [ ] [Reading] Design Pattern book
 
 ---
-*Medium priority tasks*:
+
+## BackLogs
+
+_High priority tasks_:
+
+---
+
+_Medium priority tasks_:
 
 - [x] Socket.io
 - [x] Web Development Architecture
 - [x] Time-series DB (TimescaleDB extension)
 - [x] WAF
-- [x] SqlAlchemy
-  - [x] Transaction
-  - [ ] [SQLAlchemy Query Guide](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html)
-- [ ] Terraform (Feb/01 - Feb/31)
-- [ ] Design Pattern book
+- [ ] Terraform
+- [ ] AWS DevOps Engineer Professional
+- [ ] SqlAlchemy
+  - [ ] Fix fastapi-orm-helper transaction
 - [ ] Database
   - [x] Revamp SQL queries
   - [ ] Query Plan
@@ -35,39 +43,54 @@ graph LR
   - [x] Locking
   - [ ] Sharding
   - [ ] Partitioning
-- [ ] Refactor fastapi-orm-helper
-- [ ] AWS Developer Associate Certification
-- [ ] AWS DevOps Engineer Professional
 - [ ] Research Microservice Transactions
   - [ ] 2 phases commits
   - [ ] outbox transaction
   - [ ] saga pattern
-- [ ] Read 1 microservice book
+- [ ] [Reading] Read 1 microservice book
 
 ---
-*Low priority tasks*:
 
+_Low priority tasks_:
+
+- [ ] Refactor fastapi-orm-helper
 - [ ] Revamp Computer Science Base
 - [ ] Refactor sns hook: SnsHandlerFactory
 - [ ] Document the renyoo media-handler service by drawing the chart
 
 ## Tasks
 
+#### Mar-07
+
+- [ ] Update deployment docs
+
+#### Mar-06
+
+- [ ] Generate subdomain dynamically
+
+#### Mar-05
+
+- [x] Move UAT to new infra
+- [ ] Setup Rotex env
+
 ### Done
 
 #### Mar-03, 04
-- [ ] Refactor helm chart templates
+
+- [x] Refactor helm chart templates
 - [ ] Update deployment docs
 
 #### Mar-02
-- [ ] Move UAT to new infra
-- [ ] Setup client-org env
+
+- [x] Research chainguard-images, dagger, OCI images
+- [x] Setup client-org env
 
 #### Mar-01
+
 - [x] Implement Admin Guard
 
-
 #### Feb-24, 25
+
 - [x] Write deployment docs
 
 #### Tet holiday
@@ -115,7 +138,7 @@ graph LR
 
 #### Jan-02
 
-- [x] [Time-series DB] Make docs for time-series database resesarch
+- [x] [Time-series DB] Make docs for time-series database research
 
 #### Jan-01
 
