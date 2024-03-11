@@ -1,0 +1,20 @@
+[
+  {
+    "AllowedHeaders": [],
+    "AllowedMethods": [
+      "POST",
+      "GET",
+      "DELETE",
+      "PUT"
+    ],
+    "AllowedOrigins": [
+      "https://uat.renyoo.co",
+      "https://api.uat.renyoo.co",
+      "https://test-api.uat.renyoo.co",
+      "https://nando.pixerlens.com",
+      "*.pixerlens.com"
+    ],
+    "ExposeHeaders": [],
+    "MaxAgeSeconds": 300
+  }
+]
