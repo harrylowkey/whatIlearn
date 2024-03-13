@@ -1,0 +1,12 @@
+controller:
+  nodeSelector:
+    environment: tool
+  service:
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: nlb
+    externalTrafficPolicy: Local
+  tolerations:
+  - effect: NoSchedule
+    key: environment
+    operator: Equal
+    value: tool
