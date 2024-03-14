@@ -32,6 +32,8 @@ _Medium priority tasks_:
 - [x] Web Development Architecture
 - [x] Time-series DB (TimescaleDB extension)
 - [x] WAF
+- [x] ArgoCD
+- [x] Deploy BE & FE application on EKS
 - [ ] Terraform
 - [ ] AWS DevOps Engineer Professional
 - [ ] SqlAlchemy
@@ -60,18 +62,26 @@ _Low priority tasks_:
 
 ## Tasks
 
-#### Mar-07
+#### Mar-18
 
-- [ ] Update deployment docs
+- [ ] [Learning] AWS Developer Associate Certification
+
+#### Mar-15, 16, 17
+
+- [ ] Finish Docker course on Udemy
+
+#### Mar-07, Mar-15
+
+- [x] Update deployment docs
 
 #### Mar-06
 
-- [ ] Generate subdomain dynamically
+- [x] Generate subdomain dynamically
 
 #### Mar-05
 
 - [x] Move UAT to new infra
-- [ ] Setup Rotex env
+- [x] Setup Rotex env
 
 ### Done
 
