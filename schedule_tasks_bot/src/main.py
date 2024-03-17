@@ -8,6 +8,6 @@ if app_dir not in sys.path:
 from bootstraps import Bootstrap, app
 from core.helpers.load_module import load_module
 
-load_module('*/schedulers/*.py')
+load_module('*/*/schedulers/*.py')
 
 Bootstrap(app)
