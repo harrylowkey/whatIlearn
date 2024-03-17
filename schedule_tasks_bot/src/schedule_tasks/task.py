@@ -3,6 +3,7 @@ from datetime import datetime, timedelta
 
 from bs4 import BeautifulSoup
 from markdown2 import markdown
+
 from slack_bot.slack import SlackBot
 
 
@@ -117,5 +118,9 @@ def send_tasks():
 
   tasks_by_date, backlog_tasks = get_tasks(markdown(markdown_content))
 
+  print('Start sending tasks')
+
   send_daily_tasks(tasks_by_date)
   send_backlog_tasks(backlog_tasks.items())
+
+  print('Sent tasks successfully')
