@@ -113,7 +113,7 @@ def send_backlog_tasks(backlog_tasks):
 
 
 def send_tasks():
-  with open('schedule_tasks_bot/SCHEDULE.md', 'r', encoding='utf-8') as file:
+  with open('SCHEDULE.md', 'r', encoding='utf-8') as file:
     markdown_content = file.read()
 
   tasks_by_date, backlog_tasks = get_tasks(markdown(markdown_content))
