@@ -12,11 +12,21 @@ graph LR
 
 # 2024
 
+- [x] Socket.io
+- [x] Web Development Architecture
+- [x] Time-series DB (TimescaleDB extension)
+- [x] WAF
+- [x] ArgoCD
+- [x] Deploy BE & FE application on EKS
+- [x] Docker & Kubernetes
+
+---
+
 ## Ongoing tasks:
 
-- [ ] [Learning] AWS Developer Associate Certification (Mar/06 - Mar/30)
+- [ ] [Reading] Design Pattern book (Mar/15 - April/1)
+- [ ] [Learning] AWS Developer Associate Certification (Mar/15 - April/15)
 - [ ] [Preparing] AWS Developer Associate Certification (Apr/01 - April/15)
-- [ ] [Reading] Design Pattern book
 
 ---
 
@@ -27,13 +37,6 @@ _High priority tasks_:
 ---
 
 _Medium priority tasks_:
-
-- [x] Socket.io
-- [x] Web Development Architecture
-- [x] Time-series DB (TimescaleDB extension)
-- [x] WAF
-- [x] ArgoCD
-- [x] Deploy BE & FE application on EKS
 - [ ] Terraform
 - [ ] AWS DevOps Engineer Professional
 - [ ] SqlAlchemy
@@ -62,13 +65,13 @@ _Low priority tasks_:
 
 ## Tasks
 
-#### Mar-18
+#### Mar-16
+- [ ] [Reading] Design Pattern book
 
-- [ ] [Learning] AWS Developer Associate Certification
+#### Mar-15
 
-#### Mar-15, 16, 17
-
-- [ ] Finish Docker course on Udemy
+- [x] Finish Docker & Kubernetes course on Udemy
+- [ ] [Learning] [Section 1 - 4] AWS Developer Associate Certification
 
 #### Mar-07, Mar-15
 
@@ -83,7 +86,6 @@ _Low priority tasks_:
 - [x] Move UAT to new infra
 - [x] Setup Rotex env
 
-### Done
 
 #### Mar-03, 04
 
