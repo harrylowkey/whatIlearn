@@ -1,6 +1,7 @@
+
 from bootstraps import app
 from config import scheduler
-from tasks.task import send_tasks
+from schedule_tasks.task import send_tasks
 
 
 @app.on_event('startup')

@@ -1,13 +1,13 @@
-from config import env
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
+
+from config import env
 
 
 class Slack:
   SCHEDULE_TAKS_CHANNEL_ID = '#schedule-tasks'
 
   def __init__(self):
-    print('SLACK_TOKEN', env.SLACK_TOKEN)
     self.client = WebClient(token=env.SLACK_TOKEN)
 
   def send_tasks_to_slack(self, tasks, message_prefix):
