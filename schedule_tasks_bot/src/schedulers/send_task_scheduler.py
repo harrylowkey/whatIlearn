@@ -1,4 +1,3 @@
-
 from bootstraps import app
 from config import scheduler
 from schedule_tasks.task import send_tasks

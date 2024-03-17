@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Article Page</title>
+</head>
+
+<body>
+  <!-- Container for displaying articles -->
+  <div id="article-container">
+    {% for article in articles %}
+    <article class="article">
+      <h2>{{ article.title }}</h2>
+      {{ article.content|safe }}
+    </article>
+    {% endfor %}
+  </div>
+
+  <!-- Pagination links -->
+  <div id="pagination-container">
+    {% if articles.previous %}
+    <a href="/articles/{{ articles.previous }}">Previous</a>
+    {% endif %}
+    {% if articles.next %}
+    <a href="/articles/{{ articles.next }}">Next</a>
+    {% endif %}
+  </div>
+
+  <!-- Load More button -->
+  <button id="load-more">Load More</button>
+
+  <!-- Include jQuery library -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  <!-- JavaScript code for handling interactions -->
+  <script>
+        // JavaScript code for handling interactions
+  </script>
+</body>
+
+</html>

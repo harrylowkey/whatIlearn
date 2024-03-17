@@ -9,5 +9,7 @@ from bootstraps import Bootstrap, app
 from core.helpers.load_module import load_module
 
 load_module('*/*/schedulers/*.py')
+load_module('*/*/controllers/*.py')
+load_module('*/*/models/*.py')
 
 Bootstrap(app)

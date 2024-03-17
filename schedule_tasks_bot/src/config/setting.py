@@ -4,6 +4,7 @@ from dotenv import dotenv_values
 
 loaded_env = dotenv_values('schedule_tasks_bot/.env')
 
+
 def get_env(key, default=None):
   if key in loaded_env:
     return loaded_env.get(key)
