@@ -2,7 +2,7 @@ import os
 
 from dotenv import dotenv_values
 
-loaded_env = dotenv_values('schedule_tasks/.env')
+loaded_env = dotenv_values('portfolio/.env')
 
 
 def get_env(key, default=None):

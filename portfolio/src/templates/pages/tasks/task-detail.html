@@ -5,8 +5,7 @@
         <div class="row align-items-center">
           <div class="col-xl-10 col-sm-10">
             <div class="checklist form-check font-size-15">
-              <input type="checkbox" class="form-check-input" id="customCheck1" {% if task['status']=='- ✅'
-                %}checked{%endif %}>
+              <input type="checkbox" class="form-check-input" {% if task['status']=='- ✅' %}checked{%endif %}>
               <label class="form-check-label ms-1 task-title" for="customCheck1">
                 {{task['task_type']}} {{task['annotation']}} {{task['description']}}
               </label>
@@ -24,7 +23,7 @@
                             {% set text = 'In Progress' if status_category == '- ⌛today' else 'Done' %}
                           {% elif status_category in ['- ❌yesterday', '- ✅yesterday'] %}
                             {% set badge_class = 'badge-soft-danger' if status_category == '- ❌yesterday' else 'bg-success' %}
-                            {% set text = 'Outdate' if status_category == '- ❌yesterday' else 'Done' %}
+                            {% set text = 'Not done' if status_category == '- ❌yesterday' else 'Done' %}
                           {% elif status_category in ['- ⌛high_priority', '- ✅high_priority'] %}
                             {% set badge_class = 'bg-danger' if status_category == '- ⌛high_priority' else 'bg-success' %}
                             {% set text = 'Let\'s complete first 🔪' if status_category == '- ⌛high_priority' else 'Done' %}

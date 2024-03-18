@@ -114,7 +114,7 @@ def send_backlog_tasks(backlog_tasks):
 
 
 def send_tasks():
-  with open('schedule_tasks/SCHEDULE.md', 'r', encoding='utf-8') as file:
+  with open('portfolio/SCHEDULE.md', 'r', encoding='utf-8') as file:
     markdown_content = file.read()
 
   tasks_by_date, backlog_tasks = get_tasks(markdown(markdown_content))

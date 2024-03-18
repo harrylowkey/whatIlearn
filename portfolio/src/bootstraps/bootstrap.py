@@ -8,4 +8,4 @@ class Bootstrap:
     self.mount_static_folder()
 
   def mount_static_folder(self):
-    self.app.mount('/static', StaticFiles(directory='schedule_tasks/src/static'), name='static')
+    self.app.mount('/static', StaticFiles(directory='portfolio/src/static'), name='static')

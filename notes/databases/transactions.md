@@ -1,6 +1,6 @@
 # Transactions
 
-<!-- published_date: 2024-03-18 -->
+<!-- published_date: 18 Mar, 2024 -->
 <!-- description: Isolation levels vs read phenomena -->
 <!-- tags: database, transaction -->
 
