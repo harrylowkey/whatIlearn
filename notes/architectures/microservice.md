@@ -34,7 +34,7 @@ Handling of failures during communication
 
 #### Cons:
 
-## Blogs
+## Notes
 
 - [Synchronous communication with gRPC](https://developers.mews.com/synchronous-communication-with-grpc/)
   - Protobuf file: contract

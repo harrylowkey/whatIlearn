@@ -1,5 +1,8 @@
 # Acquire Lock
 
+<!-- published_date: 2024-03-18 -->
+<!-- description: Note for locking -->
+
 1. Acquire FOR UPDATE lock
 
 - This lock is typically used when a transaction intends to make changes to the data.

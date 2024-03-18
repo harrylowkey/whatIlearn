@@ -1,7 +1,6 @@
+from config import env
 from slack_sdk import WebClient
 from slack_sdk.errors import SlackApiError
-
-from config import env
 
 
 class Slack:
@@ -12,11 +11,12 @@ class Slack:
 
   def send_tasks_to_slack(self, tasks, message_prefix):
     if not tasks:
-      return
+      tasks = ["- 🙉 There are no tasks for today. Let's add it now 🔥!"]
+
+    tasks_text = '\n'.join(tasks)
+    message = f'*{message_prefix}*\n\n{tasks_text}'
 
     try:
-      tasks_text = '\n'.join(tasks)
-      message = f'*{message_prefix}*\n\n{tasks_text}'
       self.client.chat_postMessage(channel=self.SCHEDULE_TAKS_CHANNEL_ID, text=message)
     except SlackApiError as e:
       print(f"Error sending message to Slack: {e.response['error']}")
