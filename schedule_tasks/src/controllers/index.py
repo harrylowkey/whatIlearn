@@ -7,17 +7,16 @@ from fastapi.responses import HTMLResponse
 from fastapi.templating import Jinja2Templates
 from markdown2 import markdown
 from models.note import fetch_notes
+from schedule_tasks.src.helpers.render_badge_classes import render_badge_classes
+from schedule_tasks.src.schedule_tasks.task import get_tasks
 
-from schedule_tasks_bot.src.helpers.render_badge_classes import render_badge_classes
-from schedule_tasks_bot.src.schedule_tasks.task import get_tasks
-
-templates = Jinja2Templates(directory='schedule_tasks_bot/src/templates')
+templates = Jinja2Templates(directory='schedule_tasks/src/templates')
 POSTS_PER_PAGE = 6
 
 
 @app.get('/', response_class=HTMLResponse)
 async def index(request: Request, page: int = 1):
-  with open('schedule_tasks_bot/SCHEDULE.md', 'r', encoding='utf-8') as file:
+  with open('schedule_tasks/SCHEDULE.md', 'r', encoding='utf-8') as file:
     markdown_content = file.read()
 
   tasks_by_date, backlog_tasks = get_tasks(markdown(markdown_content))
