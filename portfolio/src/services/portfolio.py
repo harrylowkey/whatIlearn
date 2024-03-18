@@ -3,10 +3,10 @@ from datetime import datetime, timedelta
 from config import env
 from fastapi import Request
 from markdown2 import markdown
+from services.note import NoteService
+from services.schedule_task import ScheduleTaskService
 
-from portfolio.services.note import NoteService
 from portfolio.src.helpers.render_badge_classes import render_badge_classes
-from portfolio.src.schedule_tasks.task import get_tasks
 
 
 class PortfolioService:
@@ -15,7 +15,7 @@ class PortfolioService:
     with open('portfolio/SCHEDULE.md', 'r', encoding='utf-8') as file:
       markdown_content = file.read()
 
-    tasks_by_date, backlog_tasks = get_tasks(markdown(markdown_content))
+    tasks_by_date, backlog_tasks = ScheduleTaskService.get_tasks(markdown(markdown_content))
 
     today_date = datetime.now().strftime('%b-%d')
     today_tasks = tasks_by_date.get(today_date, [])

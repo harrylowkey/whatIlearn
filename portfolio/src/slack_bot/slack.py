@@ -11,28 +11,39 @@ class Slack:
 
   def send_tasks_to_slack(self, tasks, message_prefix):
     if not tasks:
-      tasks = [
-        {
-          'status': '❌',
-          'task_type': '',
-          'annotation': '',
-          'description': "- 🙉 There are no tasks anymore. Let's fucking hustle or you'll be broken 🔥!",
-        }
-      ]
+      tasks = self.generate_default_task()
 
+    tasks_text = self.format_tasks(tasks)
+    message = self.compose_message(message_prefix, tasks_text)
+
+    try:
+      self.send_message_to_slack(message)
+    except SlackApiError as e:
+      print(f"Error sending message to Slack: {e.response['error']}")
+
+  def generate_default_task(self):
+    return [
+      {
+        'status': '❌',
+        'task_type': '',
+        'annotation': '',
+        'description': "- 🙉 There are no tasks anymore. Let's fucking hustle or you'll be broken 🔥!",
+      }
+    ]
+
+  def format_tasks(self, tasks):
     tasks_text = []
     for task in tasks:
       status, task_type, annotation, description = task.values()
       task_text = f'{status} [{task_type}] {annotation} {description}'
       tasks_text.append(task_text)
 
-    tasks_text = '\n'.join(tasks_text)
-    message = f'*{message_prefix}*\n\n{tasks_text}'
+    return '\n'.join(tasks_text)
 
-    try:
-      self.client.chat_postMessage(channel=self.SCHEDULE_TAKS_CHANNEL_ID, text=message)
-    except SlackApiError as e:
-      print(f"Error sending message to Slack: {e.response['error']}")
+  def compose_message(self, message_prefix, tasks_text):
+    return f'*{message_prefix}*\n\n{tasks_text}'
 
+  def send_message_to_slack(self, message):
+    self.client.chat_postMessage(channel=self.SCHEDULE_TAKS_CHANNEL_ID, text=message)
 
 SlackBot = Slack()

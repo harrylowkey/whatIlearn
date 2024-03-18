@@ -3,8 +3,8 @@ from config import env
 from fastapi import Request
 from fastapi.responses import HTMLResponse
 
-from portfolio.services.portfolio import PortfolioService
-from portfolio.services.template import TemplateService
+from services.portfolio import PortfolioService
+from services.template import TemplateService
 
 
 @app.get('/', response_class=HTMLResponse)

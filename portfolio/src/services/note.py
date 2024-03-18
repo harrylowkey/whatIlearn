@@ -6,7 +6,7 @@ from markdown2 import markdown
 from portfolio.src.models.note import Note
 
 
-class NoteServiceImpl:
+class NoteBase:
   NOTES_PER_PAGE = 6
 
   @staticmethod
@@ -61,11 +61,11 @@ class NoteServiceImpl:
           if file_name and file == file_name:
             return article
 
-        articles.append(article)
+          articles.append(article)
 
         # If file_name is provided but not found, return None
-      if file_name:
-        return None
+    if file_name:
+      return None
 
     return articles
 
@@ -83,4 +83,5 @@ class NoteServiceImpl:
 
     return notes, total_notes, prev_page, next_page
 
-NoteService = NoteServiceImpl()
+
+NoteService = NoteBase()
