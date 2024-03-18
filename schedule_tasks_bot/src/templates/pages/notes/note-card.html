@@ -29,8 +29,9 @@
             </div>
           </div><!-- end avatar group -->
           <div class="align-self-end">
-            <span class="badge badge-soft-danger p-2 team-status">k8s</span>
-            <span class="badge bg-primary p-2 team-status">docker</span>
+            {% for tag in note.tags %}
+            <span class="badge {{ render_badge_classes(tag) }} p-2 team-status">{{ tag }}</span>
+            {% endfor %}
           </div>
         </div>
       </div><!-- end cardbody -->

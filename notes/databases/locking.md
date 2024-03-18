@@ -2,6 +2,7 @@
 
 <!-- published_date: 2024-03-18 -->
 <!-- description: Note for locking -->
+<!-- tags: database, lock -->
 
 1. Acquire FOR UPDATE lock
 

@@ -35,6 +35,7 @@ graph LR
 ### High priority tasks:
 
 - [ ] [Work] Fix bug
+- [x] [Side-project] Build Note pages
 
 ---
 
@@ -68,15 +69,22 @@ graph LR
 
 ## Tasks
 
+#### Mar-18
+
+- [ ] [Reading] (Section 1) Design Pattern book
+- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [x] [Side-project] Build Task page
+
 #### Mar-17
 
-- [ ] [Reading] (Section 3) Design Pattern book
-- [ ] [Learning] (Section 5) AWS Developer Associate Certification
+- [ ] [Reading] (Section 1) Design Pattern book
+- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [x] [Side-project] Create schedule-task-notification slack bot
 
 #### Mar-16
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 4 - 5) AWS Developer Associate Certification
+- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
 
 #### Mar-15
 

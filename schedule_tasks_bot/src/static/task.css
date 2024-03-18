@@ -3,6 +3,11 @@ body {
   background: #f7f8fa
 }
 
+.split-block {
+  border-bottom: 2px dashed #eff0f2;
+  margin-bottom: 20px
+}
+
 .avatar-xxl {
   height: 7rem;
   width: 7rem;
@@ -12,6 +17,10 @@ body {
   margin-bottom: 20px;
   -webkit-box-shadow: 0 2px 3px #eaedf2;
   box-shadow: 0 2px 3px #eaedf2;
+}
+
+.card-body {
+  cursor: pointer;
 }
 
 .pb-0 {
@@ -191,4 +200,7 @@ body {
   background-color: #fff;
   border: 2px solid #038edc
 }
+
+.total-tasks {
+  font-size: 80%;
 }

@@ -23,8 +23,9 @@ def extract_tasks_from_list(ul_tag):
 
         status = '- ✅' if status == 'x' else '- ⌛'
         annotation = f'({annotation})' if annotation else ''
+        task_type = f'[{task_type}]' if task_type else ''
 
-        tasks.append(f'{status} [{task_type}] {annotation} {description}')
+        tasks.append({'status': status, 'task_type': task_type, 'annotation': annotation, 'description': description})
 
   return tasks
 
@@ -77,12 +78,13 @@ def get_daily_tasks(markdown_content):
         description = match.group(4)
 
         annotation = f'({annotation})' if annotation else ''
+        task_type = f'[{task_type}]' if task_type else ''
         if status == 'x':
           status = '- ✅' if date != today_date else '- ✅'
         else:
           status = '- ❌' if date != today_date else '- ⌛'
 
-        tasks.append(f'{status} [{task_type}] {annotation} {description}')
+        tasks.append({'status': status, 'task_type': task_type, 'annotation': annotation, 'description': description})
 
     tasks_by_date[date] = tasks
 

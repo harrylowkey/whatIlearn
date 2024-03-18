@@ -11,9 +11,22 @@ class Slack:
 
   def send_tasks_to_slack(self, tasks, message_prefix):
     if not tasks:
-      tasks = ["- 🙉 There are no tasks for today. Let's add it now 🔥!"]
+      tasks = [
+        {
+          'status': '❌',
+          'task_type': '',
+          'annotation': '',
+          'description': "- 🙉 There are no tasks anymore. Let's fucking hustle or you'll be broken 🔥!",
+        }
+      ]
 
-    tasks_text = '\n'.join(tasks)
+    tasks_text = []
+    for task in tasks:
+      status, task_type, annotation, description = task.values()
+      task_text = f'{status} [{task_type}] {annotation} {description}'
+      tasks_text.append(task_text)
+
+    tasks_text = '\n'.join(tasks_text)
     message = f'*{message_prefix}*\n\n{tasks_text}'
 
     try:

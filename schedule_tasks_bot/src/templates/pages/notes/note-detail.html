@@ -16,20 +16,14 @@
 
 <body>
   <div class="container">
-    <div class="row">
-      <div class="col-xl-8">
+    <div class="row justify-content-center">
+      <div class="col-xl-10">
         {% include 'pages/notes/header.html' %}
         <article class="note">
-          <h2 class="note-title">{{ note.title }}.md</h2>
+          <h2 class="note-title">{{ note.file_path }}</h2>
           <div class="note-content">{{ note.content|safe }}</div>
         </article>
       </div>
-
-      <div class="col-xl-4">
-        {% include 'components/about.html' %}
-        {% include 'components/personal-detail.html' %}
-        {% include 'components/work-experience.html' %}
-      </div><!-- end col -->
     </div>
   </div>
 </body>

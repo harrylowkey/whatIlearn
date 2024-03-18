@@ -5,10 +5,12 @@ from markdown2 import markdown
 
 
 class Note:
-  def __init__(self, title, published_date, description, content):
+  def __init__(self, title, file_path, published_date, description, tags, content):
     self.title = title
+    self.file_path = file_path
     self.description = description
     self.content = content
+    self.tags = tags
     self.published_date = published_date
 
 
@@ -37,14 +39,20 @@ def extract_description(soup):
   return description
 
 
+def extract_tags(soup) -> list[str]:
+  comments = soup.find(text=lambda text: isinstance(text, Comment) and 'tags:' in text)
+  tags = comments.split(':')[-1].strip() if comments else ''
+  return tags.split(', ') if tags else []
+
+
 def fetch_notes(file_name=None) -> list:
   articles = []
   directory = 'notes'
 
   for root, dirs, files in os.walk(directory):
     for file in files:
-      file_path = os.path.join(root, file)
       if file.endswith('.md') and file != 'README.md':
+        file_path = os.path.join(root, file)
         markdown_content = read_markdown_file(file_path)
         html_content = parse_html_content(markdown_content)
         soup = BeautifulSoup(html_content, 'html.parser')
@@ -52,8 +60,9 @@ def fetch_notes(file_name=None) -> list:
         title = os.path.splitext(os.path.basename(file))[0]
         published_date = extract_published_date(soup)
         description = extract_description(soup)
+        tags = extract_tags(soup)[:3]
 
-        article = Note(title, published_date, description, content=html_content)
+        article = Note(title, file_path, published_date, description, tags, content=html_content)
 
         # If file_name is provided and matches the current file, return the note
         if file_name and file == file_name:
