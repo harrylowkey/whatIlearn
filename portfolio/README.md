@@ -18,9 +18,9 @@ Currently, I'm hosting the website at http://harrylowkey.online
 
 I hope we can contribute together to make this project better.
 
-- Still adding more notes after researching something new
-- Build schedule-task-cli to add/upate tasks
-- Build the better UI/UX for the website
+- [x] Still adding more notes after researching something new
+- [ ] Build schedule-task-cli to add/upate tasks
+- [ ] Build the better UI/UX for the website
 
 ## Requirements
 
