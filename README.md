@@ -1,5 +1,5 @@
-# WhatILearn
+# Table of Contents
 
 This repository devides into 2 parts:
-- Notes: which I document what I'm learning everyday
-- Schedule Tasks Bot: which is a bot to help me send my schedule tasks to Slack channel daily
+- [notes](./notes/README.md): which I document what I'm learning everyday
+- [portfolio](./portfolio/README.md): An MVC project built with python and jinja2 to let bot send my tasks to slack, and build a simple website to share my notes

@@ -1,4 +1,4 @@
-# What I learnt
+# Table of Contents
 
 - [CKAD](./certifications/ckad/README.md)
 - [Cloud Practioner](./certifications/cloud-practitioner/README.md)

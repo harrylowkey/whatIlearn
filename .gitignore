@@ -170,3 +170,6 @@ cython_debug/
 pyrightconfig.json
 
 sdk/
+
+notes/databases/postgres/psql.sh
+notes/databases/mongodb/mongostore-mongodump.sh
