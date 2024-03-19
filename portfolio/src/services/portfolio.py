@@ -2,20 +2,17 @@ from datetime import datetime, timedelta
 
 from config import env
 from fastapi import Request
-from markdown2 import markdown
 from services.note import NoteService
 from services.schedule_task import ScheduleTaskService
 
 from portfolio.src.helpers.render_badge_classes import render_badge_classes
+from portfolio.src.services.project import ProjectService
 
 
 class PortfolioService:
   @staticmethod
   def prepare_tasks(request: Request):
-    with open('portfolio/SCHEDULE.md', 'r', encoding='utf-8') as file:
-      markdown_content = file.read()
-
-    tasks_by_date, backlog_tasks = ScheduleTaskService.get_tasks(markdown(markdown_content))
+    tasks_by_date, backlog_tasks = ScheduleTaskService.get_tasks()
 
     today_date = datetime.now().strftime('%b-%d')
     today_tasks = tasks_by_date.get(today_date, [])
@@ -58,4 +55,19 @@ class PortfolioService:
     return {
       'request': request,
       'note': note,
+    }
+
+  @staticmethod
+  def prepare_projects(request: Request):
+    projects = ProjectService.fetch_projects()
+
+    return {'request': request, 'projects': projects, 'WEB_URL': env.WEB_URL}
+
+  @staticmethod
+  def prepare_project(request: Request, name: str):
+    project = ProjectService.fetch_projects(file_name=f'{name}.md')
+
+    return {
+      'request': request,
+      'project': project,
     }

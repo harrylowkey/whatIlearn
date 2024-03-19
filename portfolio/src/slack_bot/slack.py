@@ -35,7 +35,7 @@ class Slack:
     tasks_text = []
     for task in tasks:
       status, task_type, annotation, description = task.values()
-      task_text = f'{status} [{task_type}] {annotation} {description}'
+      task_text = f'{status} {task_type} {annotation} {description}'
       tasks_text.append(task_text)
 
     return '\n'.join(tasks_text)
@@ -45,5 +45,6 @@ class Slack:
 
   def send_message_to_slack(self, message):
     self.client.chat_postMessage(channel=self.SCHEDULE_TAKS_CHANNEL_ID, text=message)
+
 
 SlackBot = Slack()

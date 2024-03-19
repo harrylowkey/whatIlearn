@@ -1,0 +1,20 @@
+<div class="avatar-group-item">
+  <a href="javascript: void(0);" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top"
+    value="member-6" aria-label="Terrell Soto" data-bs-original-title="Terrell Soto">
+    <img
+      src="https://img.freepik.com/free-vector/cute-astronaut-working-laptop-cartoon-vector-icon-illustration-science-technology-icon-isolated_138676-4634.jpg?w=900&t=st=1710698177~exp=1710698777~hmac=6dcee222fbb754582fe608807f348cca60803839d5d6f4d317aaae883902f3e5"
+      alt="" class="rounded-circle avatar-sm">
+  </a>
+</div>
+{% if team_size > 1 %}
+<div class="avatar-group-item">
+  <a href="javascript: void(0);" class="d-inline-block" data-bs-toggle="tooltip" data-bs-placement="top"
+    value="member-6" aria-label="Terrell Soto" data-bs-original-title="Terrell Soto">
+    <div class="avatar-sm">
+      <div class="avatar-title rounded-circle bg-success">
+        +{{ team_size - 1 }}
+      </div>
+    </div>
+  </a>
+</div>
+{% endif %}
