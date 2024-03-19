@@ -1,6 +1,6 @@
 {% extends 'bases/layout.html' %}
 {% block title %}Tasks{% endblock %}
-{% block head %}<link rel="stylesheet" href="{{ url_for('static', path='task.css') }}">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{{ url_for('static', path='task.css') }}">{% endblock %}
 {% block content %}
     {% include 'pages/tasks/header.html' %}
     <div class="card">
@@ -16,7 +16,7 @@
                     <div class="col-xl-12">
                         {% for task in high_priority_tasks %}
                             {% with task=task, category='high_priority' %}
-                                {% include 'pages/tasks/task-detail.html' %}
+                                {% include 'pages/tasks/task-card.html' %}
                             {% endwith %}
                         {% endfor %}
                     </div>
@@ -36,7 +36,7 @@
                     <div class="col-xl-12">
                         {% for task in today_tasks %}
                             {% with task=task, category='today' %}
-                                {% include 'pages/tasks/task-detail.html' %}
+                                {% include 'pages/tasks/task-card.html' %}
                             {% endwith %}
                         {% endfor %}
                     </div>
@@ -54,7 +54,7 @@
                     <div class="col-xl-12">
                         {% for task in yesterday_tasks %}
                             {% with task=task, category='yesterday' %}
-                                {% include 'pages/tasks/task-detail.html' %}
+                                {% include 'pages/tasks/task-card.html' %}
                             {% endwith %}
                         {% endfor %}
                     </div>

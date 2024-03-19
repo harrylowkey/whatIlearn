@@ -1,6 +1,6 @@
 {% extends 'bases/layout.html' %}
 {% block title %}Projects{% endblock %}
-{% block head %}<link rel="stylesheet" href="{{ url_for('static', path='project.css') }}">{% endblock %}
+{% block stylesheet %}<link rel="stylesheet" href="{{ url_for('static', path='project.css') }}">{% endblock %}
 {% block content %}
     {% include 'pages/projects/header.html' %}
     <div class="card">
