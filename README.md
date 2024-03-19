@@ -1,4 +1,4 @@
-# WhatILearn
+# Table of Contents
 
 This repository devides into 2 parts:
 - [notes](./notes/README.md): which I document what I'm learning everyday

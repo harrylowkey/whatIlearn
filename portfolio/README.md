@@ -1,4 +1,4 @@
-# Portfolio
+# Table of Contents
 
 ## Motivation
 
