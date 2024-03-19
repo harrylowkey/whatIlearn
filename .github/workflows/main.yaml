@@ -1,0 +1,59 @@
+name: CI/CD
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      ECR_REPOSITORY: portfolio
+    steps:
+      - name: Checkout repo source
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        run: |
+          echo "${{ secrets.DOCKER_HUB_PASSWORD }}" | docker login --username ${{ secrets.DOCKER_HUB_USERNAME }} --password-stdin
+
+      - name: Build, tag, and push
+        id: build-image
+        env:
+          ECR_REGISTRY: hongquangraem
+          RUNNER_ID: ${{ github.run_number }}
+        run: |
+          echo "${{ secrets.DOCKER_HUB_PASSWORD }}"
+          echo "ECR_REGISTRY=$ECR_REGISTRY"
+          IMAGE_TAG=$RUNNER_ID
+          IMAGE_REPO_NAME=$ECR_REGISTRY/$ECR_REPOSITORY
+          LATEST_IMAGE=$IMAGE_REPO_NAME:latest
+          echo "Pulling latest image"
+          docker pull $LATEST_IMAGE || true
+          echo "Building images"
+          docker build --cache-from $LATEST_IMAGE -t $IMAGE_REPO_NAME:latest -t $IMAGE_REPO_NAME:$IMAGE_TAG .
+          echo "Pushing images to ECR..."
+          docker push $IMAGE_REPO_NAME:latest
+          docker push $IMAGE_REPO_NAME:$IMAGE_TAG
+          echo "New image name=$IMAGE_REPO_NAME:$IMAGE_TAG"
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo $SSH_PRIVATE_KEY | base64 -d > ~/.ssh/schedule_task_bot.pem
+          chmod 400 ~/.ssh/schedule_task_bot.pem
+          ssh-keyscan github.com >> ~/.ssh/known_hosts
+          git config --global user.email "actions@github.com"
+          git config --global user.name "GitHub Actions"
+
+      - name: SSH to server and Deploy
+        run: |
+          cat ~/.ssh/schedule_task_bot.pem
+          ssh -i ~/.ssh/schedule_task_bot.pem ubuntu@ec2-18-136-53-190.ap-southeast-1.compute.amazonaws.com
+          sudo su
+          docker stop $(docker ps -q)
+          docker rmi $(docker images -q) -f
+          docker pull hongquangraem/portfolio:latest
+          docker run -d -p 80:3000 --name portfolio hongquangraem/portfolio:latest
+
+
+    
