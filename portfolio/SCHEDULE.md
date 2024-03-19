@@ -27,6 +27,7 @@ graph LR
 - [ ] [Reading] Design Pattern book (Mar-15 / Apr-01)
 - [ ] [Learning] AWS Developer Associate Certification (Mar-15 / Apr-15)
 - [ ] [Preparing] AWS Developer Associate Certification (Apr-01 / Apr-15)
+- [ ] [Porfolio Prooject] Reg SSL for domain
 
 ---
 
@@ -67,7 +68,20 @@ graph LR
 - [ ] [Work] Refactor sns hook: SnsHandlerFactory
 - [ ] [Work] Document the renyoo media-handler service by drawing the chart
 
+---
+
 ## Tasks
+
+#### Mar-20
+
+- [ ] [Reading] (Section 1) Design Pattern book
+- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+
+#### Mar-19
+
+- [ ] [Reading] (Section 1) Design Pattern book
+- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [x] [Porfolio Prooject] Refactor codes & setup CI/CD
 
 #### Mar-18
 
