@@ -14,9 +14,10 @@ async def index(request: Request):
 async def projects(request: Request):
   return TemplateService.render('pages/projects/index.html', PortfolioService.prepare_projects(request))
 
+
 @app.get('/projects/{name}', response_class=HTMLResponse)
 async def project(request: Request, name: str):
-    return TemplateService.render('pages/projects/project-detail.html', PortfolioService.prepare_project(request, name))
+  return TemplateService.render('pages/projects/project-detail.html', PortfolioService.prepare_project(request, name))
 
 
 @app.get('/notes', response_class=HTMLResponse)
