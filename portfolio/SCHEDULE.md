@@ -35,8 +35,7 @@ graph LR
 
 ### High priority tasks:
 
-- [ ] [Work] Fix bug
-- [x] [Side-project] Build Note pages
+- [ ] [Life] Find the missing type-c charging
 
 ---
 
@@ -72,10 +71,20 @@ graph LR
 
 ## Tasks
 
+#### Mar-22
+
+- [ ] [Reading] (Section 1) Design Pattern book
+- [ ] [Learning] (Section 6 - 7) AWS Developer Associate Certification
+
+#### Mar-21
+
+- [ ] [Reading] (Section 1) Design Pattern book
+- [ ] [Learning] (Section 6) AWS Developer Associate Certification
+
 #### Mar-20
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [x] [Learning] (Section 1 - 5) AWS Developer Associate Certification
 
 #### Mar-19
 
