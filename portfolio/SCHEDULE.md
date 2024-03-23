@@ -66,10 +66,18 @@ graph LR
 - [ ] [Work] Refactor fastapi-orm-helper
 - [ ] [Work] Refactor sns hook: SnsHandlerFactory
 - [ ] [Work] Document the renyoo media-handler service by drawing the chart
+- [ ] [Portfolio] Reg SSL for domain
+- [ ] [Portfolio] Clone not done tasks of yesterday to next day
 
 ---
 
 ## Tasks
+
+#### Mar-23
+
+- [ ] [Reading] (Section 1) Design Pattern book
+- [ ] [Learning] (Section 6 - 7) AWS Developer Associate Certification
+- [x] [Work] Fix test
 
 #### Mar-22
 
