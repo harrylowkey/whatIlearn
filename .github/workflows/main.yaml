@@ -52,4 +52,4 @@ jobs:
             ./stop-container.sh
             ./remove-image.sh
             docker pull $ECR_REGISTRY/portfolio:latest
-            docker run -d -p 80:3000 hongquangraem/portfolio:latest
+            docker run -d -p 3000:3000 hongquangraem/portfolio:latest
