@@ -74,54 +74,153 @@ graph LR
 
 ## Tasks
 
+#### Apr-15
+
+- [ ] [Exam] Take the exam
+
+
+#### Apr-14
+
+- [ ] [Learning] (Section 33 - 34) Prepare for the exam
+
+#### Apr-13
+
+- [ ] [Learning] (Section 31 - 32) AWS Other Services, Final Cleanup
+
+#### Apr-12
+
+- [ ] [Learning] (Section 30) AWS Security & Encryption
+
+#### Apr-11
+
+- [ ] [Learning] (Section 28 - 29) Other Serverless: Step Functions & App Sync, Advanced Identity
+
+#### Apr-10
+
+- [ ] [Learning] (Section 25 - 26 - 27) AWS SAM: Serverless Application Model & CDK & Cognito
+
+#### Apr-09
+
+- [ ] [Learning] (Section 24) AWS CI/CD: CodeCommmit, CodeBuild, CodeDeploy, CodePipeline
+
+#### Apr-08
+
+- [ ] [Learning] (Section 23) AWS Serverless: API Gateway
+
+#### Apr-07
+
+- [ ] [Learning] (Section 22) AWS Serverless: DynamoDB
+
+#### Apr-06
+
+- [ ] [Learning] (Section 21) AWS Serverless: Lambda
+
+#### Apr-05
+
+- [ ] [Learning] (Section 20) AWS Mornitor & Audit: CloudTrail & CloudWatch, X-Ray
+
+#### Apr-04
+
+- [ ] [Learning] (Section 19) AWS Integration & Messaging: SQS, SNS & Kinesis
+
+#### Apr-03
+
+- [ ] [Learning] (Section 18) Cloudformation
+
+
+#### Apr-02
+
+- [ ] [Learning] (Section 17) AWS Elastic Beanstalk
+
+#### Apr-01
+
+- [ ] [Learning] (Section 16) ECS & ECR & Fargate & Docker in AWS
+
+#### Mar-31
+
+- [ ] [Learning] (Section 15) Cloudfront
+
+
+#### Mar-30
+
+- [ ] [Learning] (Section 13 - 14) Advanced S3 & S3 Security
+
+#### Mar-29
+
+- [ ] [Learning] (Section 12) AWS CLI & SDK & IAM Roles & Policies
+
+
+#### Mar-28
+
+- [ ] [Learning] (Section 10 - 11) VPC & S3
+
+#### Mar-27
+
+- [ ] [Learning] (Section 9) Route 53
+
+#### Mar-26
+
+- [ ] [Reading] Design Pattern
+- [ ] [Learning] (Section 8) RDS & Aurora & Elasticache
+
+#### Mar-25
+
+- [ ] [Reading] SOLID
+- [ ] [Learning] (Section 7) ELB & ASG
+
+#### Mar-24
+
+- [x] [Reading] OOP
+- [x] [Learning] (Section 6) EC2 Instance Storage
+
 #### Mar-23
 
-- [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 6 - 7) AWS Developer Associate Certification
+- [ ] [Reading] OOP
+- [ ] [Learning] (Section 6) EC2 Instance Storage
 - [x] [Work] Fix test
 
 #### Mar-22
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 6 - 7) AWS Developer Associate Certification
+- [ ] [Learning] (Section 6) EC2 Instance Storage
 
 #### Mar-21
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 6) AWS Developer Associate Certification
+- [ ] [Learning] (Section 6) EC2 Instance Storage
 
 #### Mar-20
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [x] [Learning] (Section 1 - 5) AWS Developer Associate Certification
+- [x] [Learning] (Section 5) IAM & AWS CLI & EC2
 
 #### Mar-19
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [ ] [Learning] (Section 1 - 4) IAM & AWS CLI & EC2
 - [x] [Porfolio Prooject] Refactor codes & setup CI/CD
 
 #### Mar-18
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [ ] [Learning] (Section 1 - 4) IAM & AWS CLI & EC2
 - [x] [Side-project] Build Task page
 
 #### Mar-17
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [ ] [Learning] (Section 1 - 4) IAM & AWS CLI & EC2
 - [x] [Side-project] Create schedule-task-notification slack bot
 
 #### Mar-16
 
 - [ ] [Reading] (Section 1) Design Pattern book
-- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [ ] [Learning] (Section 1 - 4) IAM & AWS CLI & EC2
 
 #### Mar-15
 
 - [x] [Learning] Finish Docker & Kubernetes course on Udemy
-- [ ] [Learning] (Section 1 - 4) AWS Developer Associate Certification
+- [ ] [Learning] (Section 1 - 4) IAM & AWS CLI & EC2
 
 #### Mar-07
 
