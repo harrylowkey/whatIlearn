@@ -12,7 +12,7 @@ However, I want something more.
 I want to visualize my tasks in a better way, so I was planing to build a simple website for that.
 Additionally, I want to show my current notes on the website too, hoping it will help someone.
 
-Currently, I'm hosting the website at http://harrylowkey.online
+Currently, I'm hosting the website at https://harrylowkey.dev
 
 ## Plan for future development
 
