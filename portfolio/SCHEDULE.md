@@ -20,6 +20,7 @@ graph LR
 - [x] Deploy BE & FE application on EKS
 - [x] Docker & Kubernetes
 - [x] WSGI & ASGI & Webserver
+- [x] Enable SSL for Namecheap domain with Nginx Webserver
 
 ---
 
