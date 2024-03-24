@@ -16,7 +16,7 @@ def get_env(key, default=None):
 class Setting:
   SLACK_TOKEN = get_env('SLACK_TOKEN')
   IS_LOCAL = get_env('ENV', 'local') == 'local'
-  WEB_URL = 'http://localhost:3000' if IS_LOCAL else 'http://harrylowkey.dev'
+  WEB_URL = get_env('WEB_URL')
 
 
 env = Setting()
