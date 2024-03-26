@@ -2,7 +2,7 @@
 
 <!-- date: 26 Mar, 2024 -->
 <!-- description: A service to calculate CO2 emissions -->
-<!-- status: on-going -->
+<!-- status: completed -->
 <!-- team_size: 9 -->
 
 ## A service to calculate CO2 emissions <br/>

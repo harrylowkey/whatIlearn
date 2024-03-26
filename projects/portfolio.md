@@ -2,7 +2,7 @@
 
 <!-- date: 26 Mar, 2024 -->
 <!-- description: Side project -->
-<!-- status: on-going -->
+<!-- status: completed -->
 <!-- team_size: 9 -->
 
 ## Personal website & Documentation what I learn everyday <br/>

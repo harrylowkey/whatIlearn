@@ -2,7 +2,7 @@
 
 <!-- date: 26 Mar, 2024 -->
 <!-- description: One of the service in microservice ecosystem -->
-<!-- status: on-going -->
+<!-- status: completed -->
 <!-- team_size: 9 -->
 
 ## One of the service in microservice ecosystem <br/>

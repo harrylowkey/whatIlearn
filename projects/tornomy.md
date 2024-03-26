@@ -2,7 +2,7 @@
 
 <!-- date: 26 Mar, 2024 -->
 <!-- description: A crypto exchange -->
-<!-- status: on-going -->
+<!-- status: completed -->
 <!-- team_size: 9 -->
 
 ## A crypto wallet application <br/>
