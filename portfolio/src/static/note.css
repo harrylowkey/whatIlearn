@@ -203,10 +203,6 @@ body {
   text-decoration: none;
 }
 
-.pagination {
-  margin-top: 5px;
-}
-
 .pagination a {
   display: inline-block;
   padding: 5px 10px;
