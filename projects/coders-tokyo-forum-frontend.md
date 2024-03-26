@@ -1,7 +1,7 @@
 # Coder Tokyo Forum Frontend
 
 <!-- date: 26 Mar, 2024 -->
-<!-- description: Pet project Forum, Blog Backend -->
+<!-- description: Forum for blogger, reviewer -->
 <!-- status: completed -->
 <!-- team_size: 1 -->
 
