@@ -5,7 +5,7 @@
 <!-- status: on-going -->
 <!-- team_size: 9 -->
 
-## A management app for tracking product transactions to notice and prevent exploiting child labor  <br/>
+## Management app for tracking product transactions to notice and prevent exploiting child labor<br/>
 *Backend Developer* <br/>
 *2022* <br/>
 *Da Nang* <br/>

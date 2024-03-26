@@ -16,6 +16,6 @@
 
 ✓ **API Implementation**: Implement APIs using Typescript
 
-✓ Microservices: The first-known microservice architecture and learn how to enhanced scalability and modularity.
+✓ **Microservices**: The first-known microservice architecture and learn how to enhanced scalability and modularity.
 
 ✓ **Tech Stacks**: Kubernetes, Helm, Nestjs, Typescript, Postgres, Redis, Microservice, Kafka
