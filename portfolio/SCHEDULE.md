@@ -168,7 +168,7 @@ graph LR
 #### Mar-25
 
 - [ ] [Reading] SOLID
-- [ ] [Learning] (Section 7) ELB & ASG
+- [x] [Learning] (Section 7) ELB & ASG
 
 #### Mar-24
 
