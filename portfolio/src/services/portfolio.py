@@ -1,12 +1,12 @@
 from datetime import datetime, timedelta
 
-from config import env
 from fastapi import Request
-from services.note import NoteService
-from services.schedule_task import ScheduleTaskService
 
+from config import env
 from portfolio.src.helpers.render_badge_classes import render_badge_classes
 from portfolio.src.services.project import ProjectService
+from services.note import NoteService
+from services.schedule_task import ScheduleTaskService
 
 
 class PortfolioService:
@@ -61,7 +61,7 @@ class PortfolioService:
   def prepare_projects(request: Request):
     projects = ProjectService.fetch_projects()
 
-    return {'request': request, 'projects': projects, 'WEB_URL': env.WEB_URL}
+    return {'request': request, 'projects': projects, 'total_projects': len(projects), 'WEB_URL': env.WEB_URL}
 
   @staticmethod
   def prepare_project(request: Request, name: str):

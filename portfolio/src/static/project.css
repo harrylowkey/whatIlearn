@@ -202,3 +202,7 @@ body {
 .project-link:hover {
   text-decoration: none;
 }
+
+.total-project {
+  font-size: 80%;
+}
