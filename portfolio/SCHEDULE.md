@@ -37,7 +37,8 @@ graph LR
 
 ### High priority tasks:
 
-- [ ] [Life] Find the missing type-c charging
+- [ ] [Reading] Design Pattern book
+- [ ] [Learning] AWS Developer Associate Certification
 
 ---
 
