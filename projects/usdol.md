@@ -1,11 +1,11 @@
-# UsDol (Hodfords)
+# USDol (Hodfords)
 
 <!-- date: 26 Mar, 2024 -->
-<!-- description: A management app for tracking product transactions to notice and prevent exploiting child labor  -->
+<!-- description: Logistics prouduct management -->
 <!-- status: completed -->
 <!-- team_size: 9 -->
 
-## Tracking product transactions to notice and prevent exploiting child labor<br/>
+## A management web app, mobile for tracking product transactions to notice and prevent exploiting child labor<br/>
 *Backend Developer* <br/>
 *2022* <br/>
 *Da Nang* <br/>
