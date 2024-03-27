@@ -149,11 +149,13 @@ graph LR
 
 #### Mar-29
 
+- [ ] [Reading] Design Pattern
 - [ ] [Learning] (Section 12) AWS CLI & SDK & IAM Roles & Policies
 
 
 #### Mar-28
 
+- [ ] [Reading] SOLID
 - [ ] [Learning] (Section 10 - 11) VPC & S3
 
 #### Mar-27
@@ -162,12 +164,10 @@ graph LR
 
 #### Mar-26
 
-- [ ] [Reading] Design Pattern
-- [ ] [Learning] (Section 8) RDS & Aurora & Elasticache
+- [x] [Learning] (Section 8) RDS & Aurora & Elasticache
 
 #### Mar-25
 
-- [ ] [Reading] SOLID
 - [x] [Learning] (Section 7) ELB & ASG
 
 #### Mar-24
