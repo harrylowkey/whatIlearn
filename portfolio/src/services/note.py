@@ -51,7 +51,7 @@ class NoteBase:
           soup = BeautifulSoup(html_content, 'html.parser')
 
           title = os.path.splitext(os.path.basename(file))[0]
-          published_date = self.extract_published_date(soup)
+          published_date = self.extract_published_date(soup) or '09 Mar, 2024'
           description = self.extract_description(soup)
           tags = self.extract_tags(soup)[:3]
 
@@ -79,8 +79,8 @@ class NoteBase:
     prev_page = page - 1 if page > 1 else None
     next_page = page + 1 if end_idx < total_notes else None
 
-    notes = notes[start_idx:end_idx]
     notes = sorted(notes, key=lambda note: note.published_date, reverse=True)
+    notes = notes[start_idx:end_idx]
 
     return notes, total_notes, prev_page, next_page
 
