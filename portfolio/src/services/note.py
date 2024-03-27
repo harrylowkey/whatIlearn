@@ -80,6 +80,7 @@ class NoteBase:
     next_page = page + 1 if end_idx < total_notes else None
 
     notes = notes[start_idx:end_idx]
+    notes = sorted(notes, key=lambda note: note.published_date, reverse=True)
 
     return notes, total_notes, prev_page, next_page
 
