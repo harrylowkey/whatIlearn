@@ -43,7 +43,7 @@ class ProjectBase:
     return team_size
 
   def fetch_projects(self, file_name=None):
-    articles = []
+    projects = []
     directory = 'projects'
 
     for file in os.listdir(directory):
@@ -65,13 +65,15 @@ class ProjectBase:
       if file_name and file == file_name:
         return article
 
-      articles.append(article)
+      projects.append(article)
 
     # If file_name is provided but not found, return None
     if file_name:
       return None
 
-    return articles
+    projects = sorted(projects, key=lambda x: x.status, reverse=True)
+
+    return projects
 
 
 ProjectService = ProjectBase()
