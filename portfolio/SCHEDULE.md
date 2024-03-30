@@ -140,27 +140,27 @@ graph LR
 
 #### Mar-31
 
+- [ ] [Reading] Design Pattern
 - [ ] [Learning] (Section 15) Cloudfront
 
 
 #### Mar-30
 
-- [ ] [Learning] (Section 13 - 14) Advanced S3 & S3 Security
+- [x] [Reading] SOLID
+- [x] [Learning] (Section 13 - 14) Advanced S3 & S3 Security
 
 #### Mar-29
 
-- [ ] [Reading] Design Pattern
-- [ ] [Learning] (Section 12) AWS CLI & SDK & IAM Roles & Policies
+- [x] [Learning] (Section 12) AWS CLI & SDK & IAM Roles & Policies
 
 
 #### Mar-28
 
-- [ ] [Reading] SOLID
-- [ ] [Learning] (Section 10 - 11) VPC & S3
+- [x] [Learning] (Section 10 - 11) VPC & S3
 
 #### Mar-27
 
-- [ ] [Learning] (Section 9) Route 53
+- [x] [Learning] (Section 9) Route 53
 
 #### Mar-26
 
