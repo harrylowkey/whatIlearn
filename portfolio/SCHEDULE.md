@@ -136,13 +136,12 @@ graph LR
 
 #### Apr-01
 
+- [ ] [Reading] Design Pattern
 - [ ] [Learning] (Section 16) ECS & ECR & Fargate & Docker in AWS
 
 #### Mar-31
 
-- [ ] [Reading] Design Pattern
-- [ ] [Learning] (Section 15) Cloudfront
-
+- [x] [Learning] (Section 15) Cloudfront
 
 #### Mar-30
 
