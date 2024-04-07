@@ -173,3 +173,5 @@ sdk/
 
 notes/databases/postgres/psql.sh
 notes/databases/mongodb/mongostore-mongodump.sh
+notes/backend/design-patterns/python-code-examples/
+
