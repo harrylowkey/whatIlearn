@@ -3,6 +3,36 @@ body {
   background: #f7f8fa
 }
 
+.search-box {
+  margin-bottom: 20px;
+}
+
+.search-box form {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input[type="text"] {
+  width: 200px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.search-box button {
+  padding: 8px 15px;
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.search-box button:hover {
+  background-color: #0056b3;
+}
+
 .avatar-xxl {
   height: 7rem;
   width: 7rem;
@@ -241,8 +271,3 @@ body {
 .note-content {
   line-height: 1.6;
 }
-
-/**/
-/* .row { */
-/*   text-align: center */
-/* } */

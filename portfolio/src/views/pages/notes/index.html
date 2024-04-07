@@ -1,4 +1,30 @@
 {% extends 'bases/layout.html' %}
+{% block scripts %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const searchInput = document.getElementById("search-input");
+            const searchForm = document.getElementById("search-form");
+
+            // Check if there's a search key in the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const searchKey = urlParams.get('key');
+            if (searchKey) {
+                searchInput.value = searchKey; // Set input value from URL parameter
+            }
+
+            // Save input value to localStorage when form is submitted
+            searchForm.addEventListener("submit", function () {
+                localStorage.setItem("searchKey", searchInput.value);
+            });
+
+            // Set input value from localStorage on page load
+            const savedSearchKey = localStorage.getItem("searchKey");
+            if (savedSearchKey) {
+                searchInput.value = savedSearchKey;
+            }
+        });
+    </script>
+{% endblock %}
 {% block title %}Notes{% endblock %}
 {% block stylesheet %}<link rel="stylesheet" href="{{ url_for('static', path='note.css') }}">{% endblock %}
 {% block content %}
@@ -14,6 +40,12 @@
                         {% if prev_page %}<a href="{{ WEB_URL }}/notes?page={{ current_page - 1 }}">Previous</a>{% endif %}
                         {% if next_page %}<a href="{{ WEB_URL }}/notes?page={{ current_page + 1 }}">Next</a>{% endif %}
                     </div>
+                </div>
+                <div class="search-box mb-4">
+                    <form action="{{ WEB_URL }}/notes" method="get" id="search-form">
+                        <input type="text" name="key" placeholder="Search..." id="search-input">
+                        <button type="submit">Search</button>
+                    </form>
                 </div>
                 <div class="row" id="all-projects">
                     {% for note in notes %}

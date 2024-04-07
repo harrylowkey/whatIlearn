@@ -69,7 +69,7 @@ class NoteBase:
 
     return articles
 
-  def paginate(self, page, key: None):
+  def paginate(self, page, key: str | None):
     notes: list[Note] = self.fetch_notes()
 
     if key:
