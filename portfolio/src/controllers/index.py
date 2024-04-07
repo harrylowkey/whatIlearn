@@ -1,6 +1,7 @@
-from bootstraps import app
 from fastapi import Request
 from fastapi.responses import HTMLResponse
+
+from bootstraps import app
 from services.portfolio import PortfolioService
 from services.template import TemplateService
 
@@ -21,8 +22,8 @@ async def project(request: Request, name: str):
 
 
 @app.get('/notes', response_class=HTMLResponse)
-async def notes(request: Request, page: int = 1):
-  return TemplateService.render('pages/notes/index.html', PortfolioService.prepare_notes(request, page))
+async def notes(request: Request, page: int = 1, key: str | None = None):
+  return TemplateService.render('pages/notes/index.html', PortfolioService.prepare_notes(request, page, key))
 
 
 @app.get('/notes/{title}', response_class=HTMLResponse)

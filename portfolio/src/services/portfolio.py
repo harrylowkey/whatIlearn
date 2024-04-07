@@ -34,8 +34,8 @@ class PortfolioService:
     }
 
   @staticmethod
-  def prepare_notes(request: Request, page: int):
-    notes, total_notes, prev_page, next_page = NoteService.paginate(page)
+  def prepare_notes(request: Request, page: int, key: str | None = None):
+    notes, total_notes, prev_page, next_page = NoteService.paginate(page, key)
 
     return {
       'request': request,

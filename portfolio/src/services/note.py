@@ -69,8 +69,11 @@ class NoteBase:
 
     return articles
 
-  def paginate(self, page):
+  def paginate(self, page, key: None):
     notes: list[Note] = self.fetch_notes()
+
+    if key:
+      notes = [note for note in notes if key in note.title.lower()]
 
     total_notes = len(notes)
     start_idx = (page - 1) * NoteService.NOTES_PER_PAGE
