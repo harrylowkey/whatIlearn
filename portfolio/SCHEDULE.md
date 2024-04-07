@@ -111,6 +111,7 @@ graph LR
 
 #### Apr-07
 
+- [x] [Reading] Factory Method
 - [ ] [Learning] (Section 22) AWS Serverless: DynamoDB
 
 #### Apr-06
@@ -129,14 +130,12 @@ graph LR
 
 - [ ] [Learning] (Section 18) Cloudformation
 
-
 #### Apr-02
 
 - [ ] [Learning] (Section 17) AWS Elastic Beanstalk
 
 #### Apr-01
 
-- [ ] [Reading] Design Pattern
 - [ ] [Learning] (Section 16) ECS & ECR & Fargate & Docker in AWS
 
 #### Mar-31
