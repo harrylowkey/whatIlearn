@@ -50,7 +50,7 @@ https://medium.com/@abhirup.acharya009/managing-concurrent-access-optimistic-loc
 1. READ UNCOMMITTED Isolation Level
 
 - Transaction 1:
-  Acquires a FOR UPDATE lock on row 1.
+  Acquires a FOR SHARE lock on row 1.
 - Transaction 2 (READ UNCOMMITTED):
   Wants to read data from row 1. <br>
   Behavior: Transaction 2 is not blocked by Transaction 1's FOR UPDATE lock. READ UNCOMMITTED allows dirty reads, so Transaction 2 can read uncommitted data.
@@ -58,7 +58,7 @@ https://medium.com/@abhirup.acharya009/managing-concurrent-access-optimistic-loc
 2. READ COMMITTED Isolation Level
 
 - Transaction 1:
-  Acquires a FOR UPDATE lock on row 1.
+  Acquires a FOR SHARE lock on row 1.
 - Transaction 2 (READ COMMITTED):
   Wants to read data from row 1. <br>
   Behavior: Transaction 2 is not blocked by Transaction 1's FOR UPDATE lock. It can read the uncommitted data.
