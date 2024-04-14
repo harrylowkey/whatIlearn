@@ -136,7 +136,7 @@ graph LR
 
 #### Apr-01
 
-- [ ] [Learning] (Section 16) ECS & ECR & Fargate & Docker in AWS
+- [x] [Learning] (Section 16) ECS & ECR & Fargate & & EKS & Codpilot & Docker in AWS
 
 #### Mar-31
 

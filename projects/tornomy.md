@@ -16,7 +16,7 @@
 
 ✓ **Socket**: Learn how to implement the socket backend using Socket.io
 
-✓ **Mindset and Soft Skills Development**: I have gleaned invaluable lessons regarding attitude and mindset from my project leader during this project.
+✓ **Mindset and Soft Skills Development**: I have learned invaluable lessons regarding attitude and mindset from my project leader during this project.
 These lessons continue to hold significant importance for me in my career development as a developer.
 
 ✓ **Tech Stacks**: Loopback 3, Javascript, RabbitMQ, Socket, Redis pub-sub
