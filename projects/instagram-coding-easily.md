@@ -15,5 +15,35 @@ Generate image from code, auto generate post with OpenAI and upload to Instagram
 
 Check some demos and source code: [Github](https://github.com/harrylowkey/instagram-coding-easily-api) <br/>
 
-Check more the generated posts at Instagram page [coding.easily](https://www.instagram.com/coding.easily/)
+Check the generated posts at Instagram page [coding.easily](https://www.instagram.com/coding.easily/)
 
+### Random generated post in C language
+<img src="https://harry-personal.s3.ap-southeast-1.amazonaws.com/auto-generate-post.png" alt="Random generated post">
+
+### Create post with code
+<img src="https://harry-personal.s3.ap-southeast-1.amazonaws.com/create-post-with-code.png" alt="Create post with code">
+
+### Discord Bot Commands
+<img src="https://harry-personal.s3.ap-southeast-1.amazonaws.com/discord-bot-commands.png" alt="Discord Bot">
+
+### Discord Bot Interactions
+<img src="https://harry-personal.s3.ap-southeast-1.amazonaws.com/discord-bot-interactions.png" alt="Discord Bot Interactions">
+
+### Generate random post with OpenAI
+<video width="1000" height="600" controls>
+  <source src="https://github.com/harrylowkey/instagram-coding-easily-api/assets/39021290/ec4e4d0a-0593-4291-87aa-583fec7262b1" type="video/mp4">
+  Your browser does not support HTML video.
+</video>
+
+
+### Create post with image and caption
+<video width="1000" height="600" controls>
+  <source src="https://github.com/harrylowkey/instagram-coding-easily-api/assets/39021290/f7054bd2-3823-4d01-a774-58eb51d269b3" type="video/mp4">
+  Your browser does not support HTML video.
+</video>
+
+### Create post with embed code
+<video width="1000" height="600" controls>
+  <source src="https://github.com/harrylowkey/instagram-coding-easily-api/assets/39021290/053d0050-716c-4450-a483-050596d99da6" type="video/mp4">
+  Your browser does not support HTML video.
+</video>
