@@ -206,3 +206,11 @@ body {
 .total-project {
   font-size: 80%;
 }
+
+.highlight-star {
+  position: absolute;
+  top: 2px;
+  right: 10px;
+  font-size: 24px;
+  /* Adjust the font size as needed */
+}

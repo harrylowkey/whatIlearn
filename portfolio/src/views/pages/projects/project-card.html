@@ -1,6 +1,11 @@
 <div class="col-md-6" id="project-items-1">
   <a href="{{WEB_URL}}/projects/{{project.title}}" class="project-link">
     <div class="card">
+      {% if project['is_highlight'] == True %}
+      <div class="highlight-star">
+        <i class="mdi mdi-star text-warning"></i>
+      </div>
+      {% endif %}
       <div class="card-body">
         <div class="d-flex mb-3">
           <div class="flex-grow-1 align-items-start">

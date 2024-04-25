@@ -42,6 +42,10 @@ class ProjectBase:
     team_size = int(comments.split(':')[-1].strip()) if comments else 1
     return team_size
 
+  def is_highlight(self, soup) -> bool:
+    is_high_light = soup.find(text=lambda text: isinstance(text, Comment) and 'is_highlight:' in text)
+    return is_high_light.split(':')[-1].strip() == 'True' if is_high_light else False
+
   def fetch_projects(self, file_name=None):
     projects = []
     directory = 'projects'
@@ -58,8 +62,11 @@ class ProjectBase:
       status = self.extract_status(soup) or 'on-going'
       team_size = self.extract_team_size(soup) or 1
       description = self.extract_description(soup) or 'view detail...'
+      is_highlight = self.is_highlight(soup) or False
 
-      article = Project(title, date, description, status, team_size, content=html_content)
+      print('is highlight: ', is_highlight)
+
+      article = Project(title, date, description, status, team_size, is_highlight, content=html_content)
 
       # If file_name is provided and matches the current file, return the note
       if file_name and file == file_name:
