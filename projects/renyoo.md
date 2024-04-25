@@ -1,6 +1,6 @@
 # Renyoo
 
-<!-- date: 26 Mar, 2024 -->
+<!-- date: 26 Oct, 2023 -->
 <!-- description: A social application, then b2b enterprise -->
 <!-- status: on-going -->
 <!-- team_size: 9 -->

@@ -72,8 +72,6 @@ class ProjectBase:
       return None
 
     projects = sorted(projects, key=lambda project: project.status, reverse=True)
-    projects = sorted(projects, key=lambda project: project.date, reverse=True)
-
 
     return projects
 

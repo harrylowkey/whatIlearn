@@ -30,6 +30,8 @@
             <span class="badge bg-primary p-2 team-status">Completed</span>
             {% elif project['status'] == "on-going" %}
             <span class="badge bg-warning text-dark p-2 team-status">On-Going</span>
+            {% elif project['status'] == "maintain" %}
+            <span class="badge bg-success p-2 team-status">Maintain</span>
             {% endif %}
           </div>
         </div>

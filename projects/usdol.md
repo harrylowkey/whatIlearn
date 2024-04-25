@@ -1,6 +1,6 @@
 # USDol (Hodfords)
 
-<!-- date: 26 Mar, 2024 -->
+<!-- date: 26 Mar, 2022 -->
 <!-- description: Logistics prouduct management -->
 <!-- status: completed -->
 <!-- team_size: 9 -->

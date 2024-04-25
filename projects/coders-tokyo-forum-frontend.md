@@ -1,6 +1,6 @@
 # Coder Tokyo Forum Frontend
 
-<!-- date: 26 Mar, 2024 -->
+<!-- date: 09 Aug, 2021 -->
 <!-- description: Forum for blogger, reviewer -->
 <!-- status: completed -->
 <!-- team_size: 1 -->

@@ -1,16 +1,14 @@
-# Portfolio & What I learn
+# What I learn & Portfolio
 
-<!-- date: 26 Mar, 2024 -->
+<!-- date: 26 Mar, 2022 -->
 <!-- description: Side project -->
-<!-- status: on-going -->
+<!-- status: maintain -->
 <!-- team_size: 1 -->
 
 ## Personal website & Documentation what I learn everyday <br/>
 *Backend Developer* <br/>
 *2023 - now* <br/>
 *Da Nang* <br/>
-[Github repo](https://github.com/harrylowkey/whatIlearn)
-[Website](https://harrylowkey.dev)
 
 ## Achievements:
 
@@ -25,3 +23,5 @@
 - [ ] ...
 
 ✓ **Tech Stacks**: AWS EC2, Docker, Python, Jinja2, GitHub Actions
+
+Check the source code: [Github](https://github.com/harrylowkey/whatIlearn)
