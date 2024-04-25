@@ -3,7 +3,7 @@
 <!-- date: 26 Mar, 2024 -->
 <!-- description: Side project -->
 <!-- status: on-going -->
-<!-- team_size: 9 -->
+<!-- team_size: 1 -->
 
 ## Personal website & Documentation what I learn everyday <br/>
 *Backend Developer* <br/>

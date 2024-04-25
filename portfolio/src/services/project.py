@@ -71,7 +71,9 @@ class ProjectBase:
     if file_name:
       return None
 
-    projects = sorted(projects, key=lambda x: x.status, reverse=True)
+    projects = sorted(projects, key=lambda project: project.status, reverse=True)
+    projects = sorted(projects, key=lambda project: project.date, reverse=True)
+
 
     return projects
 
