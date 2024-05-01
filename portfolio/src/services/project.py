@@ -64,8 +64,6 @@ class ProjectBase:
       description = self.extract_description(soup) or 'view detail...'
       is_highlight = self.is_highlight(soup) or False
 
-      print('is highlight: ', is_highlight)
-
       article = Project(title, date, description, status, team_size, is_highlight, content=html_content)
 
       # If file_name is provided and matches the current file, return the note
