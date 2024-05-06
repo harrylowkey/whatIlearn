@@ -31,15 +31,18 @@ jobs:
           echo "Pulling latest image"
           docker pull $LATEST_IMAGE || true
           echo "Building images"
-          docker build --build-arg ENVIRONMENT=$ENV --cache-from $LATEST_IMAGE -t $IMAGE_REPO_NAME:latest .
+          docker build --build-arg ENVIRONMENT=$ENV --cache-from $LATEST_IMAGE -t $IMAGE_REPO_NAME:latest -t $IMAGE_REPO_NAME:$IMAGE_TAG .
           echo "Pushing images to ECR..."
           docker push $IMAGE_REPO_NAME:latest
-          echo "Build new image successfully"
+          docker push $IMAGE_REPO_NAME:$IMAGE_TAG
+          echo "New image name=$IMAGE_REPO_NAME:$IMAGE_TAG"
   deploy:
     needs: [build]
     runs-on: ubuntu-latest
     env:
+      ECR_REPOSITORY: portfolio
       ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+      RUNNER_ID: ${{ github.run_number }}
     steps:
       - name: Deploy
         uses: appleboy/ssh-action@master
@@ -48,7 +51,13 @@ jobs:
           username: ${{ secrets.SSH_USER }}
           key: ${{ secrets.SSH_KEY }}
           script: |
-            ./stop-container.sh
-            ./remove-image.sh
-            docker pull $ECR_REGISTRY/portfolio:latest
-            docker run -d -p 3000:3000 hongquangraem/portfolio:latest
+            IMAGE_REPO_NAME=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}
+            IMAGE_TAG=${{ env.RUNNER_ID }}
+            awk -v old="$IMAGE_REPO_NAME:[0-9]+" -v new="$IMAGE_REPO_NAME:$IMAGE_TAG" '{gsub(old, new)}1' docker-compose.yaml > tmpfile && mv tmpfile docker-compose.yaml
+            docker pull $IMAGE_REPO_NAME:$IMAGE_TAG
+            docker-compose stop portfolio
+            docker-compose rm --force portfolio 
+            docker-compose up -d --no-deps portfolio
+            echo "Deployed new image: $IMAGE_REPO_NAME:$IMAGE_TAG"
+            docker image prune --all --force
+            echo "Cleanup old images successfully"
