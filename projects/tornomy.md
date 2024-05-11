@@ -5,7 +5,7 @@
 <!-- status: completed -->
 <!-- team_size: 9 -->
 
-## A crypto wallet application <br/>
+## A crypto exchange <br/>
 *Fresher Backend Developer* <br/>
 *2020* <br/>
 *Ha Noi* <br/>

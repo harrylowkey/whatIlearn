@@ -18,7 +18,7 @@ A crypto wallet application allow users to deposit, withdraw, trade and buy the 
 
 ✓ **API Implementation**: Implement APIs using Loopback
 
-✓ **RabbitMQ**: Learn how to message broker works
+✓ **RabbitMQ**: Learn how message broker works
 
 ✓ **Mindset and Soft Skills Development**: I have learned invaluable lessons regarding attitude and mindset from my project leader during this internship.
 These lessons continue to hold significant importance for me in my career development as a developer.
