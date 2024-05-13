@@ -76,66 +76,66 @@ graph LR
 
 ## Tasks
 
-#### Apr-15
+#### May-26
 
 - [ ] [Exam] Take the exam
 
 
-#### Apr-14
+#### May-23
 
 - [ ] [Learning] (Section 33 - 34) Prepare for the exam
 
-#### Apr-13
+#### May-22
 
 - [ ] [Learning] (Section 31 - 32) AWS Other Services, Final Cleanup
 
-#### Apr-12
+#### May-20
 
 - [ ] [Learning] (Section 30) AWS Security & Encryption
 
-#### Apr-11
+#### May-19
 
 - [ ] [Learning] (Section 28 - 29) Other Serverless: Step Functions & App Sync, Advanced Identity
 
-#### Apr-10
+#### May-18
 
 - [ ] [Learning] (Section 25 - 26 - 27) AWS SAM: Serverless Application Model & CDK & Cognito
 
-#### Apr-09
+#### May-17
 
 - [ ] [Learning] (Section 24) AWS CI/CD: CodeCommmit, CodeBuild, CodeDeploy, CodePipeline
 
-#### Apr-08
+#### May-16
 
 - [ ] [Learning] (Section 23) AWS Serverless: API Gateway
 
-#### Apr-07
+#### May-15
 
-- [x] [Reading] Factory Method
 - [ ] [Learning] (Section 22) AWS Serverless: DynamoDB
 
-#### Apr-06
+#### May-14
 
 - [ ] [Learning] (Section 21) AWS Serverless: Lambda
 
-#### Apr-05
+#### May-13
 
 - [ ] [Learning] (Section 20) AWS Mornitor & Audit: CloudTrail & CloudWatch, X-Ray
 
-#### Apr-04
+#### May-12
 
-- [ ] [Learning] (Section 19) AWS Integration & Messaging: SQS, SNS & Kinesis
+- [x] [Learning] (Section 19) AWS Integration & Messaging: SQS, SNS & Kinesis
 
-#### Apr-03
+#### May-11
 
-- [ ] [Learning] (Section 18) Cloudformation
+- [x] [Learning] (Section 18) Cloudformation
 
-#### Apr-02
+#### May-10
 
-- [ ] [Learning] (Section 17) AWS Elastic Beanstalk
+- [x] [Learning] (Section 17) AWS Elastic Beanstalk
 
 #### Apr-01
 
+- [x] [Reading] Factory Method
 - [x] [Learning] (Section 16) ECS & ECR & Fargate & & EKS & Codpilot & Docker in AWS
 
 #### Mar-31
