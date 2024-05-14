@@ -76,50 +76,50 @@ graph LR
 
 ## Tasks
 
-#### May-26
+#### May-28
 
 - [ ] [Exam] Take the exam
 
 
-#### May-23
+#### May-24
 
 - [ ] [Learning] (Section 33 - 34) Prepare for the exam
 
-#### May-22
+#### May-23
 
 - [ ] [Learning] (Section 31 - 32) AWS Other Services, Final Cleanup
 
-#### May-20
+#### May-22
 
 - [ ] [Learning] (Section 30) AWS Security & Encryption
 
-#### May-19
+#### May-21
 
 - [ ] [Learning] (Section 28 - 29) Other Serverless: Step Functions & App Sync, Advanced Identity
 
-#### May-18
+#### May-20
 
 - [ ] [Learning] (Section 25 - 26 - 27) AWS SAM: Serverless Application Model & CDK & Cognito
 
-#### May-17
+#### May-19
 
 - [ ] [Learning] (Section 24) AWS CI/CD: CodeCommmit, CodeBuild, CodeDeploy, CodePipeline
 
-#### May-16
+#### May-18
 
 - [ ] [Learning] (Section 23) AWS Serverless: API Gateway
 
-#### May-15
+#### May-17
 
 - [ ] [Learning] (Section 22) AWS Serverless: DynamoDB
 
-#### May-14
+#### May-14, 15, 16
 
 - [ ] [Learning] (Section 21) AWS Serverless: Lambda
 
 #### May-13
 
-- [ ] [Learning] (Section 20) AWS Mornitor & Audit: CloudTrail & CloudWatch, X-Ray
+- [x] [Learning] (Section 20) AWS Mornitor & Audit: CloudTrail & CloudWatch, X-Ray
 
 #### May-12
 
