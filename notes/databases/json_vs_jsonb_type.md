@@ -1,6 +1,6 @@
 # JSON vs JSONB in PostgreSQL
 
-<!-- published_date: 18 May, 2024 -->
+<!-- published_date: 13 May, 2024 -->
 <!-- description: JSON vs JSONB in PostgreSQL -->
 <!-- tags: database -->
 
