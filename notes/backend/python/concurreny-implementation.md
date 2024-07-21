@@ -4,6 +4,8 @@
 <!-- description: Python Concurrency Implementation -->
 <!-- tags: python, concurrency, parallelism -->
 
+## How many ways to implement concurrency in Python?
+
 Implementing concurrency in Python can be done in several ways depending on the task at hand and the level of concurrency required. Here are the main approaches:
 
 ### 1. **Threading**
@@ -165,24 +167,38 @@ In this example, `blocking_io` is a blocking function that runs in a separate th
 
 In summary, `asyncio` is designed for concurrency within a single thread using an event loop, but it provides mechanisms to integrate with threading or multiprocessing when necessary.
 
-
 ## When to use threading, multiprocessing, or asyncio?
 
 - Use multiprocessing for CPU-bound tasks
 - Use threading for I/O-bound tasks
 - Use asyncio for supported asynchronous I/O-bound tasks
 
-Let take an example of uploading files to s3 storage, we have 2 options:
+### [?] Let take an example of uploading files to s3 storage, we have 2 options:
+
 - Using threading
 - Using asyncio
 
 Which one is suitable for this use case?
 
-+) Currently if we are using synchronus library like boto3, we should go with threading.
+```
+Using aysyncio with boto3
+[Main Thread] --- Upload File 1 --- (blocked) --- Upload File 2 --- (blocked) --- Upload File 3 --- (blocked)
+```
+
+```
+Using threading with boto3
+[Main Thread]
+   |--> [Thread 1] --- Upload File 1 --- (blocked)
+   |--> [Thread 2] --- Upload File 2 --- (blocked)
+   |--> [Thread 3] --- Upload File 3 --- (blocked)
+```
+Let's the blocking I/O in other threads instead of main thread
+
+- **Solution1**: Currently if we are using synchronus library like boto3, we should go with threading.
 Because we spawn other threading that handling uploading files which can blocking I/O in these spawned thread but not blocking main thread
 
-+) If we're using asynchornus library like aioboto3, we can go with asyncio - to achieve non-blocking I/O operations with asyncio.
+- **Solution2**: If we're using asynchornus library like aioboto3, we can go with asyncio - to achieve non-blocking I/O operations with asyncio.
 
-+) If we need to use asyncio with boto3, we can combine thread using loop.run_in_executor to keep the event loop responsive.
+- **Solution3**: If we need to use asyncio with boto3, we can combine thread using loop.run_in_executor to keep the event loop responsive.
 
 
