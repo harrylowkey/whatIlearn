@@ -3,7 +3,7 @@ def render_badge_classes(tag):
     'default': 'bg-info text-dark',
     'k8s': 'bg-info text-dark',
     'docker': 'bg-primary',
-    'python': 'badge-soft-danger',
+    'python': 'bg-primary',
     'lock': 'badge-soft-danger',
     'transaction': 'badge-soft-danger',
     'database': 'bg-success',
@@ -17,7 +17,9 @@ def render_badge_classes(tag):
     'concurrency': 'bg-success',
     'parallelism': 'bg-warning text-dark',
     'devops': 'bg-warning text-dark',
+    'csrf': 'bg-warning text-dark',
     'argocd': 'badge-soft-danger',
+    'security': 'badge-soft-danger',
     'helm': 'bg-info text-dark',
   }
 

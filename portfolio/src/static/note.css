@@ -330,3 +330,7 @@ body {
     font-size: 0.9rem;
   }
 }
+
+.view_count {
+  font-size: 80%;
+}

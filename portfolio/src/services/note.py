@@ -1,4 +1,5 @@
 import os
+import pathlib
 from datetime import datetime
 
 from bs4 import BeautifulSoup, Comment
@@ -10,6 +11,10 @@ from portfolio.src.models.note import Note
 
 class NoteBase:
   NOTES_PER_PAGE = 6
+  VIEW_COUNT = {}
+
+  def __init__(self):
+    self.load_view_count()
 
   @staticmethod
   def read_markdown_file(file_path):
@@ -21,6 +26,20 @@ class NoteBase:
   def parse_html_content(markdown_content):
     html_content = markdown(markdown_content, extensions=[FencedCodeExtension()])
     return html_content
+
+  def load_view_count(self):
+    file_path = f'{pathlib.Path(os.path.abspath(os.path.dirname(__file__))).parent.parent.parent}/view_counts.txt'
+    with open(file_path, 'r') as f:
+      view_count = f.read()
+      lines = view_count .strip().split('\n')
+
+      view_count_by_note = {}
+
+      for line in lines:
+          key, value = line.split(':')
+          view_count_by_note[key] = int(value)
+
+      self.VIEW_COUNT = view_count_by_note
 
   def extract_published_date(self, soup):
     comments = soup.find(text=lambda text: isinstance(text, Comment) and 'date:' in text)
@@ -65,8 +84,9 @@ class NoteBase:
           published_date = self.extract_published_date(soup) or '09 Mar, 2024'
           description = self.extract_description(soup)
           tags = self.extract_tags(soup)[:3]
+          view_count = self.VIEW_COUNT.get(f'notes/{original_title}', 0)
 
-          note = Note(title, original_title, file_path, published_date, description, tags, content=html_content)
+          note = Note(title, original_title, file_path, published_date, description, tags, html_content, view_count)
 
           if file_name and file == file_name:
             return note

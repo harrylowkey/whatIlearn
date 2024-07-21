@@ -1,4 +1,8 @@
-# Partioning vs Sharding
+# Partitioning vs Sharding
+
+<!-- published_date: 21 Jul, 2024 -->
+<!-- description: Partitioning vs Sharding -->
+<!-- tags: database, partition, shard -->
 
 Database partitioning, sharding, and replication are techniques used to manage data in a database to improve performance, scalability, and availability. Here's an overview of each:
 

@@ -1,12 +1,12 @@
 # SSO
 
 1. Service proivders
-- Gmail
-- Youtube
+    - Gmail
+    - Youtube
 
 2. Identity providers
-- Auth0
-- Keycloak
+    - Auth0
+    - Keycloak
 
 
 ## Flow

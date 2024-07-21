@@ -10,3 +10,4 @@ class Note:
   description: str
   tags: str
   content: str
+  view_count: str

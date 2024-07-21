@@ -87,9 +87,11 @@ Transactions are executed sequentially
 
 ## Isolation levels vs read phenomena
 
+```
 |                  | Dirty read | Non-repeatable read | Phantom read | Default in |
 | ---------------- | ---------- | ------------------- | ------------ | ---------- |
 | Serializable     | no         | no                  | no           |            |
 | Repeatable read  | no         | no                  | yes          |            |
 | Read committed   | no         | yes                 | yes          | postgres   |
 | Read uncommitted | yes        | yes                 | yes          |            |
+```

@@ -1,6 +1,9 @@
 <div class="col-md-6" id="project-items-1">
   <a href="{{WEB_URL}}/notes/{{note.original_title}}" class="card-link">
-    <div class="card">
+    <div class="card position-relative">
+      <div class="position-absolute top-0 end-0 p-2">
+        <span class="badge bg-secondary">{{note.view_count}} Views</span>
+      </div>
       <div class="card-body">
         <div class="d-flex mb-3">
           <div class="flex-grow-1 align-items-start">
@@ -34,7 +37,7 @@
             {% endfor %}
           </div>
         </div>
-      </div><!-- end cardbody -->
+      </div><!-- end card-body -->
     </div><!-- end card -->
   </a>
 </div>
