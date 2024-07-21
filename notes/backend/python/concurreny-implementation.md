@@ -169,24 +169,41 @@ In summary, `asyncio` is designed for concurrency within a single thread using a
 
 ## When to use threading, multiprocessing, or asyncio?
 
-- Use multiprocessing for CPU-bound tasks
-- Use threading for I/O-bound tasks
-- Use asyncio for supported asynchronous I/O-bound tasks
+- Use **multiprocessing** for CPU-bound tasks
+- Use **threading** for I/O-bound tasks
+- Use **asyncio** for supported asynchronous I/O-bound tasks
 
 ### [?] Let take an example of uploading files to s3 storage, we have 2 options:
+We have two options:
 
 - Using threading
 - Using asyncio
 
 Which one is suitable for this use case?
 
-```
-Using aysyncio with boto3
-[Main Thread] --- Upload File 1 --- (blocked) --- Upload File 2 --- (blocked) --- Upload File 3 --- (blocked)
-```
+- **Solution 1**: If you are using a synchronous library like boto3, you should go with threading.
+This approach spawns other threads to handle uploading files, which can block I/O in these spawned threads but not the main thread.
+- **Solution 2**: If you are using an asynchronous library like aioboto3, you can go with asyncio to achieve non-blocking I/O operations.
+- **Solution 3**: If you need to use asyncio with boto3, you can combine threading using loop.run_in_executor to keep the event loop responsive.
 
+### Let's take some examples to understand
+
+**Case 1**: Using aysyncio with boto3
 ```
-Using threading with boto3
+[Main Thread (asyncio Event Loop)]
+     |
+     |--- Upload File 1 (blocking) ---|
+     |                               |
+     |--- Upload File 2 (waiting) ---|
+     |                               |
+     |--- Upload File 3 (waiting) ---|
+```
+Even using asyncio with boto3, we still face blocking.
+
+---
+
+**Case 2**: Using threading with boto3
+```
 [Main Thread]
    |--> [Thread 1] --- Upload File 1 --- (blocked)
    |--> [Thread 2] --- Upload File 2 --- (blocked)
@@ -194,11 +211,19 @@ Using threading with boto3
 ```
 Let's the blocking I/O in other threads instead of main thread
 
-- **Solution1**: Currently if we are using synchronus library like boto3, we should go with threading.
-Because we spawn other threading that handling uploading files which can blocking I/O in these spawned thread but not blocking main thread
+---
 
-- **Solution2**: If we're using asynchornus library like aioboto3, we can go with asyncio - to achieve non-blocking I/O operations with asyncio.
+**Case 3**: Using asyncio with boto3 and thread pool
 
-- **Solution3**: If we need to use asyncio with boto3, we can combine thread using loop.run_in_executor to keep the event loop responsive.
+```
+[Main Thread (asyncio Event Loop)]
+     |                                     
+     |--- Upload File 1 (in thread pool) ---|
+     |                                      |
+     |--- Upload File 2 (in thread pool) ---|
+     |                                      |
+     |--- Upload File 3 (in thread pool) ---|
 
+```
 
+If you need to use asyncio with boto3, you can combine threading using loop.run_in_executor to keep the event loop responsive.
