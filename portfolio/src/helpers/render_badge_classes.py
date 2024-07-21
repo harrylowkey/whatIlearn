@@ -1,5 +1,6 @@
 def render_badge_classes(tag):
   tag_class_mapping = {
+    'default': 'bg-info text-dark',
     'k8s': 'bg-info text-dark',
     'docker': 'bg-primary',
     'python': 'badge-soft-danger',
@@ -13,7 +14,11 @@ def render_badge_classes(tag):
     'reverse-proxy': 'badge-soft-danger',
     'aws': 'bg-warning text-dark',
     'redis': 'badge-soft-danger',
-    'default': 'bg-dark',
+    'concurrency': 'bg-success',
+    'parallelism': 'bg-warning text-dark',
+    'devops': 'bg-warning text-dark',
+    'argocd': 'badge-soft-danger',
+    'helm': 'bg-info text-dark',
   }
 
   return tag_class_mapping.get(tag, tag_class_mapping['default'])

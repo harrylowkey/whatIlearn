@@ -16,7 +16,7 @@ def get_env(key, default=None):
 class Setting:
   SLACK_TOKEN = get_env('SLACK_TOKEN')
   IS_LOCAL = get_env('ENV', 'local') == 'local'
-  WEB_URL = get_env('WEB_URL')
+  WEB_URL = get_env('WEB_URL', 'http://localhost:8000')
 
 
 env = Setting()

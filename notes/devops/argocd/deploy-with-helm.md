@@ -12,6 +12,7 @@
  
 
 ## Declarative deployment
+```
 .
 ├── applications/
 │   └── test-project.yaml
@@ -25,6 +26,7 @@
 └── enviroments/
     └── test-prject/
         └── backend.yaml
+```
 
 1. Define template files in `infrastructures/helm-charts/templates/`
 

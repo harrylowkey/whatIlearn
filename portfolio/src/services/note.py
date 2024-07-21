@@ -1,7 +1,9 @@
 import os
+from datetime import datetime
 
 from bs4 import BeautifulSoup, Comment
-from markdown2 import markdown
+from markdown import markdown
+from markdown.extensions.fenced_code import FencedCodeExtension
 
 from portfolio.src.models.note import Note
 
@@ -17,7 +19,7 @@ class NoteBase:
 
   @staticmethod
   def parse_html_content(markdown_content):
-    html_content = markdown(markdown_content)
+    html_content = markdown(markdown_content, extensions=[FencedCodeExtension()])
     return html_content
 
   def extract_published_date(self, soup):
@@ -37,8 +39,17 @@ class NoteBase:
     tags = comments.split(':')[-1].strip() if comments else ''
     return tags.split(', ') if tags else []
 
+  def calculate_title(self, path: str, file: str):
+    segments = path.split('/')
+    last_two_segments = segments[-2:]
+
+    prefix_title =  '-'.join(list(filter(lambda segment: segment != 'notes', last_two_segments)))
+
+    note_name = os.path.splitext(os.path.basename(file))[0]
+    return f'{prefix_title}: {note_name}', note_name 
+
   def fetch_notes(self, file_name=None) -> list[Note] | Note:
-    articles = []
+    notes = []
     directory = 'notes'
 
     for root, dirs, files in os.walk(directory):
@@ -50,24 +61,25 @@ class NoteBase:
           html_content = NoteService.parse_html_content(markdown_content)
           soup = BeautifulSoup(html_content, 'html.parser')
 
-          title = os.path.splitext(os.path.basename(file))[0]
+          title, original_title = self.calculate_title(root, file)
           published_date = self.extract_published_date(soup) or '09 Mar, 2024'
           description = self.extract_description(soup)
           tags = self.extract_tags(soup)[:3]
 
-          article = Note(title, file_path, published_date, description, tags, content=html_content)
+          note = Note(title, original_title, file_path, published_date, description, tags, content=html_content)
 
-          # If file_name is provided and matches the current file, return the note
           if file_name and file == file_name:
-            return article
+            return note
 
-          articles.append(article)
+          notes.append(note)
 
-        # If file_name is provided but not found, return None
     if file_name:
       return None
 
-    return articles
+    return notes
+
+  def parse_date(self, date_str: str):
+    return datetime.strptime(date_str, '%d %b, %Y')
 
   def paginate(self, page, key: str | None):
     notes: list[Note] = self.fetch_notes()
@@ -82,7 +94,7 @@ class NoteBase:
     prev_page = page - 1 if page > 1 else None
     next_page = page + 1 if end_idx < total_notes else None
 
-    notes = sorted(notes, key=lambda note: note.published_date, reverse=True)
+    notes = sorted(notes, key=lambda note: self.parse_date(note.published_date), reverse=True)
     notes = notes[start_idx:end_idx]
 
     return notes, total_notes, prev_page, next_page

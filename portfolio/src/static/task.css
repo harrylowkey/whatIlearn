@@ -13,16 +13,6 @@ body {
   width: 7rem;
 }
 
-.card {
-  margin-bottom: 20px;
-  -webkit-box-shadow: 0 2px 3px #eaedf2;
-  box-shadow: 0 2px 3px #eaedf2;
-}
-
-.card-body {
-  cursor: pointer;
-}
-
 .pb-0 {
   padding-bottom: 0 !important;
 }
@@ -130,7 +120,7 @@ body {
   position: absolute;
   width: 100%;
   left: 0;
-  bottom: -2px;
+  bottom: 0px;
   -webkit-transition: all 250ms ease 0s;
   transition: all 250ms ease 0s;
   -webkit-transform: scale(0);
@@ -203,4 +193,69 @@ body {
 
 .total-tasks {
   font-size: 80%;
+}
+
+.card {
+  margin-bottom: 20px;
+  -webkit-box-shadow: 0 2px 3px #eaedf2;
+  box-shadow: 0 2px 3px #eaedf2;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+/* Add hover effects */
+.card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+  /* Slight lift effect on hover */
+}
+
+.card-body {
+  padding: 16px;
+  background-color: #fff;
+  transition: background-color 0.3s ease;
+}
+
+.card-body h5,
+.card-body h6 {
+  margin-bottom: 0.5rem;
+}
+
+.card-body .team-title {
+  font-size: 1.25rem;
+  /* Adjust as needed */
+  font-weight: 600;
+}
+
+.card-body .team-description {
+  font-size: 1rem;
+  /* Adjust as needed */
+}
+
+.card-body .badge {
+  margin-right: 0.5rem;
+}
+
+
+
+.card-body .avatar-group-item img {
+  border: 2px solid #fff;
+  /* White border around the avatar */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .card-body {
+    padding: 12px;
+  }
+
+  .card-body .team-title {
+    font-size: 1.1rem;
+  }
+
+  .card-body .team-description {
+    font-size: 0.9rem;
+  }
 }
