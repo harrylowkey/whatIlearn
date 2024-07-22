@@ -1,9 +1,9 @@
-projects/code2image-package:50
+projects/code2image-package:51
 notes/seucurity-context-note:14
 notes/db-docker:19
 projects/instagram-coding-easily:19
 projects:47
-index:305
+index:307
 notes/command:12
 projects/iscale:18
 projects/what-I-learn:18
@@ -11,7 +11,7 @@ notes/test-local-package:13
 projects/climate:20
 projects/mcashpay:24
 projects/renyoo:22
-notes:133
+notes:144
 projects/materiality:17
 notes/best-practices:13
 notes/migrate_keycloak_database:14
@@ -31,7 +31,7 @@ notes/design-patterns:12
 projects/coders-tokyo-forum-backend:19
 notes/reverse-proxy-vs-proxy-server:12
 notes/instance-purchasing-option:13
-notes/setup-docker-on-ec2-server:15
+notes/setup-docker-on-ec2-server:16
 notes/volumne_note:14
 notes/service-type:12
 notes/microservice:14
@@ -47,7 +47,7 @@ notes/oci-image:12
 notes/indexing:12
 projects/usdol:16
 notes/locking:16
-notes/lambda:27
+notes/lambda:28
 notes/sso:16
 projects/what-i-learn:2
 projects/portfolio:5
@@ -55,7 +55,8 @@ notes/argocd-deploy-with-helm:3
 notes/argocd-deployment-trategies:3
 notes/argocd-install-and-create-release:3
 notes/deploy-with-helm.md:2
-notes/concurreny-implementation:17
+notes/concurreny-implementation:27
 notes/install-and-create-release:1
 notes/deployment-trategies:1
 notes/deploy-with-helm:1
+notes/csrf:3
