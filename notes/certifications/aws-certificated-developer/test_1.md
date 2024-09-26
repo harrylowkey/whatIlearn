@@ -40,8 +40,16 @@ The CDK Toolkit again poses regional limitations not for everiy regions
 - EBS volumes: are AZ locked
 
 - KMS Encryption: can encrypt up to 4 kilobytes (4096 bytes) of arbitrary data
+- KMS: maximum data size supported by AWS KMS is 4KB
+
 
 - RDS: Automated backups are limited to a single AWS Region while manual snapshots and Read Replicas are supported across multiple Regions.
+
+- Automated backups: are limited to a single AWS Region
+
+- SSE-KMS encryption mechanism -> 'x-amz-server-side-encryption': 'aws:kms' in header
+- SSE-S3 server-side encryption mechanism -> 'x-amz-server-side-encryption': 'AES256' in header
+
 
 
 ## Questions:
@@ -59,7 +67,7 @@ Which of the following credential types is NOT supported by IAM for CodeCommit?
 Incorrect
 A developer has an application that stores data in an Amazon S3 bucket. The application uses an HTTP API to store and retrieve objects. When the PutObject API operation adds objects to the S3 bucket the developer must encrypt these objects at rest by using server-side encryption with Amazon S3-managed keys (SSE-S3).
 Which solution will guarantee that any upload request without the mandated encryption is not processed?
-[A]: Invoke the PutObject API operation and set the x-amz-server-side-encryption header as AES256 (- not ss3:3).
+[A]: Invoke the PutObject API operation and set the x-amz-server-side-encryption header as AES256 (- not ss3:s3).
 Use an S3 bucket policy to deny permission to upload an object unless the request has this header
 
 [?] Which of the following security credentials can only be created by the AWS Account root user?
@@ -70,5 +78,8 @@ As part of his development work, an AWS Certified Developer Associate is creatin
 After creating necessary Identity-based policies, he is now creating Resource-based policies.
 Which is the only resource-based policy that the IAM service supports?
 [A] Trust policy
+
+[?] Which of the following mechanisms is not supported for API Gateway?
+[A]: STS
 
 
