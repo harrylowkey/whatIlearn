@@ -55,7 +55,8 @@ Other transactions can access and update same data. But in the level, if re-read
 
 Other transactions access and update same data like `Read Committed`. But it only see the same data through all the transaction from `beginning` until `commit`
 
-- In the Repeatable Read isolation level, other transactions can read and update the same data concurrently. The key characteristic of Repeatable Read is that within a single transaction, the values of the data that have been read will remain constant, even if other transactions commit changes to that data.
+- In the Repeatable Read isolation level, other transactions can read and update the same data concurrently. The key characteristic of Repeatable Read is that within 
+a single transaction, the values of the data that have been read will remain constant, even if other transactions commit changes to that data.
 - Breakdowns:
   - **Reads:** Transactions can read data that has been committed by other transactions.
   - **Updates:** Transactions can update data, and those updates become visible to other transactions only after they are committed.
