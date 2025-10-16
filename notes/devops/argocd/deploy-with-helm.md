@@ -1,9 +1,11 @@
-<!-- published_date: 01 Jul, 2024 -->
-<!-- description: ArgoCD: Declarative deployment with helm -->
-<!-- tags: devops, argocd, helm -->
-
-# Helm Deployment Steps
-
+---
+title: "Helm Deployment Steps"
+description: "ArgoCD: Declarative deployment with helm"
+tags:
+  - devops
+  - argocd
+  - helm
+---
 ## Installation 
 
 - Create/config kubernetes cluster

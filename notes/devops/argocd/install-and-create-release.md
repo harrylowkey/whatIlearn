@@ -1,9 +1,11 @@
-<!-- published_date: 01 Jul, 2024 -->
-<!-- description: Install argocd & create release -->
-<!-- tags: devops, argocd, helm -->
-
-# Deployment
-
+---
+title: "Deployment"
+description: "Install argocd & create release"
+tags:
+  - devops
+  - argocd
+  - helm
+---
 ## Install/upgrade release with helm chart public repo
 
 1. Add helm repo

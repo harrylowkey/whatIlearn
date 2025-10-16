@@ -1,5 +1,6 @@
-# Passport 
-
+---
+title: "Passport"
+---
 Passport strategies diferrent by how it extract the params then process (validate) them.
 
 Standard: Guard (extends AuthGuard('strategy-name')) -> trggier Strategy with canActivate function

@@ -1,10 +1,10 @@
-# Tornomy (Homa Ltd)
-
-<!-- date: 26 Mar, 2020 -->
-<!-- description: A crypto exchange -->
-<!-- status: completed -->
-<!-- team_size: 9 -->
-
+---
+title: "Tornomy (Homa Ltd)"
+description: "A crypto exchange"
+date: "26 Mar, 2020"
+status: "completed"
+team_size: "9"
+---
 ## A crypto exchange <br/>
 *Fresher Backend Developer* <br/>
 *2020* <br/>

@@ -1,5 +1,6 @@
-# Pillar 6: Sustainability
-
+---
+title: "Pillar 6: Sustainability"
+---
 - Focus on minimizing the environment impacts of running cloud workloads
 
 - Design Principles:

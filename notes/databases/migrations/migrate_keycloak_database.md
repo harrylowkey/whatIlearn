@@ -1,5 +1,6 @@
-# Migrate keycloak database
-
+---
+title: "Migrate keycloak database"
+---
 1. Export realm settings
 2. Empty the policies property ([Issue](https://github.com/keycloak/keycloak/issues/11664#issuecomment-1111062102))
 3. Import realm settings

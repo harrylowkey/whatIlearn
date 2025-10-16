@@ -1,6 +1,6 @@
-# Best practices
-
-
+---
+title: "Best practices"
+---
 ## Prefer COPY over ADD
 Prefer COPY over ADD when copying files from a location to a Docker image.
 

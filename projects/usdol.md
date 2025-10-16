@@ -1,10 +1,10 @@
-# USDol (Hodfords)
-
-<!-- date: 26 Mar, 2022 -->
-<!-- description: Logistics prouduct management -->
-<!-- status: completed -->
-<!-- team_size: 9 -->
-
+---
+title: "USDol (Hodfords)"
+description: "Logistics prouduct management"
+date: "26 Mar, 2022"
+status: "completed"
+team_size: "9"
+---
 ## A management web app, mobile for tracking product transactions to notice and prevent exploiting child labor<br/>
 *Backend Developer* <br/>
 *2022* <br/>

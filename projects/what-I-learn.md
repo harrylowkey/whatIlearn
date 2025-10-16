@@ -1,10 +1,10 @@
-# What I learn & Portfolio
-
-<!-- date: 26 Mar, 2022 -->
-<!-- description: Side project -->
-<!-- status: maintain -->
-<!-- team_size: 1 -->
-
+---
+title: "What I learn & Portfolio"
+description: "Side project"
+date: "26 Mar, 2022"
+status: "maintain"
+team_size: "1"
+---
 ## Personal website & Documentation what I learn everyday <br/>
 *Backend Developer* <br/>
 *2023 - now* <br/>

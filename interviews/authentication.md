@@ -1,5 +1,6 @@
-# Authentication Methods
-
+---
+title: "Authentication Methods"
+---
 # Users to Services
 
 ## 1. Basic Authentication (username/password)

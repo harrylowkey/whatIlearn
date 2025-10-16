@@ -1,5 +1,6 @@
-# To write sargable queries
-
+---
+title: "To write sargable queries"
+---
 - Avoid using functions or calculations on indexes columns in WHERE cluase
 - Use direct comparision when possible, instead of wrapping the column in a function
   - Example: Using Post.date >= '2023-01-01' instead of YEAR(post) = 2023

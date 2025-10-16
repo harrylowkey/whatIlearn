@@ -1,7 +1,7 @@
-# Reverse Proxy and Proxy Server
-
-<!-- published_date: 24 Mar, 2024 -->
-<!-- description: Compare reverse proxy and proxy server -->
+---
+title: "Reverse Proxy and Proxy Server"
+description: "Compare reverse proxy and proxy server"
+---
 <!-- tags: web-development, reverse-proxy, proxy -->
 
 

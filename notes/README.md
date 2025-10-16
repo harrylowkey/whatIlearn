@@ -1,5 +1,6 @@
-# Table of Contents
-
+---
+title: "Table of Contents"
+---
 - [CKAD](./certifications/ckad/README.md)
 - [Cloud Practioner](./certifications/cloud-practitioner/README.md)
 - [Helm](./devops/helm/README.md)

@@ -1,10 +1,10 @@
-# Coder Tokyo Forum Frontend
-
-<!-- date: 09 Aug, 2021 -->
-<!-- description: Forum for blogger, reviewer -->
-<!-- status: completed -->
-<!-- team_size: 1 -->
-
+---
+title: "Coder Tokyo Forum Frontend"
+description: "Forum for blogger, reviewer"
+date: "09 Aug, 2021"
+status: "completed"
+team_size: "1"
+---
 ## A forum for blogger <br/>
 *A side project to learn and practice Vuejs* <br/>
 *First commit in 2019* <br/>

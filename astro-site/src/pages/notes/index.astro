@@ -1,0 +1,535 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+const allNotes = await getCollection('notes');
+
+// Sort notes by date (newest first), then by title
+const sortedNotes = allNotes.sort((a, b) => {
+  if (a.data.date && b.data.date) {
+    return b.data.date.getTime() - a.data.date.getTime();
+  }
+  if (a.data.date) return -1;
+  if (b.data.date) return 1;
+  return a.data.title.localeCompare(b.data.title);
+});
+
+// Get unique tags
+const allTags = [...new Set(allNotes.flatMap(note => note.data.tags || []))].sort();
+
+// Get search query from URL
+const url = new URL(Astro.request.url);
+const searchQuery = url.searchParams.get('key') || '';
+
+// Filter notes based on search query
+const filteredNotes = searchQuery
+  ? sortedNotes.filter(note => {
+      const searchLower = searchQuery.toLowerCase();
+      return (
+        note.data.title.toLowerCase().includes(searchLower) ||
+        note.data.description?.toLowerCase().includes(searchLower) ||
+        note.data.tags?.some(tag => tag.toLowerCase().includes(searchLower))
+      );
+    })
+  : sortedNotes;
+
+const totalNotes = filteredNotes.length;
+---
+
+<PageLayout title="Notes - Harry Dang" description="My learning notes on various topics" activeTab="notes" fullWidth={true}>
+  <div class="notes-container">
+    <!-- Search and Header Section -->
+    <div class="notes-header">
+      <div class="header-content">
+        <div class="header-left">
+          <h2 class="notes-heading">
+            Notes
+            <span class="notes-count-badge">{totalNotes}</span>
+          </h2>
+          <p class="notes-subheading">Learning notes on software engineering</p>
+        </div>
+        <div class="search-wrapper">
+          <form method="get" action="/notes" class="search-form">
+            <i class="mdi mdi-magnify search-icon"></i>
+            <input
+              type="text"
+              name="key"
+              class="search-input"
+              placeholder="Search notes..."
+              value={searchQuery}
+            />
+          </form>
+        </div>
+      </div>
+    </div>
+
+    {searchQuery && (
+      <div class="search-result-banner">
+        <i class="mdi mdi-information-outline"></i>
+        <span>Showing {totalNotes} result{totalNotes !== 1 ? 's' : ''} for "{searchQuery}"</span>
+        <a href="/notes" class="clear-search">Clear search</a>
+      </div>
+    )}
+
+    <!-- Tags Filter -->
+    <div class="tags-section">
+      <div class="tags-header">
+        <i class="mdi mdi-tag-multiple"></i>
+        <span>Filter by tag</span>
+      </div>
+      <div class="tags-wrapper">
+        {allTags.map((tag) => (
+          <a href={`/notes?key=${encodeURIComponent(tag)}`} class="tag-filter">
+            {tag}
+          </a>
+        ))}
+      </div>
+    </div>
+
+    <!-- Notes Grid -->
+    <div class="notes-grid">
+      {filteredNotes.map((note) => (
+        <article class="note-card-modern">
+          <div class="note-card-header">
+            <h3 class="note-title">
+              <a href={`/notes/${note.slug}`}>
+                {note.data.title}
+              </a>
+            </h3>
+            {note.data.date && (
+              <div class="note-date">
+                <i class="mdi mdi-calendar"></i>
+                <span>
+                  {note.data.date.toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'short',
+                    day: 'numeric',
+                  })}
+                </span>
+              </div>
+            )}
+          </div>
+          {note.data.description && (
+            <p class="note-description">{note.data.description}</p>
+          )}
+          {note.data.tags && note.data.tags.length > 0 && (
+            <div class="note-tags">
+              {note.data.tags.map((tag) => (
+                <a href={`/notes?key=${encodeURIComponent(tag)}`} class="note-tag">
+                  {tag}
+                </a>
+              ))}
+            </div>
+          )}
+        </article>
+      ))}
+    </div>
+
+    {filteredNotes.length === 0 && (
+      <div class="no-results">
+        <i class="mdi mdi-alert-circle-outline"></i>
+        <p>No notes found{searchQuery ? ` for "${searchQuery}"` : ''}.</p>
+      </div>
+    )}
+  </div>
+
+</PageLayout>
+
+<style>
+  /* Notes Container */
+  .notes-container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  /* Notes Header */
+  .notes-header {
+    margin-bottom: var(--spacing-xl);
+  }
+
+  .header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: var(--spacing-lg);
+    flex-wrap: wrap;
+  }
+
+  .header-left {
+    flex: 1;
+    min-width: 250px;
+  }
+
+  .notes-heading {
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+  }
+
+  .notes-count-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.5rem;
+    height: 2.5rem;
+    padding: 0 0.75rem;
+    background: var(--gradient-primary);
+    color: white;
+    border-radius: var(--radius-full);
+    font-size: 1rem;
+    font-weight: 700;
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+  }
+
+  .notes-subheading {
+    font-size: 1rem;
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  /* Search Wrapper */
+  .search-wrapper {
+    flex: 0 0 350px;
+  }
+
+  .search-form {
+    position: relative;
+  }
+
+  .search-icon {
+    position: absolute;
+    left: 1rem;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+  }
+
+  .search-input {
+    width: 100%;
+    padding: 0.75rem 1rem 0.75rem 3rem;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    font-size: 0.9375rem;
+    color: var(--color-text-primary);
+    transition: all var(--transition-fast);
+  }
+
+  .search-input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+  }
+
+  [data-theme="dark"] .search-input {
+    background: rgba(30, 41, 59, 0.9);
+  }
+
+  /* Search Result Banner */
+  .search-result-banner {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background: rgba(99, 102, 241, 0.1);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    border-radius: var(--radius-lg);
+    margin-bottom: var(--spacing-lg);
+    font-size: 0.9375rem;
+    color: var(--color-primary);
+  }
+
+  .search-result-banner i {
+    font-size: 1.25rem;
+  }
+
+  .clear-search {
+    margin-left: auto;
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+    transition: opacity var(--transition-fast);
+  }
+
+  .clear-search:hover {
+    opacity: 0.7;
+  }
+
+  /* Tags Section */
+  .tags-section {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
+  }
+
+  [data-theme="dark"] .tags-section {
+    background: rgba(30, 41, 59, 0.9);
+  }
+
+  .tags-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.9375rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .tags-header i {
+    font-size: 1.125rem;
+    color: var(--color-primary);
+  }
+
+  .tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tag-filter {
+    padding: 0.375rem 0.875rem;
+    background: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .tag-filter:hover {
+    background: var(--color-primary-light);
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+  }
+
+  [data-theme="dark"] .tag-filter {
+    background: rgba(30, 41, 59, 0.8);
+  }
+
+  /* Notes Grid */
+  .notes-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+  }
+
+  /* Note Card Modern */
+  .note-card-modern {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .note-card-modern::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent);
+    transition: left 0.5s ease;
+  }
+
+  .note-card-modern:hover::before {
+    left: 100%;
+  }
+
+  .note-card-modern:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
+    border-color: var(--color-primary);
+  }
+
+  [data-theme="dark"] .note-card-modern {
+    background: rgba(30, 41, 59, 0.9);
+  }
+
+  [data-theme="dark"] .note-card-modern:hover {
+    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3);
+  }
+
+  /* Note Card Header */
+  .note-card-header {
+    margin-bottom: var(--spacing-md);
+  }
+
+  .note-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+
+  .note-title a {
+    color: var(--color-text-primary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    position: relative;
+  }
+
+  .note-title a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width var(--transition-base);
+  }
+
+  .note-title a:hover {
+    color: var(--color-primary);
+  }
+
+  .note-title a:hover::after {
+    width: 100%;
+  }
+
+  .note-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    padding: 0.25rem 0.75rem;
+    background: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-full);
+    font-size: 0.8125rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+  }
+
+  .note-date i {
+    font-size: 1rem;
+    color: var(--color-primary);
+  }
+
+  /* Note Description */
+  .note-description {
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+    margin-bottom: var(--spacing-md);
+    font-size: 0.9375rem;
+    flex: 1;
+  }
+
+  /* Note Tags */
+  .note-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: auto;
+  }
+
+  .note-tag {
+    padding: 0.25rem 0.75rem;
+    background: rgba(139, 92, 246, 0.1);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--color-secondary);
+    text-decoration: none;
+    transition: all var(--transition-fast);
+  }
+
+  .note-tag:hover {
+    background: rgba(139, 92, 246, 0.2);
+    border-color: var(--color-secondary);
+    transform: translateY(-2px);
+  }
+
+  /* No Results */
+  .no-results {
+    text-align: center;
+    padding: var(--spacing-3xl) var(--spacing-xl);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+  }
+
+  .no-results i {
+    font-size: 3rem;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+  }
+
+  .no-results p {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    margin: 0;
+  }
+
+  [data-theme="dark"] .no-results {
+    background: rgba(30, 41, 59, 0.9);
+  }
+
+  /* Responsive */
+  @media (max-width: 768px) {
+    .notes-container {
+      max-width: 100%;
+    }
+
+    .header-content {
+      flex-direction: column;
+    }
+
+    .search-wrapper {
+      flex: 1;
+      width: 100%;
+    }
+
+    .notes-heading {
+      font-size: 1.5rem;
+    }
+
+    .notes-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .notes-heading {
+      font-size: 1.25rem;
+    }
+
+    .notes-count-badge {
+      min-width: 2rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
+
+    .tags-section {
+      padding: var(--spacing-md);
+    }
+
+    .note-card-modern {
+      padding: var(--spacing-md);
+    }
+  }
+</style>

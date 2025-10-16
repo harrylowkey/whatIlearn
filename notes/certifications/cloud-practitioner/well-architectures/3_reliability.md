@@ -1,5 +1,6 @@
-# Pillar 3: Reliability
-
+---
+title: "Pillar 3: Reliability"
+---
 - Recover from infra or service disruptions dynamically acuire computing resources to meet demand and
   mitigate disruption such as misconfigurations or transient network issues
 - Design Principles:

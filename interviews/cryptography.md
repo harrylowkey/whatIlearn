@@ -1,5 +1,6 @@
-# Cryptography
-
+---
+title: "Cryptography"
+---
 1. Hash
 -> md5, sha1, sha256, sha512
 

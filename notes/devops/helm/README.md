@@ -1,4 +1,5 @@
-# HELM
-
+---
+title: "HELM"
+---
 - Templates
 - Commands

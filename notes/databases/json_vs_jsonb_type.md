@@ -1,9 +1,9 @@
-# JSON vs JSONB in PostgreSQL
-
-<!-- published_date: 13 May, 2024 -->
-<!-- description: JSON vs JSONB in PostgreSQL -->
-<!-- tags: database -->
-
+---
+title: "JSON vs JSONB in PostgreSQL"
+description: "JSON vs JSONB in PostgreSQL"
+tags:
+  - database
+---
 Ref: https://www.dbvis.com/thetable/json-vs-jsonb-in-postgresql-a-complete-comparison/
 
 JSON:

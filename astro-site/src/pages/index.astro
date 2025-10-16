@@ -1,0 +1,1751 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import SectionNav from '../components/SectionNav.astro';
+---
+
+<BaseLayout
+  title="Harry Dang - Backend Developer & DevOps Engineer"
+  description="Backend developer specializing in scalable systems, databases, and cloud infrastructure"
+  fullWidth={true}
+>
+  <!-- Section Navigation -->
+  <SectionNav />
+
+  <!-- Hero Section -->
+  <section id="hero" class="hero-section">
+    <div class="hero-content">
+      <div class="hero-header-row">
+        <div class="hero-avatar">
+          <img src="/avatar.png" alt="Harry Dang" />
+        </div>
+
+        <div class="hero-info">
+          <h2 class="hero-role">Backend Developer</h2>
+          <p class="hero-tagline">Fascinated by Databases, DevOps, Neovim</p>
+
+          <div class="hero-social">
+            <a href="https://github.com/harrylowkey" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+              <i class="mdi mdi-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/hong-quang-dang" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="LinkedIn">
+              <i class="mdi mdi-linkedin"></i>
+            </a>
+            <a href="mailto:harrydang.tech@gmail.com" class="social-link" aria-label="Email">
+              <i class="mdi mdi-email"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <h1 class="hero-title">
+        Hi, I'm <span class="text-gradient">Harry Dang</span>
+      </h1>
+
+      <p class="hero-description">
+With <span class="highlight-green">5+ years of experience</span> designing <br /> <span class="highlight-orange">scalable</span> <span class="highlight-orange">secure</span> and <span class="highlight-orange">high-performance systems</span><br />
+
+        Experienced in <span class="highlight">microservices architecture</span><br />
+        <span class="highlight">database optimization</span> and <span class="highlight">applied cryptography</span>
+        Proficient in <span class="highlight">real-time systems</span> <span class="highlight">3rd-party integrations</span>
+and <span class="highlight">secure deployments</span><br />
+
+        Proven ability to deliver secure and maintainable backend architectures for <span class="highlight-alt">SaaS</span> <span class="highlight-alt">social networks</span> and
+        <span class="highlight-alt">e-commerce</span> platforms.
+      </p>
+
+      <div class="hero-actions">
+        <a href="/projects" class="btn-modern btn-primary btn-large">
+          <i class="mdi mdi-briefcase"></i>
+          <span>View My Work</span>
+          <i class="mdi mdi-arrow-right"></i>
+        </a>
+        <a href="/notes" class="btn-modern btn-secondary btn-large">
+          <i class="mdi mdi-book-open-variant"></i>
+          <span>Read My Notes</span>
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="floating-card card-1">
+        <i class="mdi mdi-aws"></i>
+        <span>AWS</span>
+      </div>
+      <div class="floating-card card-2">
+        <i class="mdi mdi-language-python"></i>
+        <span>Python</span>
+      </div>
+      <div class="floating-card card-3">
+        <i class="mdi mdi-docker"></i>
+        <span>Docker</span>
+      </div>
+      <div class="floating-card card-4">
+        <i class="mdi mdi-database"></i>
+        <span>PostgreSQL</span>
+      </div>
+      <div class="floating-card card-5">
+        <i class="mdi mdi-kubernetes"></i>
+        <span>Kubernetes</span>
+      </div>
+      <div class="floating-card card-6">
+        <i class="mdi mdi-nodejs"></i>
+        <span>Node.js</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Experience Section -->
+  <section id="experience" class="experience-section">
+    <div class="section-header">
+      <h2 class="section-title">Experience</h2>
+      <p class="section-subtitle">Building scalable systems across companies</p>
+    </div>
+
+    <div class="experience-timeline">
+      <!-- Current Role -->
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="experience-company">
+            <h3>Hodfords Vietnam</h3>
+            <span class="experience-badge current">Current</span>
+          </div>
+          <span class="experience-period">Jul 2021 - Present</span>
+        </div>
+
+        <div class="experience-role">
+          <h4>Back-end Lead</h4>
+        </div>
+
+        <div class="experience-projects">
+          <!-- Employee Platform -->
+          <div class="project-detail">
+            <div class="project-header">
+              <h5>Employee Platform</h5>
+              <span class="project-date">Jan 2025 - Present</span>
+            </div>
+            <p class="project-description">
+              Chat System & Secret Management + Task Management System
+            </p>
+            <ul class="responsibility-list">
+              <li>Managed a team overseeing the collaborative efforts. Breaking, estimating and assigning tasks for team members</li>
+              <li>Designed and implemented Real-time E2EE chat system</li>
+              <li>Implemented Secure secret storage for API keys, service tokens, and sensitive data using E2EE</li>
+              <li>Implemented Task management, backlog hierarchy, sprint automation, and concurrency-safe operations</li>
+              <li>Designed MFA, OAuth2-based authorization, and comprehensive API security validation across all backend microservices</li>
+              
+            </ul>
+            <div class="tech-stack-mini">
+              <span>Microservice</span>
+              <span>GRPC</span>
+              <span>Cryptography</span>
+              <span>NestJS</span>
+              <span>AWS</span>
+              <span>Kubernetes</span>
+              <span>PostgreSQL</span>
+              <span>MongoDB</span>
+              <span>Redis</span>
+            </div>
+          </div>
+
+          <!-- Re** Project -->
+          <div class="project-detail">
+            <div class="project-header">
+              <h5>Social Network Platform + Shopify Drop-shipping</h5>
+              <span class="project-date">Nov 2022 - Jan 2025</span>
+            </div>
+            <p class="project-description">
+              Social media application then became to drop-shipping and multi-tenant product management for B2B Enterprise
+            </p>
+            <ul class="responsibility-list">
+              
+              <li>Led team and working directly with clients and BA team to clarify requirements</li>
+              <li>Designed database schemas, indexing, and caching, queryign strategies for high-volume transactions and user data</li>
+              <li>Implemented secure API endpoints with JWT, OAuth2, and MFA</li>
+              <li>Built reusable pip packages to improve development experience across projects</li>
+              <li>Orchestrated the deployment of microservices and applications on AWS</li>
+              <li>Implemented and maintained CI/CD pipelines leveraging GitHub Actions, ArgoCD, and Kubernetes (EKS)</li>
+              <li>Maintain the IaC practices using erraform/Helm, ensuring consistent environments across staging, UAT, and production</li>
+            </ul>
+            <div class="tech-stack-mini">
+              <span>Microservice</span>
+              <span>Python</span>
+              <span>FastAPI</span>
+              <span>AWS</span>
+              <span>Kubernetes</span>
+              <span>ArgoCD</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+
+          <!-- US** Project -->
+          <div class="project-detail">
+            <div class="experience-role">
+                <h4>Back-end Developer</h4>
+            </div>
+            <div class="project-header">
+              <h5>Child Labor Prevention System</h5>
+              <span class="project-date">Jun 2022 - Nov 2022</span>
+            </div>
+            <p class="project-description">
+              Management web and mobile app for tracking product transactions to prevent child labor exploitation.
+            </p>
+            <ul class="responsibility-list">
+              <li>Designed and implemented comprehensive RBAC system</li>
+              <li>Developed Excel importing feature for bulk data processing</li>
+              <li>Implemented APIs using TypeScript with focus on code quality</li>
+            </ul>
+            <div class="tech-stack-mini">
+              <span>NestJS</span>
+              <span>TypeScript</span>
+              <span>Kubernetes</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+
+          <!-- Ma** & Cl** Projects -->
+          <div class="project-detail collapsed">
+            <div class="experience-role">
+                <h4>Back-end Developer</h4>
+            </div>
+            <div class="project-header">
+              <h5>Profile Management & CO2 Emissions Service</h5>
+              <span class="project-date">Jul 2021 - Jun 2022</span>
+            </div>
+            <p class="project-description">
+              Microservices ecosystem including profile management and CO2 emissions calculation services.
+            </p>
+            <ul class="responsibility-list">
+              <li>Developed and maintained npm packages to streamline development processes</li>
+              <li>Implemented microservices using Kafka for inter-service communication</li>
+              <li>Built data crawling system from third-party databases</li>
+            </ul>
+            <div class="tech-stack-mini">
+              <span>NestJS</span>
+              <span>Kafka</span>
+              <span>Kubernetes</span>
+              <span>PostgreSQL</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Corize Vietnam -->
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="experience-company">
+            <h3>Corize Vietnam Inc.</h3>
+          </div>
+          <span class="experience-period">Jun 2020 - Jun 2021</span>
+        </div>
+
+        <div class="experience-role">
+          <h4>Junior Back-end Developer</h4>
+        </div>
+
+        <div class="experience-projects">
+          <div class="project-detail">
+            <div class="project-header">
+              <h5>Japanese HR Management System</h5>
+            </div>
+            <p class="project-description">
+              Human resources management project for Japanese market with comprehensive employee lifecycle management.
+            </p>
+            <ul class="responsibility-list">
+              <li>Maintained and refactored backend features post-MVP phase</li>
+              <li>Collaborated on brainstorming and developing new features</li>
+              <li>Worked with team of 5 on full-stack development</li>
+            </ul>
+            <div class="tech-stack-mini">
+              <span>Node.js</span>
+              <span>MySQL</span>
+              <span>AWS</span>
+              <span>React</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Midas Protocol -->
+      <div class="experience-item">
+        <div class="experience-header">
+          <div class="experience-company">
+            <h3>Midas Protocol</h3>
+          </div>
+          <span class="experience-period">Jun 2019 - May 2020</span>
+        </div>
+
+        <div class="experience-role">
+          <h4>Fresher Backend Developer</h4>
+        </div>
+
+        <div class="experience-projects">
+          <div class="project-detail">
+            <div class="project-header">
+              <h5>Crypto Wallet & Exchange Platform</h5>
+            </div>
+            <p class="project-description">
+              Crypto wallet application and exchange platform with real-time trading capabilities.
+            </p>
+            <ul class="responsibility-list">
+              <li>Implemented APIs using Loopback framework</li>
+              <li>Developed and maintained real-time socket backend using Socket.io</li>
+              <li>Built RabbitMQ consumers for asynchronous message processing</li>
+            </ul>
+            <div class="tech-stack-mini">
+              <span>Loopback 3</span>
+              <span>JavaScript</span>
+              <span>RabbitMQ</span>
+              <span>Socket.io</span>
+              <span>Redis</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</BaseLayout>
+
+<style>
+  /* ===============================================
+     HERO SECTION
+     =============================================== */
+  .hero-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--spacing-3xl);
+    align-items: center;
+    padding: var(--spacing-3xl);
+    margin-bottom: var(--spacing-3xl);
+    min-height: 80vh;
+    max-width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hero-content {
+    animation: fadeIn 0.8s ease-out;
+  }
+
+  .hero-header-row {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-xl);
+    animation: slideInFromLeft 0.8s ease-out;
+  }
+
+  .hero-avatar {
+    width: 150px;
+    height: 150px;
+    position: relative;
+    animation: scaleIn 0.6s ease-out;
+    flex-shrink: 0;
+  }
+
+  .hero-avatar::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    background: var(--gradient-primary);
+    border-radius: 50%;
+    z-index: -1;
+    animation: glow 3s ease-in-out infinite;
+  }
+
+  .hero-avatar img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid var(--color-bg-primary);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    transition: transform var(--transition-base);
+  }
+
+  .hero-avatar:hover img {
+    transform: scale(1.05);
+  }
+
+  .hero-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+
+  .hero-role {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+    line-height: 1.2;
+  }
+
+  .hero-tagline {
+    font-size: 0.9375rem;
+    color: var(--color-text-tertiary);
+    margin: 0;
+    line-height: 1.5;
+    font-style: italic;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(99, 102, 241, 0.3);
+    color: var(--color-primary);
+    padding: 0.625rem 1.25rem;
+    border-radius: var(--radius-full);
+    font-size: 0.875rem;
+    font-weight: 600;
+    margin-bottom: var(--spacing-xl);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+  }
+
+  [data-theme="dark"] .hero-badge {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+  }
+
+  .hero-title {
+    font-size: 3.5rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--spacing-lg);
+    color: var(--color-text-primary);
+  }
+
+  .hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-md);
+    line-height: 1.4;
+  }
+
+  .hero-description {
+  font-size: 1.125rem;
+  line-height: 1.8;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--spacing-xl);
+  max-width: 800px;
+  text-align: left;
+  white-space: pre-line;
+}
+
+
+
+.hero-description .highlight {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  color: var(--color-primary);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  transition: all var(--transition-fast);
+  display: inline;
+  box-decoration-break: clone; /* ✅ Key fix */
+  -webkit-box-decoration-break: clone; /* Safari support */
+  line-height: 1.6; /* reduce to avoid vertical clipping */
+}
+
+
+  .hero-description .highlight:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.25) 0%, rgba(139, 92, 246, 0.25) 100%);
+    border-color: rgba(99, 102, 241, 0.4);
+    transform: translateY(-1px);
+  }
+
+.hero-description .highlight-alt {
+  background: linear-gradient(135deg, rgba(236, 72, 153, 0.15) 0%, rgba(245, 158, 11, 0.15) 100%);
+  color: var(--color-accent);
+  padding: 0.125rem 0.5rem;
+  border-radius: var(--radius-md);
+  font-weight: 600;
+  border: 1px solid rgba(236, 72, 153, 0.2);
+  transition: all var(--transition-fast);
+  display: inline; /* ✅ changed from inline-block */
+  box-decoration-break: clone; /* ✅ ensures gradient + border clone across wrapped lines */
+  -webkit-box-decoration-break: clone; /* ✅ Safari fix */
+  line-height: 1.6; /* ✅ prevents vertical overlap */
+}
+
+  .hero-description .highlight-alt:hover {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.25) 0%, rgba(245, 158, 11, 0.25) 100%);
+    border-color: rgba(236, 72, 153, 0.4);
+    transform: translateY(-1px);
+  }
+
+  .hero-description .highlight-orange {
+    background: linear-gradient(135deg, rgba(245, 155, 66, 0.15) 0%, rgba(245, 155, 66, 0.15) 100%);
+    color: #c2410c;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    border: 1px solid rgba(245, 155, 66, 0.3);
+    transition: all var(--transition-fast);
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    line-height: 1.6;
+  }
+
+  .hero-description .highlight-orange:hover {
+    background: linear-gradient(135deg, rgba(245, 155, 66, 0.25) 0%, rgba(245, 155, 66, 0.25) 100%);
+    border-color: rgba(245, 155, 66, 0.5);
+    transform: translateY(-1px);
+  }
+
+  .hero-description .highlight-green {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.15) 0%, rgba(5, 150, 105, 0.15) 100%);
+    color: #047857;
+    padding: 0.125rem 0.5rem;
+    border-radius: var(--radius-md);
+    font-weight: 600;
+    border: 1px solid rgba(5, 150, 105, 0.2);
+    transition: all var(--transition-fast);
+    display: inline;
+    box-decoration-break: clone;
+    -webkit-box-decoration-break: clone;
+    line-height: 1.6;
+  }
+
+  .hero-description .highlight-green:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.25) 0%, rgba(5, 150, 105, 0.25) 100%);
+    border-color: rgba(5, 150, 105, 0.4);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .hero-description .highlight {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.2) 100%);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  [data-theme="dark"] .hero-description .highlight:hover {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.35) 0%, rgba(139, 92, 246, 0.35) 100%);
+    border-color: rgba(99, 102, 241, 0.5);
+  }
+
+  [data-theme="dark"] .hero-description .highlight-alt {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.2) 0%, rgba(245, 158, 11, 0.2) 100%);
+    border-color: rgba(236, 72, 153, 0.3);
+  }
+
+  [data-theme="dark"] .hero-description .highlight-alt:hover {
+    background: linear-gradient(135deg, rgba(236, 72, 153, 0.35) 0%, rgba(245, 158, 11, 0.35) 100%);
+    border-color: rgba(236, 72, 153, 0.5);
+  }
+
+  [data-theme="dark"] .hero-description .highlight-orange {
+    background: linear-gradient(135deg, rgba(245, 155, 66, 0.2) 0%, rgba(245, 155, 66, 0.2) 100%);
+    border-color: rgba(245, 155, 66, 0.3);
+    color: #fdba74;
+  }
+
+  [data-theme="dark"] .hero-description .highlight-orange:hover {
+    background: linear-gradient(135deg, rgba(245, 155, 66, 0.3) 0%, rgba(245, 155, 66, 0.3) 100%);
+    border-color: rgba(245, 155, 66, 0.5);
+  }
+
+  [data-theme="dark"] .hero-description .highlight-green {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.2) 0%, rgba(5, 150, 105, 0.2) 100%);
+    border-color: rgba(5, 150, 105, 0.3);
+    color: #34d399;
+  }
+
+  [data-theme="dark"] .hero-description .highlight-green:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.35) 0%, rgba(5, 150, 105, 0.35) 100%);
+    border-color: rgba(5, 150, 105, 0.5);
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+    margin-top: var(--spacing-xl);
+  }
+
+  .btn-large {
+    padding: 0.875rem 1.75rem;
+    font-size: 1rem;
+  }
+
+  .hero-social {
+    display: flex;
+    gap: var(--spacing-sm);
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .social-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 44px;
+    height: 44px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    border-radius: 50%;
+    color: var(--color-text-secondary);
+    transition: all var(--transition-fast);
+    text-decoration: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .social-link::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-fast);
+    border-radius: 50%;
+  }
+
+  .social-link:hover::before {
+    opacity: 0.15;
+  }
+
+  [data-theme="dark"] .social-link {
+    background: linear-gradient(135deg, rgba(51, 65, 85, 0.9) 0%, rgba(30, 41, 59, 0.9) 100%);
+  }
+
+  .social-link i {
+    font-size: 1.25rem;
+    transition: transform var(--transition-fast);
+    position: relative;
+    z-index: 1;
+  }
+
+  .social-link:hover i {
+    transform: scale(1.15) rotate(5deg);
+  }
+
+  /* GitHub - Dark theme */
+  .social-link:nth-child(1) i {
+    color: #24292f;
+  }
+
+  .social-link:nth-child(1):hover {
+    border-color: #24292f;
+    box-shadow: 0 4px 16px rgba(36, 41, 47, 0.3);
+    transform: translateY(-2px);
+  }
+
+  [data-theme="dark"] .social-link:nth-child(1) i {
+    color: #f0f6fc;
+  }
+
+  /* LinkedIn - Blue theme */
+  .social-link:nth-child(2) i {
+    color: #0a66c2;
+  }
+
+  .social-link:nth-child(2):hover {
+    border-color: #0a66c2;
+    box-shadow: 0 4px 16px rgba(10, 102, 194, 0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Gmail - Red theme */
+  .social-link:nth-child(3) i {
+    color: #ea4335;
+  }
+
+  .social-link:nth-child(3):hover {
+    border-color: #ea4335;
+    box-shadow: 0 4px 16px rgba(234, 67, 53, 0.3);
+    transform: translateY(-2px);
+  }
+
+  .hero-stats {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+    width: 100%;
+    max-width: 600px;
+    z-index: 10;
+  }
+
+  [data-theme="dark"] .hero-stats {
+    /* Handled by stat-item */
+  }
+
+  .stat-item {
+    position: relative;
+    text-align: center;
+    padding: var(--spacing-lg);
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    border-radius: var(--radius-xl);
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+    overflow: hidden;
+  }
+
+  .stat-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: var(--gradient-primary);
+    transform: scaleX(0);
+    transition: transform var(--transition-base);
+  }
+
+  .stat-item:nth-child(1)::before {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  }
+
+  .stat-item:nth-child(2)::before {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  }
+
+  .stat-item:nth-child(3)::before {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+  }
+
+  .stat-item:hover {
+    transform: translateY(-4px);
+    border-color: var(--color-primary);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.15);
+  }
+
+  .stat-item:hover::before {
+    transform: scaleX(1);
+  }
+
+  [data-theme="dark"] .stat-item {
+    background: rgba(30, 41, 59, 0.9);
+  }
+
+  .stat-value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 0.5rem;
+    line-height: 1;
+  }
+
+  .stat-item:nth-child(1) .stat-value {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-item:nth-child(2) .stat-value {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-item:nth-child(3) .stat-value {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .stat-label {
+    font-size: 0.875rem;
+    color: var(--color-text-secondary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .stat-divider {
+    display: none;
+  }
+
+  /* Hero Visual with Floating Cards */
+  .hero-visual {
+    position: relative;
+    height: 600px;
+    animation: fadeIn 1s ease-out 0.2s both;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .floating-card {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid transparent;
+    border-radius: var(--radius-lg);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    animation: float 6s ease-in-out infinite;
+    transition: all var(--transition-base);
+  }
+
+  .floating-card:hover {
+    transform: translateY(-8px) scale(1.05);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  [data-theme="dark"] .floating-card {
+    background: rgba(30, 41, 59, 0.95);
+  }
+
+  .floating-card i {
+    font-size: 1.75rem;
+  }
+
+  /* Node.js - Green */
+  
+
+  /* Python - Blue/Yellow */
+  .card-2 {
+    top: 5%;
+    right: 15%;
+    animation-delay: 1s;
+    background: linear-gradient(135deg, rgba(55, 118, 171, 0.15) 0%, rgba(255, 212, 59, 0.1) 100%);
+    border-color: #4A90D9;
+  }
+
+  .card-2 i {
+    color: #4A90D9;
+  }
+
+  .card-2:hover {
+    background: linear-gradient(135deg, rgba(55, 118, 171, 0.2) 0%, rgba(255, 212, 59, 0.15) 100%);
+    border-color: #4A90D9;
+    box-shadow: 0 15px 40px rgba(55, 118, 171, 0.3);
+  }
+
+  [data-theme="dark"] .card-2 {
+    background: linear-gradient(135deg, rgba(55, 118, 171, 0.2) 0%, rgba(255, 212, 59, 0.15) 100%);
+  }
+
+  [data-theme="dark"] .card-2 i {
+    color: #64B5F6;
+  }
+
+  [data-theme="dark"] .card-2:hover {
+    background: linear-gradient(135deg, rgba(55, 118, 171, 0.3) 0%, rgba(255, 212, 59, 0.22) 100%);
+  }
+
+  /* Docker - Blue */
+  .card-3 {
+    top: 35%;
+    left: 0%;
+    animation-delay: 2s;
+    background: linear-gradient(135deg, rgba(36, 150, 237, 0.15) 0%, rgba(36, 150, 237, 0.1) 100%);
+    border-color: #2496ED;
+  }
+
+  .card-3 i {
+    color: #2496ED;
+  }
+
+  .card-3:hover {
+    background: linear-gradient(135deg, rgba(36, 150, 237, 0.2) 0%, rgba(36, 150, 237, 0.15) 100%);
+    border-color: #2496ED;
+    box-shadow: 0 15px 40px rgba(36, 150, 237, 0.3);
+  }
+
+  [data-theme="dark"] .card-3 {
+    background: linear-gradient(135deg, rgba(36, 150, 237, 0.2) 0%, rgba(36, 150, 237, 0.15) 100%);
+  }
+
+  [data-theme="dark"] .card-3 i {
+    color: #42A5F5;
+  }
+
+  [data-theme="dark"] .card-3:hover {
+    background: linear-gradient(135deg, rgba(36, 150, 237, 0.3) 0%, rgba(36, 150, 237, 0.22) 100%);
+  }
+
+  /* PostgreSQL - Blue */
+  .card-4 {
+    top: 30%;
+    right: 5%;
+    animation-delay: 3s;
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.15) 0%, rgba(51, 103, 145, 0.1) 100%);
+    border-color: #4A7BA7;
+  }
+
+  .card-4 i {
+    color: #4A7BA7;
+  }
+
+  .card-4:hover {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.2) 0%, rgba(51, 103, 145, 0.15) 100%);
+    border-color: #4A7BA7;
+    box-shadow: 0 15px 40px rgba(51, 103, 145, 0.3);
+  }
+
+  [data-theme="dark"] .card-4 {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.2) 0%, rgba(51, 103, 145, 0.15) 100%);
+  }
+
+  [data-theme="dark"] .card-4 i {
+    color: #5C9ECF;
+  }
+
+  [data-theme="dark"] .card-4:hover {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.3) 0%, rgba(51, 103, 145, 0.22) 100%);
+  }
+
+  /* Kubernetes - Blue */
+  .card-5 {
+    bottom: 20%;
+    left: 10%;
+    animation-delay: 4s;
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.15) 0%, rgba(50, 108, 229, 0.1) 100%);
+    border-color: #326CE5;
+  }
+
+  .card-5 i {
+    color: #326CE5;
+  }
+
+  .card-5:hover {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.2) 0%, rgba(50, 108, 229, 0.15) 100%);
+    border-color: #326CE5;
+    box-shadow: 0 15px 40px rgba(50, 108, 229, 0.3);
+  }
+
+  [data-theme="dark"] .card-5 {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.2) 0%, rgba(50, 108, 229, 0.15) 100%);
+  }
+
+  [data-theme="dark"] .card-5 i {
+    color: #5E92F3;
+  }
+
+  [data-theme="dark"] .card-5:hover {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.3) 0%, rgba(50, 108, 229, 0.22) 100%);
+  }
+
+  /* AWS - Orange (card-1) */
+  .card-1 {
+    top: 10%;
+    left: 5%;
+    animation-delay: 0s;
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.15) 0%, rgba(255, 153, 0, 0.1) 100%);
+    border-color: #FF9900;
+  }
+
+  .card-1 i {
+    color: #FF9900;
+  }
+
+  .card-1:hover {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.15) 100%);
+    border-color: #FF9900;
+    box-shadow: 0 15px 40px rgba(255, 153, 0, 0.3);
+  }
+
+  [data-theme="dark"] .card-1 {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.15) 100%);
+  }
+
+  [data-theme="dark"] .card-1 i {
+    color: #FFB74D;
+  }
+
+  [data-theme="dark"] .card-1:hover {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.3) 0%, rgba(255, 153, 0, 0.22) 100%);
+  }
+
+  /* Node.js - Green (card-6) */
+  .card-6 {
+    bottom: 15%;
+    right: 10%;
+    animation-delay: 5s;
+    background: linear-gradient(135deg, rgba(51, 153, 51, 0.15) 0%, rgba(51, 153, 51, 0.1) 100%);
+    border-color: #4CAF50;
+  }
+
+  .card-6 i {
+    color: #4CAF50;
+  }
+
+  .card-6:hover {
+    background: linear-gradient(135deg, rgba(51, 153, 51, 0.2) 0%, rgba(51, 153, 51, 0.15) 100%);
+    border-color: #4CAF50;
+    box-shadow: 0 15px 40px rgba(51, 153, 51, 0.3);
+  }
+
+  [data-theme="dark"] .card-6 {
+    background: linear-gradient(135deg, rgba(51, 153, 51, 0.2) 0%, rgba(51, 153, 51, 0.15) 100%);
+  }
+
+  [data-theme="dark"] .card-6 i {
+    color: #66BB6A;
+  }
+
+  [data-theme="dark"] .card-6:hover {
+    background: linear-gradient(135deg, rgba(51, 153, 51, 0.3) 0%, rgba(51, 153, 51, 0.22) 100%);
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+    25% {
+      transform: translateY(-20px) rotate(1deg);
+    }
+    50% {
+      transform: translateY(-10px) rotate(-1deg);
+    }
+    75% {
+      transform: translateY(-15px) rotate(0.5deg);
+    }
+  }
+
+  @keyframes slideInFromLeft {
+    0% {
+      opacity: 0;
+      transform: translateX(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateX(0);
+    }
+  }
+
+  /* ===============================================
+     EXPERIENCE SECTION
+     =============================================== */
+  .experience-section {
+    padding: var(--spacing-3xl) 0;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding-left: var(--spacing-3xl);
+    padding-right: var(--spacing-3xl);
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-2xl);
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .section-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-text-primary);
+    margin-bottom: var(--spacing-sm);
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-tertiary);
+    font-weight: 500;
+  }
+
+  .experience-timeline {
+    position: relative;
+    padding-left: var(--spacing-xl);
+  }
+
+  .experience-timeline::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: linear-gradient(180deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+    border-radius: var(--radius-full);
+  }
+
+  .experience-item {
+    position: relative;
+    padding-bottom: var(--spacing-3xl);
+    animation: fadeIn 0.6s ease-out;
+  }
+
+  .experience-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .experience-item::before {
+    content: '';
+    position: absolute;
+    left: calc(-1 * var(--spacing-xl) - 6px);
+    top: 8px;
+    width: 15px;
+    height: 15px;
+    background: var(--color-primary);
+    border: 3px solid var(--color-bg-secondary);
+    border-radius: 50%;
+    box-shadow: 0 0 0 3px var(--color-primary-light);
+    z-index: 1;
+  }
+
+  [data-theme="dark"] .experience-item::before {
+    border-color: var(--color-bg-primary);
+  }
+
+  .experience-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-md);
+    flex-wrap: wrap;
+    gap: var(--spacing-sm);
+  }
+
+  .experience-company {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    flex-wrap: wrap;
+  }
+
+  .experience-company h3 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .experience-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.25rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  .experience-badge.current {
+    background: var(--gradient-primary);
+    color: white;
+    box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+    }
+    50% {
+      box-shadow: 0 2px 12px rgba(99, 102, 241, 0.5);
+    }
+  }
+
+  .experience-period {
+    font-size: 0.9375rem;
+    color: var(--color-text-tertiary);
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+
+  .experience-period::before {
+    content: '\F0153';
+    font-family: 'Material Design Icons';
+    font-size: 1.125rem;
+  }
+
+  .experience-role {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .experience-role h4 {
+    font-size: 1.375rem;
+    font-weight: 600;
+    color: var(--color-primary);
+    margin: 0;
+  }
+
+  .experience-projects {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .project-detail {
+    background: var(--color-bg-primary);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-xl);
+    padding: var(--spacing-lg);
+    transition: all var(--transition-base);
+  }
+
+  [data-theme="light"] .project-detail {
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .project-detail:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.12);
+    border-color: var(--color-primary);
+  }
+
+  [data-theme="dark"] .project-detail {
+    background: #1e293b !important;
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+
+  [data-theme="dark"] .project-detail:hover {
+    background: #1e293b !important;
+  }
+
+  [data-theme="dark"] .project-header h5 {
+    color: #f1f5f9 !important;
+  }
+
+  [data-theme="dark"] .project-description {
+    color: #cbd5e1 !important;
+  }
+
+  [data-theme="dark"] .responsibility-list li {
+    color: #cbd5e1 !important;
+  }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: var(--spacing-sm);
+    flex-wrap: wrap;
+    gap: var(--spacing-xs);
+  }
+
+  .project-header h5 {
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin: 0;
+  }
+
+  .project-date {
+    font-size: 0.8125rem;
+    color: var(--color-text-tertiary);
+    font-weight: 600;
+    background: var(--color-bg-tertiary);
+    padding: 0.25rem 0.625rem;
+    border-radius: var(--radius-full);
+  }
+
+  [data-theme="dark"] .project-date {
+    background: rgba(71, 85, 105, 0.6);
+    color: #cbd5e1;
+  }
+
+  .project-description {
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    margin-bottom: var(--spacing-md);
+  }
+
+  .responsibility-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 var(--spacing-md) 0;
+  }
+
+  .responsibility-list li {
+    position: relative;
+    padding-left: var(--spacing-lg);
+    margin-bottom: var(--spacing-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  .responsibility-list li::before {
+    content: '\F0142';
+    font-family: 'Material Design Icons';
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+    font-size: 1rem;
+  }
+
+  .responsibility-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  .tech-stack-mini {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .tech-stack-mini span {
+    padding: 0.375rem 0.75rem;
+    border-radius: var(--radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+    border: 1px solid transparent;
+    transition: all var(--transition-fast);
+  }
+
+  /* Default fallback style */
+  .tech-stack-mini span:not([class]) {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:not([class]) {
+    background: rgba(99, 102, 241, 0.25);
+    color: #a5b4fc;
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  /* Microservice - Purple */
+  .tech-stack-mini span:nth-child(1) {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+    color: #7c3aed;
+    border-color: #8b5cf6;
+  }
+
+  .tech-stack-mini span:nth-child(1):hover {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(1) {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.15) 100%);
+    color: #c4b5fd;
+  }
+
+  /* GRPC - Blue */
+  .tech-stack-mini span:nth-child(2) {
+    background: linear-gradient(135deg, rgba(36, 78, 90, 0.15) 0%, rgba(36, 78, 90, 0.1) 100%);
+    color: #244c5a;
+    border-color: #2e6273;
+  }
+
+  .tech-stack-mini span:nth-child(2):hover {
+    background: linear-gradient(135deg, rgba(36, 78, 90, 0.2) 0%, rgba(36, 78, 90, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(2) {
+    background: linear-gradient(135deg, rgba(36, 78, 90, 0.2) 0%, rgba(36, 78, 90, 0.15) 100%);
+    color: #5ebcd1;
+  }
+
+  /* Cryptography - Gold */
+  .tech-stack-mini span:nth-child(3) {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(202, 138, 4, 0.1) 100%);
+    color: #a16207;
+    border-color: #ca8a04;
+  }
+
+  .tech-stack-mini span:nth-child(3):hover {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.2) 0%, rgba(202, 138, 4, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(3) {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.2) 0%, rgba(202, 138, 4, 0.15) 100%);
+    color: #fde047;
+  }
+
+  /* NestJS - Red */
+  .tech-stack-mini span:nth-child(4) {
+    background: linear-gradient(135deg, rgba(224, 35, 78, 0.15) 0%, rgba(224, 35, 78, 0.1) 100%);
+    color: #c81e48;
+    border-color: #e0234e;
+  }
+
+  .tech-stack-mini span:nth-child(4):hover {
+    background: linear-gradient(135deg, rgba(224, 35, 78, 0.2) 0%, rgba(224, 35, 78, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(4) {
+    background: linear-gradient(135deg, rgba(224, 35, 78, 0.2) 0%, rgba(224, 35, 78, 0.15) 100%);
+    color: #fca5a5;
+  }
+
+  /* AWS - Orange */
+  .tech-stack-mini span:nth-child(5) {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.15) 0%, rgba(255, 153, 0, 0.1) 100%);
+    color: #d97706;
+    border-color: #FF9900;
+  }
+
+  .tech-stack-mini span:nth-child(5):hover {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(5) {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.15) 100%);
+    color: #FFB74D;
+  }
+
+  /* Kubernetes - Blue */
+  .tech-stack-mini span:nth-child(6) {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.15) 0%, rgba(50, 108, 229, 0.1) 100%);
+    color: #2563eb;
+    border-color: #326CE5;
+  }
+
+  .tech-stack-mini span:nth-child(6):hover {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.2) 0%, rgba(50, 108, 229, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(6) {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.2) 0%, rgba(50, 108, 229, 0.15) 100%);
+    color: #5E92F3;
+  }
+
+  /* PostgreSQL - Blue */
+  .tech-stack-mini span:nth-child(7) {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.15) 0%, rgba(51, 103, 145, 0.1) 100%);
+    color: #2563eb;
+    border-color: #336791;
+  }
+
+  .tech-stack-mini span:nth-child(7):hover {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.2) 0%, rgba(51, 103, 145, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(7) {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.2) 0%, rgba(51, 103, 145, 0.15) 100%);
+    color: #60a5fa;
+  }
+
+  /* MongoDB - Green */
+  .tech-stack-mini span:nth-child(8) {
+    background: linear-gradient(135deg, rgba(77, 179, 61, 0.15) 0%, rgba(77, 179, 61, 0.1) 100%);
+    color: #16a34a;
+    border-color: #4DB33D;
+  }
+
+  .tech-stack-mini span:nth-child(8):hover {
+    background: linear-gradient(135deg, rgba(77, 179, 61, 0.2) 0%, rgba(77, 179, 61, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(8) {
+    background: linear-gradient(135deg, rgba(77, 179, 61, 0.2) 0%, rgba(77, 179, 61, 0.15) 100%);
+    color: #86efac;
+  }
+
+  /* Redis - Red */
+  .tech-stack-mini span:nth-child(9) {
+    background: linear-gradient(135deg, rgba(220, 56, 45, 0.15) 0%, rgba(220, 56, 45, 0.1) 100%);
+    color: #b91c1c;
+    border-color: #DC382D;
+  }
+
+  .tech-stack-mini span:nth-child(9):hover {
+    background: linear-gradient(135deg, rgba(220, 56, 45, 0.2) 0%, rgba(220, 56, 45, 0.15) 100%);
+    transform: translateY(-1px);
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:nth-child(9) {
+    background: linear-gradient(135deg, rgba(220, 56, 45, 0.2) 0%, rgba(220, 56, 45, 0.15) 100%);
+    color: #fca5a5;
+  }
+
+  /* Python - Blue/Yellow */
+  .tech-stack-mini span:nth-child(2):has(+ span:nth-child(3):contains("FastAPI")) {
+    background: linear-gradient(135deg, rgba(55, 118, 171, 0.15) 0%, rgba(255, 212, 59, 0.1) 100%);
+    color: #3776AB;
+    border-color: #4A90D9;
+  }
+
+  /* FastAPI - Teal */
+  .tech-stack-mini span:nth-child(3):contains("FastAPI") {
+    background: linear-gradient(135deg, rgba(0, 150, 136, 0.15) 0%, rgba(0, 150, 136, 0.1) 100%);
+    color: #047857;
+    border-color: #009688;
+  }
+
+  /* ArgoCD - Orange */
+  .tech-stack-mini span:nth-child(6):contains("ArgoCD") {
+    background: linear-gradient(135deg, rgba(239, 86, 47, 0.15) 0%, rgba(239, 86, 47, 0.1) 100%);
+    color: #ea580c;
+    border-color: #EF562F;
+  }
+
+  /* TypeScript - Blue */
+  .tech-stack-mini span:contains("TypeScript") {
+    background: linear-gradient(135deg, rgba(0, 122, 204, 0.15) 0%, rgba(0, 122, 204, 0.1) 100%);
+    color: #2563eb;
+    border-color: #007ACC;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("TypeScript") {
+    background: linear-gradient(135deg, rgba(0, 122, 204, 0.2) 0%, rgba(0, 122, 204, 0.15) 100%);
+    color: #60a5fa;
+  }
+
+  /* Kafka - Black */
+  .tech-stack-mini span:contains("Kafka") {
+    background: linear-gradient(135deg, rgba(35, 35, 35, 0.15) 0%, rgba(35, 35, 35, 0.1) 100%);
+    color: #1f2937;
+    border-color: #231F20;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("Kafka") {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+    color: #e5e7eb;
+    border-color: #ffffff;
+  }
+
+  /* Node.js - Green */
+  .tech-stack-mini span:contains("Node.js") {
+    background: linear-gradient(135deg, rgba(51, 153, 51, 0.15) 0%, rgba(51, 153, 51, 0.1) 100%);
+    color: #16a34a;
+    border-color: #4CAF50;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("Node.js") {
+    background: linear-gradient(135deg, rgba(51, 153, 51, 0.2) 0%, rgba(51, 153, 51, 0.15) 100%);
+    color: #66BB6A;
+  }
+
+  /* MySQL - Blue */
+  .tech-stack-mini span:contains("MySQL") {
+    background: linear-gradient(135deg, rgba(0, 117, 143, 0.15) 0%, rgba(0, 117, 143, 0.1) 100%);
+    color: #0369a1;
+    border-color: #00758F;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("MySQL") {
+    background: linear-gradient(135deg, rgba(0, 117, 143, 0.2) 0%, rgba(0, 117, 143, 0.15) 100%);
+    color: #7dd3fc;
+  }
+
+  /* React - Cyan */
+  .tech-stack-mini span:contains("React") {
+    background: linear-gradient(135deg, rgba(97, 218, 251, 0.15) 0%, rgba(97, 218, 251, 0.1) 100%);
+    color: #0891b2;
+    border-color: #61DAFB;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("React") {
+    background: linear-gradient(135deg, rgba(97, 218, 251, 0.2) 0%, rgba(97, 218, 251, 0.15) 100%);
+    color: #67e8f9;
+  }
+
+  /* Loopback - Orange/Red */
+  .tech-stack-mini span:contains("Loopback") {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(239, 68, 68, 0.1) 100%);
+    color: #dc2626;
+    border-color: #EF4444;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("Loopback") {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.2) 0%, rgba(239, 68, 68, 0.15) 100%);
+    color: #fca5a5;
+  }
+
+  /* JavaScript - Yellow */
+  .tech-stack-mini span:contains("JavaScript") {
+    background: linear-gradient(135deg, rgba(247, 223, 30, 0.15) 0%, rgba(247, 223, 30, 0.1) 100%);
+    color: #ca8a04;
+    border-color: #F7DF1E;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("JavaScript") {
+    background: linear-gradient(135deg, rgba(247, 223, 30, 0.2) 0%, rgba(247, 223, 30, 0.15) 100%);
+    color: #fde047;
+  }
+
+  /* RabbitMQ - Orange */
+  .tech-stack-mini span:contains("RabbitMQ") {
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.15) 0%, rgba(255, 102, 0, 0.1) 100%);
+    color: #ea580c;
+    border-color: #FF6600;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("RabbitMQ") {
+    background: linear-gradient(135deg, rgba(255, 102, 0, 0.2) 0%, rgba(255, 102, 0, 0.15) 100%);
+    color: #fdba74;
+  }
+
+  /* Socket.io - Black */
+  .tech-stack-mini span:contains("Socket.io") {
+    background: linear-gradient(135deg, rgba(0, 0, 0, 0.15) 0%, rgba(0, 0, 0, 0.1) 100%);
+    color: #1f2937;
+    border-color: #010101;
+  }
+
+  [data-theme="dark"] .tech-stack-mini span:contains("Socket.io") {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, rgba(255, 255, 255, 0.1) 100%);
+    color: #f3f4f6;
+    border-color: #ffffff;
+  }
+
+  /* ===============================================
+     RESPONSIVE DESIGN
+     =============================================== */
+  @media (max-width: 1024px) {
+    .hero-section {
+      grid-template-columns: 1fr;
+      gap: var(--spacing-2xl);
+      min-height: auto;
+    }
+
+    .hero-visual {
+      height: 500px;
+      order: -1;
+    }
+
+    .hero-title {
+      font-size: 3rem;
+    }
+
+    .hero-stats {
+      max-width: 90%;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero-section {
+      padding: var(--spacing-xl) var(--spacing-lg);
+    }
+
+    .hero-title {
+      font-size: 2.25rem;
+    }
+
+    .hero-subtitle {
+      font-size: 1.25rem;
+    }
+
+    .hero-description {
+      font-size: 1rem;
+    }
+
+    .hero-actions {
+      flex-direction: column;
+      width: 100%;
+    }
+
+    .hero-actions a {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-header-row {
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-md);
+    }
+
+    .hero-info {
+      text-align: center;
+      align-items: center;
+    }
+
+    .hero-social {
+      width: 100%;
+      justify-content: center;
+    }
+
+    .hero-stats {
+      position: relative;
+      bottom: auto;
+      left: auto;
+      transform: none;
+      grid-template-columns: 1fr;
+      gap: var(--spacing-md);
+      max-width: 100%;
+      margin-top: var(--spacing-lg);
+    }
+
+    .stat-divider {
+      display: none;
+    }
+
+    .hero-visual {
+      height: 400px;
+    }
+
+    .floating-card {
+      padding: 0.75rem 1rem;
+      font-size: 0.875rem;
+    }
+
+    .floating-card i {
+      font-size: 1.5rem;
+    }
+
+    .experience-section {
+      padding-left: var(--spacing-lg);
+      padding-right: var(--spacing-lg);
+    }
+
+    .experience-timeline {
+      padding-left: var(--spacing-md);
+    }
+
+    .experience-item::before {
+      left: calc(-1 * var(--spacing-md) - 6px);
+    }
+
+    .experience-company h3 {
+      font-size: 1.5rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .hero-section {
+      padding: var(--spacing-xl) var(--spacing-md);
+    }
+
+    .hero-title {
+      font-size: 1.875rem;
+    }
+
+    .experience-section {
+      padding-left: var(--spacing-md);
+      padding-right: var(--spacing-md);
+    }
+
+    .experience-company h3 {
+      font-size: 1.25rem;
+    }
+
+    .section-title {
+      font-size: 1.75rem;
+    }
+
+    .project-detail {
+      padding: var(--spacing-md);
+    }
+
+    .project-detail:hover {
+      transform: translateX(4px);
+    }
+  }
+</style>

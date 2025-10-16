@@ -1,5 +1,6 @@
-# Stacks
-
+---
+title: "Stacks"
+---
 ## Navigation
 
 - React Navigation

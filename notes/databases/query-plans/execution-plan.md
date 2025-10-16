@@ -1,5 +1,6 @@
-# Execution Plan
-
+---
+title: "Execution Plan"
+---
 ## Components
 
 1. Operators: These symbols illustrate the specific actions taken on the data, delivering tasks such as joining tables or calculating expressions

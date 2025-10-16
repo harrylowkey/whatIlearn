@@ -1,9 +1,10 @@
-# Database Normalization
-
-<!-- published_date: 15 May, 2024 -->
-<!-- description: Database Normalization -->
-<!-- tags: database, normalization -->
-
+---
+title: "Database Normalization"
+description: "Database Normalization"
+tags:
+  - database
+  - normalization
+---
 https://www.studytonight.com/dbms/database-normalization.php
 
 

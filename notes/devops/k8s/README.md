@@ -1,6 +1,6 @@
-# k8s
-
-
+---
+title: "k8s"
+---
 ## Ingress Controller
 https://github.com/kubernetes/ingress-nginx
 

@@ -1,0 +1,179 @@
+---
+import { getCollection } from 'astro:content';
+import PageLayout from '../../layouts/PageLayout.astro';
+
+export async function getStaticPaths() {
+  const notes = await getCollection('notes');
+  return notes.map((note) => ({
+    params: { slug: note.slug },
+    props: { note },
+  }));
+}
+
+const { note } = Astro.props;
+const { Content } = await note.render();
+
+// Get other notes for sidebar
+const allNotes = await getCollection('notes');
+const recentNotes = allNotes
+  .filter(n => n.slug !== note.slug)
+  .sort((a, b) => {
+    if (a.data.date && b.data.date) {
+      return b.data.date.getTime() - a.data.date.getTime();
+    }
+    return 0;
+  })
+  .slice(0, 5);
+---
+
+<PageLayout
+  title={`${note.data.title} - Harry Dang`}
+  description={note.data.description}
+  activeTab="notes"
+>
+  <Fragment slot="head">
+    <link rel="stylesheet" href="/note.css" />
+  </Fragment>
+
+  <article class="note-content">
+    <header class="mb-4">
+      <h1 class="display-6">{note.data.title}</h1>
+
+      {note.data.description && (
+        <p class="lead text-muted">{note.data.description}</p>
+      )}
+
+      <div class="d-flex align-items-center gap-3 text-muted small">
+        {note.data.date && (
+          <span>
+            <i class="mdi mdi-calendar me-1"></i>
+            {note.data.date.toLocaleDateString('en-US', {
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric',
+            })}
+          </span>
+        )}
+      </div>
+
+      {note.data.tags && note.data.tags.length > 0 && (
+        <div class="mt-3">
+          {note.data.tags.map((tag) => (
+            <a
+              href={`/notes?key=${encodeURIComponent(tag)}`}
+              class="badge bg-primary me-1 text-decoration-none"
+            >
+              {tag}
+            </a>
+          ))}
+        </div>
+      )}
+    </header>
+
+    <div class="content-body">
+      <Content />
+    </div>
+
+    <footer class="mt-5 pt-4 border-top">
+      <a href="/notes" class="btn btn-outline-primary">
+        <i class="mdi mdi-arrow-left me-1"></i>
+        Back to Notes
+      </a>
+    </footer>
+  </article>
+
+  <div slot="sidebar">
+    {recentNotes.length > 0 && (
+      <div class="card mt-5">
+        <div class="card-body">
+          <h5 class="card-title">Recent Notes</h5>
+          <ul class="list-unstyled mt-3">
+            {recentNotes.map((recentNote) => (
+              <li class="mb-3">
+                <a href={`/notes/${recentNote.slug}`} class="text-decoration-none">
+                  {recentNote.data.title}
+                </a>
+                {recentNote.data.date && (
+                  <div class="text-muted small">
+                    {recentNote.data.date.toLocaleDateString('en-US', {
+                      month: 'short',
+                      day: 'numeric',
+                      year: 'numeric',
+                    })}
+                  </div>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    )}
+  </div>
+</PageLayout>
+
+<style>
+  .note-content {
+    font-size: 1.1rem;
+    line-height: 1.7;
+  }
+
+  .content-body :global(h1),
+  .content-body :global(h2),
+  .content-body :global(h3),
+  .content-body :global(h4),
+  .content-body :global(h5),
+  .content-body :global(h6) {
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    font-weight: 600;
+  }
+
+  .content-body :global(pre) {
+    background-color: #f8f9fa;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    overflow-x: auto;
+  }
+
+  .content-body :global(code) {
+    background-color: #f8f9fa;
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.9em;
+  }
+
+  .content-body :global(pre code) {
+    background-color: transparent;
+    padding: 0;
+  }
+
+  .content-body :global(blockquote) {
+    border-left: 4px solid #dee2e6;
+    padding-left: 1rem;
+    margin-left: 0;
+    color: #6c757d;
+  }
+
+  .content-body :global(img) {
+    max-width: 100%;
+    height: auto;
+    border-radius: 0.5rem;
+  }
+
+  .content-body :global(table) {
+    width: 100%;
+    margin: 1.5rem 0;
+    border-collapse: collapse;
+  }
+
+  .content-body :global(table th),
+  .content-body :global(table td) {
+    padding: 0.75rem;
+    border: 1px solid #dee2e6;
+  }
+
+  .content-body :global(table th) {
+    background-color: #f8f9fa;
+    font-weight: 600;
+  }
+</style>

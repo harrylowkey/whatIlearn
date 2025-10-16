@@ -1,10 +1,10 @@
-# Mcashpay (Midas Protocol)
-
-<!-- date: 26 Mar, 2019 -->
-<!-- description: A crypto wallet -->
-<!-- status: completed -->
-<!-- team_size: 9 -->
-
+---
+title: "Mcashpay (Midas Protocol)"
+description: "A crypto wallet"
+date: "26 Mar, 2019"
+status: "completed"
+team_size: "9"
+---
 ## A crypto wallet application <br/>
 *Intern, Fresher Backend Developer* <br/>
 *2019* <br/>

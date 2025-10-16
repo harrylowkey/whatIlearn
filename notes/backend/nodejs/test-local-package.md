@@ -1,5 +1,6 @@
-# Test local package
-
+---
+title: "Test local package"
+---
 package.json
 ```json
 "dependencies": {

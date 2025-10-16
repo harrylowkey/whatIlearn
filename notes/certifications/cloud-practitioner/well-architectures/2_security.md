@@ -1,5 +1,6 @@
-# Pillar 2: Security
-
+---
+title: "Pillar 2: Security"
+---
 - Protect information, systems, assets while delivering business value through risk assessments and mitigation strategies
 - Design Principles:
   - Implement a strong identity foundation: Principle of least privilege - IAM

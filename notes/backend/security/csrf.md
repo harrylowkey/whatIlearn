@@ -1,9 +1,12 @@
-# Cross Site Request Forgery
-
-<!-- published_date: 21 Jul, 2024 -->
-<!-- description: CSRF, XSRF -->
-<!-- tags: security, hacking, csrf, xsrf -->
-
+---
+title: "Cross Site Request Forgery"
+description: "CSRF, XSRF"
+tags:
+  - security
+  - hacking
+  - csrf
+  - xsrf
+---
 Cross-Site Request Forgery (CSRF) is an attack that forces an end user to execute unwanted actions on a web application in which they’re currently authenticated. With a little help from social engineering (such as sending a link via email or chat), an attacker may trick the users of a web application into executing actions of the attacker’s choosing.
 
 As represented in this diagram, a Cross Site Request Forgery attack is roughly composed of two parts:

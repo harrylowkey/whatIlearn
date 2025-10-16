@@ -1,7 +1,6 @@
-# Cluster Index
-
-
-
+---
+title: "Cluster Index"
+---
 ## Key Points
 - Data Stored in Index Order: A clustered index sorts and stores the data rows of the table based on the values of the indexed column(s). Therefore, the index and the actual data rows are stored together, making the table itself the index.
 - One Clustered Index per Table: Since the clustered index controls the physical order of data in the table, you can only have one clustered index per table. The data can only be stored in one order at a time.

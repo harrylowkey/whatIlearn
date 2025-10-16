@@ -1,9 +1,10 @@
-# Caching Strategies
-
-<!-- published_date: 27 Mar, 2024 -->
-<!-- description: caching strategies -->
-<!-- tags: redis, caching -->
-
+---
+title: "Caching Strategies"
+description: "caching strategies"
+tags:
+  - redis
+  - caching
+---
 ### 1. Lazy Loading / Cache-aside / Lazy population
 
 

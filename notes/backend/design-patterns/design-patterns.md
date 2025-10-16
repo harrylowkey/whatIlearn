@@ -1,6 +1,6 @@
-# Design patterns
-
-
+---
+title: "Design patterns"
+---
 ## Creational patterns
 
 ### 1. Factory method

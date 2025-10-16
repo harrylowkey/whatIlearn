@@ -1,5 +1,6 @@
-# Query Optimization Tips
-
+---
+title: "Query Optimization Tips"
+---
 ## Condition in Join And Where
 
 ### 1. **`INNER JOIN` with Condition vs `WHERE` with Condition**

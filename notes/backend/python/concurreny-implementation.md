@@ -1,9 +1,11 @@
-# Python Concurrency Implementation
-
-<!-- published_date: 21 Jul, 2024 -->
-<!-- description: Python Concurrency Implementation -->
-<!-- tags: python, concurrency, parallelism -->
-
+---
+title: "Python Concurrency Implementation"
+description: "Python Concurrency Implementation"
+tags:
+  - python
+  - concurrency
+  - parallelism
+---
 ## How many ways to implement concurrency in Python?
 
 Implementing concurrency in Python can be done in several ways depending on the task at hand and the level of concurrency required. Here are the main approaches:

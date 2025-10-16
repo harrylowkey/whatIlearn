@@ -1,5 +1,6 @@
-# Threading vs. Asyncio vs. Process
-
+---
+title: "Threading vs. Asyncio vs. Process"
+---
 https://dev.to/coderatul/threading-vs-asyncio-vs-multiprocessing-10ed
 
 ## Threading

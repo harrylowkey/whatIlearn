@@ -1,9 +1,10 @@
-# Transactions
-
-<!-- published_date: 18 Mar, 2024 -->
-<!-- description: Isolation levels vs read phenomena -->
-<!-- tags: database, transaction -->
-
+---
+title: "Transactions"
+description: "Isolation levels vs read phenomena"
+tags:
+  - database
+  - transaction
+---
 ## Read phenomena
 
 - Dirty reads

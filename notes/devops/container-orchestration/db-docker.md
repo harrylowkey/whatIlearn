@@ -1,5 +1,6 @@
-# Docker command
-
+---
+title: "Docker command"
+---
 ```bash
 docker run -d --name "my_container" -e "ENV_VARIABLE1=VALUE1" -e "ENV_VARIABLE2=VALUE2" -p HOST_PORT:CONTAINER_PORT my_image_name
 ```

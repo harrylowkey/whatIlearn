@@ -1,5 +1,10 @@
-# Optimistic Locking vs Pessimistic Locking
-
+---
+title: "Optimistic Locking vs Pessimistic Locking"
+description: "Note for locking"
+tags:
+  - database
+  - lock
+---
 https://medium.com/@abhirup.acharya009/managing-concurrent-access-optimistic-locking-vs-pessimistic-locking-0f6a64294db7
 
 🔑 Key Characteristics of Pessimistic Locking:
@@ -22,9 +27,6 @@ https://medium.com/@abhirup.acharya009/managing-concurrent-access-optimistic-loc
 
 ## Acquire Lock
 
-<!-- published_date: 18 Mar, 2024 -->
-<!-- description: Note for locking -->
-<!-- tags: database, lock -->
 
 1. Acquire FOR UPDATE lock (Pessimistic Locking)
 

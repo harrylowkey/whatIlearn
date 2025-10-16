@@ -1,5 +1,6 @@
-# Clean Architecture
-
+---
+title: "Clean Architecture"
+---
 |------------------------|
 |    Infrastructure      |  <-- DB, external APIs, frameworks
 |------------------------|

@@ -1,5 +1,6 @@
-# EC2 Instance Purching Option
-
+---
+title: "EC2 Instance Purching Option"
+---
 Which purchasing option is right for me?
 - On demand: coming and staying in resort whenever we like, we pay the full price
 - Reserved: like planning ahead and if we plan to stay for a long time, we may get a good discount. Savings Plans: pay a certain amount per hour for certain period and stay in any room type (e.g., King, Suite, Sea View, ...)

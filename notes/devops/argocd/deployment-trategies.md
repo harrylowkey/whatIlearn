@@ -1,9 +1,10 @@
-<!-- published_date: 01 Jul, 2024 -->
-<!-- description: ArgoCD: Deployment strategies -->
-<!-- tags: devops, argocd -->
-
-# ArgoCD: Deployment strategies
-
+---
+title: "ArgoCD: Deployment strategies"
+description: "ArgoCD: Deployment strategies"
+tags:
+  - devops
+  - argocd
+---
 - *Default* Rolling Updates (suitable for development CD): Use when you need a balance between zero downtime and minimal complexity, and when incremental updates suffice.
             Definition: Rolling updates gradually replace old versions of the application with new versions without downtime.
 

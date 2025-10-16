@@ -1,5 +1,6 @@
-# SQL Server and PostgreSQL Cheatsheet
-
+---
+title: "SQL Server and PostgreSQL Cheatsheet"
+---
 ### 1. **Data Types**
 | Concept             | SQL Server         | PostgreSQL              |
 |---------------------|--------------------|-------------------------|

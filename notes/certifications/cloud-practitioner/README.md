@@ -1,5 +1,6 @@
-# Cloud Practioner
-
+---
+title: "Cloud Practioner"
+---
 ## Well Architected Framework General Guiding Principles
 
 - Stop guessing your capacity needs

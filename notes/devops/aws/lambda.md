@@ -1,5 +1,6 @@
-# Test lambda function
-
+---
+title: "Test lambda function"
+---
 ## Use the SAM CLI to build and test locally
 
 Build your application with the `sam build --use-container` command.

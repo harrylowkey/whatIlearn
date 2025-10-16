@@ -1,5 +1,6 @@
-# Pillar 5: Cost Optimization
-
+---
+title: "Pillar 5: Cost Optimization"
+---
 - Ability to run systems to deliver business value at the lowest price point
 
 - Design Principles:

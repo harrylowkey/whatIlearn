@@ -1,5 +1,6 @@
-# Database Index
-
+---
+title: "Database Index"
+---
 - Index is constructed from b-tree
 
 

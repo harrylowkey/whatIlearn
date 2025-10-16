@@ -1,5 +1,6 @@
-# Concepts
-
+---
+title: "Concepts"
+---
 ## React concepts
 
 1. Effect

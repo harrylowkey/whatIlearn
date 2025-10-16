@@ -1,5 +1,6 @@
-# Pillar 1: Operational Excellence
-
+---
+title: "Pillar 1: Operational Excellence"
+---
 - Run and monitor systemwces to **deliver business value** and **continually improve suppoting processes and procdures**
 - Design Principles:
   - Perform operations as code - IaaS

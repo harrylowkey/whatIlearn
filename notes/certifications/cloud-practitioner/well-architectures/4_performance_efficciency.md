@@ -1,5 +1,6 @@
-# Pillar 4: Performance Efficiency
-
+---
+title: "Pillar 4: Performance Efficiency"
+---
 - Ability to use computing resources efficiently to meet system requirements and to maintain efficiency as demand changes and technologies evolve
 
 - Design principles:

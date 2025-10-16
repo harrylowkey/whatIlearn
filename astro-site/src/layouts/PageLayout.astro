@@ -1,0 +1,50 @@
+---
+import BaseLayout from './BaseLayout.astro';
+import Header from '../components/Header.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+  activeTab?: 'projects' | 'tasks' | 'notes';
+}
+
+const { title, description, activeTab } = Astro.props;
+---
+
+<BaseLayout title={title} description={description}>
+  <div class="page-wrapper">
+    <Header activeTab={activeTab} />
+    <div class="content-area">
+      <slot />
+    </div>
+  </div>
+
+  <slot name="sidebar" slot="sidebar" />
+</BaseLayout>
+
+<style>
+  .page-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xl);
+  }
+
+  .content-area {
+    background: var(--color-bg-primary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-2xl);
+    padding: var(--spacing-xl);
+    min-height: 400px;
+    transition: all var(--transition-base);
+  }
+
+  .content-area:hover {
+    box-shadow: var(--shadow-md);
+  }
+
+  @media (max-width: 768px) {
+    .content-area {
+      padding: var(--spacing-lg);
+    }
+  }
+/style>
