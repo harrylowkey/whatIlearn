@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import PageLayout from '../../layouts/PageLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 export async function getStaticPaths() {
   const projects = await getCollection('projects');
@@ -13,170 +13,1153 @@ export async function getStaticPaths() {
 const { project } = Astro.props;
 const { Content } = await project.render();
 
-// Get other projects for sidebar
+// Get related projects (same technologies)
 const allProjects = await getCollection('projects');
-const otherProjects = allProjects
-  .filter(p => p.slug !== project.slug)
+const relatedProjects = allProjects
+  .filter(p => {
+    if (p.slug === project.slug) return false;
+    if (!p.data.technologies || !project.data.technologies) return false;
+    return p.data.technologies.some(tech =>
+      project.data.technologies.includes(tech)
+    );
+  })
   .sort((a, b) => {
     if (a.data.date && b.data.date) {
       return b.data.date.getTime() - a.data.date.getTime();
     }
     return 0;
   })
-  .slice(0, 5);
+  .slice(0, 3);
 ---
 
-<PageLayout
+<BaseLayout
   title={`${project.data.title} - Harry Dang`}
   description={project.data.description}
-  activeTab="projects"
+  fullWidth={true}
 >
-  <Fragment slot="head">
-    <link rel="stylesheet" href="/project.css" />
-  </Fragment>
+  <main class="magazine-layout">
+    <!-- Left Sidebar: Tech Stack -->
+    {project.data.technologies && project.data.technologies.length > 0 && (
+      <aside class="left-tech-sidebar">
+        <div class="tech-sidebar-list">
+          {project.data.technologies.map((tech) => (
+            <span class="tech-sidebar-badge">{tech}</span>
+          ))}
+        </div>
+      </aside>
+    )}
 
-  <article class="project-content">
-    <header class="mb-4">
-      <h1 class="display-6">{project.data.title}</h1>
+    <!-- Right Sidebar: Related Projects -->
+    {relatedProjects.length > 0 && (
+      <aside class="right-related-sidebar">
+        <div class="related-sidebar-content">
+          <h3 class="related-sidebar-title">Related Projects</h3>
+          <div class="related-sidebar-list">
+            {relatedProjects.map((related) => (
+              <a href={`/projects/${related.slug}`} class="related-sidebar-card">
+                <div class="related-sidebar-image">
+                  {related.data.cover ? (
+                    <img src={related.data.cover} alt={related.data.title} />
+                  ) : (
+                    <div class="related-sidebar-placeholder">
+                      <i class="mdi mdi-code-braces"></i>
+                    </div>
+                  )}
+                </div>
+                <h4 class="related-sidebar-card-title">{related.data.title}</h4>
+              </a>
+            ))}
+          </div>
+        </div>
+      </aside>
+    )}
 
-      {project.data.description && (
-        <p class="lead text-muted">{project.data.description}</p>
-      )}
+    <!-- Hero Section with Large Cover -->
+    <section class="magazine-hero">
+      <a href="/projects" class="back-link">
+        <i class="mdi mdi-arrow-left"></i>
+        <span>All Projects</span>
+      </a>
 
-      <div class="row mt-4">
-        {project.data.date && (
-          <div class="col-md-6 mb-3">
-            <p class="mb-0">
-              <strong><i class="mdi mdi-calendar me-2"></i>Date:</strong>
-              <span class="text-muted ms-2">
+      <div class="hero-overlay">
+        {project.data.cover && (
+          <div class="hero-image">
+            <img src={project.data.cover} alt={project.data.title} />
+            <div class="image-gradient"></div>
+          </div>
+        )}
+
+        <div class="hero-content">
+          <div class="hero-meta">
+            {project.data.status && (
+              <span class={`status-pill status-${project.data.status.toLowerCase()}`}>
+                {project.data.status.toLowerCase() === 'maintain' ? 'Ongoing' : project.data.status}
+              </span>
+            )}
+            {project.data.date && (
+              <span class="date-text">
                 {project.data.date.toLocaleDateString('en-US', {
                   year: 'numeric',
                   month: 'long',
                 })}
               </span>
-            </p>
+            )}
           </div>
-        )}
 
-        {project.data.role && (
-          <div class="col-md-6 mb-3">
-            <p class="mb-0">
-              <strong><i class="mdi mdi-account-outline me-2"></i>Role:</strong>
-              <span class="text-muted ms-2">{project.data.role}</span>
-            </p>
-          </div>
-        )}
+          <h1 class="magazine-title">{project.data.title}</h1>
 
-        {project.data.company && (
-          <div class="col-md-6 mb-3">
-            <p class="mb-0">
-              <strong><i class="mdi mdi-office-building me-2"></i>Company:</strong>
-              <span class="text-muted ms-2">{project.data.company}</span>
-            </p>
+          {project.data.description && (
+            <p class="magazine-subtitle">{project.data.description}</p>
+          )}
+
+          <div class="hero-details">
+            {project.data.role && (
+              <div class="detail-item">
+                <span class="detail-label">Role</span>
+                <span class="detail-value">{project.data.role}</span>
+              </div>
+            )}
+            {project.data.company && (
+              <div class="detail-item">
+                <span class="detail-label">Company</span>
+                <span class="detail-value">{project.data.company}</span>
+              </div>
+            )}
           </div>
-        )}
+        </div>
       </div>
+    </section>
 
-      {project.data.technologies && project.data.technologies.length > 0 && (
-        <div class="mt-4">
-          <strong>Technologies:</strong>
-          <div class="mt-2">
-            {project.data.technologies.map((tech) => (
-              <span class="badge bg-primary me-1 mb-1">{tech}</span>
-            ))}
-          </div>
+    <!-- Article Content -->
+    <article class="magazine-article">
+      <div class="article-container">
+        <!-- Main Content Column -->
+        <div class="article-content">
+          <Content />
         </div>
-      )}
+      </div>
+    </article>
 
-      {project.data.tags && project.data.tags.length > 0 && (
-        <div class="mt-3">
-          {project.data.tags.map((tag) => (
-            <span class="badge bg-secondary me-1">{tag}</span>
-          ))}
-        </div>
-      )}
-    </header>
-
-    <hr />
-
-    <div class="content-body mt-4">
-      <Content />
-    </div>
-
-    <footer class="mt-5 pt-4 border-top">
-      <a href="/projects" class="btn btn-outline-primary">
-        <i class="mdi mdi-arrow-left me-1"></i>
-        Back to Projects
-      </a>
+    <!-- Footer Navigation -->
+    <footer class="magazine-footer">
+      <div class="footer-container">
+        <a href="/projects" class="footer-cta">
+          <i class="mdi mdi-view-grid"></i>
+          <span>Explore More Projects</span>
+        </a>
+      </div>
     </footer>
-  </article>
-
-  <div slot="sidebar">
-    {otherProjects.length > 0 && (
-      <div class="card mt-5">
-        <div class="card-body">
-          <h5 class="card-title">Other Projects</h5>
-          <ul class="list-unstyled mt-3">
-            {otherProjects.map((otherProject) => (
-              <li class="mb-3">
-                <a href={`/projects/${otherProject.slug}`} class="text-decoration-none">
-                  {otherProject.data.title}
-                </a>
-                {otherProject.data.date && (
-                  <div class="text-muted small">
-                    {otherProject.data.date.toLocaleDateString('en-US', {
-                      month: 'short',
-                      year: 'numeric',
-                    })}
-                  </div>
-                )}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    )}
-  </div>
-</PageLayout>
+  </main>
+</BaseLayout>
 
 <style>
-  .project-content {
-    font-size: 1.1rem;
-    line-height: 1.7;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  .content-body :global(h2),
-  .content-body :global(h3),
-  .content-body :global(h4) {
-    margin-top: 2rem;
-    margin-bottom: 1rem;
-    font-weight: 600;
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #f8fafc;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #64748b;
+    --color-border: #e2e8f0;
+    --color-primary: #6366f1;
+    --color-primary-light: #e0e7ff;
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   }
 
-  .content-body :global(ul) {
-    list-style-type: none;
-    padding-left: 0;
+  [data-theme="dark"] {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #cbd5e1;
+    --color-text-tertiary: #94a3b8;
+    --color-border: #334155;
+    --color-primary: #818cf8;
+    --color-primary-light: #312e81;
   }
 
-  .content-body :global(ul li) {
-    margin-bottom: 0.75rem;
-    padding-left: 1.5rem;
+  .magazine-layout {
     position: relative;
+    background: var(--color-bg);
   }
 
-  .content-body :global(ul li::before) {
-    content: '✓';
-    position: absolute;
+  /* Left Tech Sidebar - Flying Tags */
+  .left-tech-sidebar {
+    position: fixed;
     left: 0;
-    color: #198754;
-    font-weight: bold;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    pointer-events: none;
+    z-index: 50;
+    overflow: hidden;
   }
 
-  .content-body :global(strong) {
+  .tech-sidebar-content {
+    display: none;
+  }
+
+  .tech-sidebar-title {
+    display: none;
+  }
+
+  .tech-sidebar-list {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+
+  .tech-sidebar-badge {
+    position: absolute;
+    padding: 0.625rem 1.25rem;
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    color: #7c3aed;
+    border: 1px solid #8b5cf6;
+    border-radius: 2rem;
+    font-size: 0.8125rem;
+    font-weight: 600;
+    box-shadow: 0 4px 16px rgba(139, 92, 246, 0.2);
+    pointer-events: auto;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    white-space: nowrap;
+    z-index: 10;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.15) 100%);
+    border: 1px solid rgba(139, 92, 246, 0.4);
+    color: #c4b5fd;
+  }
+
+  /* Tech-specific colors - Microservice */
+  .tech-sidebar-badge:nth-child(1) {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.15) 0%, rgba(124, 58, 237, 0.1) 100%);
+    color: #7c3aed;
+    border-color: #8b5cf6;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(1) {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2) 0%, rgba(124, 58, 237, 0.15) 100%);
+    color: #c4b5fd;
+  }
+
+  /* GRPC - Blue */
+  .tech-sidebar-badge:nth-child(2) {
+    background: linear-gradient(135deg, rgba(36, 78, 90, 0.15) 0%, rgba(36, 78, 90, 0.1) 100%);
+    color: #244c5a;
+    border-color: #2e6273;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(2) {
+    background: linear-gradient(135deg, rgba(36, 78, 90, 0.2) 0%, rgba(36, 78, 90, 0.15) 100%);
+    color: #5ebcd1;
+  }
+
+  /* Cryptography - Gold */
+  .tech-sidebar-badge:nth-child(3) {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.15) 0%, rgba(202, 138, 4, 0.1) 100%);
+    color: #a16207;
+    border-color: #ca8a04;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(3) {
+    background: linear-gradient(135deg, rgba(234, 179, 8, 0.2) 0%, rgba(202, 138, 4, 0.15) 100%);
+    color: #fde047;
+  }
+
+  /* NestJS - Red */
+  .tech-sidebar-badge:nth-child(4) {
+    background: linear-gradient(135deg, rgba(224, 35, 78, 0.15) 0%, rgba(224, 35, 78, 0.1) 100%);
+    color: #c81e48;
+    border-color: #e0234e;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(4) {
+    background: linear-gradient(135deg, rgba(224, 35, 78, 0.2) 0%, rgba(224, 35, 78, 0.15) 100%);
+    color: #fca5a5;
+  }
+
+  /* AWS - Orange */
+  .tech-sidebar-badge:nth-child(5) {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.15) 0%, rgba(255, 153, 0, 0.1) 100%);
+    color: #d97706;
+    border-color: #FF9900;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(5) {
+    background: linear-gradient(135deg, rgba(255, 153, 0, 0.2) 0%, rgba(255, 153, 0, 0.15) 100%);
+    color: #FFB74D;
+  }
+
+  /* Kubernetes - Blue */
+  .tech-sidebar-badge:nth-child(6) {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.15) 0%, rgba(50, 108, 229, 0.1) 100%);
+    color: #2563eb;
+    border-color: #326CE5;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(6) {
+    background: linear-gradient(135deg, rgba(50, 108, 229, 0.2) 0%, rgba(50, 108, 229, 0.15) 100%);
+    color: #5E92F3;
+  }
+
+  /* PostgreSQL - Blue */
+  .tech-sidebar-badge:nth-child(7) {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.15) 0%, rgba(51, 103, 145, 0.1) 100%);
+    color: #2563eb;
+    border-color: #336791;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(7) {
+    background: linear-gradient(135deg, rgba(51, 103, 145, 0.2) 0%, rgba(51, 103, 145, 0.15) 100%);
+    color: #60a5fa;
+  }
+
+  /* MongoDB - Green */
+  .tech-sidebar-badge:nth-child(8) {
+    background: linear-gradient(135deg, rgba(77, 179, 61, 0.15) 0%, rgba(77, 179, 61, 0.1) 100%);
+    color: #16a34a;
+    border-color: #4DB33D;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(8) {
+    background: linear-gradient(135deg, rgba(77, 179, 61, 0.2) 0%, rgba(77, 179, 61, 0.15) 100%);
+    color: #86efac;
+  }
+
+  /* Redis - Red */
+  .tech-sidebar-badge:nth-child(9) {
+    background: linear-gradient(135deg, rgba(220, 56, 45, 0.15) 0%, rgba(220, 56, 45, 0.1) 100%);
+    color: #b91c1c;
+    border-color: #DC382D;
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(9) {
+    background: linear-gradient(135deg, rgba(220, 56, 45, 0.2) 0%, rgba(220, 56, 45, 0.15) 100%);
+    color: #fca5a5;
+  }
+
+  /* 10th+ badges - cycle back to purple */
+  .tech-sidebar-badge:nth-child(n+10) {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.1) 100%);
+    color: #6366f1;
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  [data-theme="dark"] .tech-sidebar-badge:nth-child(n+10) {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.2) 0%, rgba(139, 92, 246, 0.15) 100%);
+    color: #a5b4fc;
+  }
+
+  .tech-sidebar-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg,
+      transparent,
+      rgba(99, 102, 241, 0.2),
+      transparent);
+    transition: left 0.5s ease;
+    border-radius: 2rem;
+  }
+
+  .tech-sidebar-badge:hover {
+    transform: scale(1.1);
+    filter: brightness(1.2);
+  }
+
+  .tech-sidebar-badge:nth-child(1):hover {
+    box-shadow: 0 8px 32px rgba(139, 92, 246, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(2):hover {
+    box-shadow: 0 8px 32px rgba(36, 78, 90, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(3):hover {
+    box-shadow: 0 8px 32px rgba(234, 179, 8, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(4):hover {
+    box-shadow: 0 8px 32px rgba(224, 35, 78, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(5):hover {
+    box-shadow: 0 8px 32px rgba(255, 153, 0, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(6):hover {
+    box-shadow: 0 8px 32px rgba(50, 108, 229, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(7):hover {
+    box-shadow: 0 8px 32px rgba(51, 103, 145, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(8):hover {
+    box-shadow: 0 8px 32px rgba(77, 179, 61, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(9):hover {
+    box-shadow: 0 8px 32px rgba(220, 56, 45, 0.4);
+  }
+
+  .tech-sidebar-badge:nth-child(n+10):hover {
+    box-shadow: 0 8px 32px rgba(99, 102, 241, 0.4);
+  }
+
+  .tech-sidebar-badge:hover::before {
+    left: 100%;
+  }
+
+  /* Flying animations for each badge */
+  @keyframes float1 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(15px, -20px) rotate(3deg);
+    }
+    50% {
+      transform: translate(-10px, 15px) rotate(-2deg);
+    }
+    75% {
+      transform: translate(20px, 10px) rotate(2deg);
+    }
+  }
+
+  @keyframes float2 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(-20px, 15px) rotate(-3deg);
+    }
+    66% {
+      transform: translate(15px, -10px) rotate(2deg);
+    }
+  }
+
+  @keyframes float3 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(-15px, 20px) rotate(-2deg);
+    }
+    50% {
+      transform: translate(10px, -15px) rotate(3deg);
+    }
+    75% {
+      transform: translate(-20px, 5px) rotate(-1deg);
+    }
+  }
+
+  @keyframes float4 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    33% {
+      transform: translate(20px, -15px) rotate(2deg);
+    }
+    66% {
+      transform: translate(-15px, 20px) rotate(-3deg);
+    }
+  }
+
+  @keyframes float5 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(0deg);
+    }
+    25% {
+      transform: translate(10px, 15px) rotate(-2deg);
+    }
+    50% {
+      transform: translate(-20px, -10px) rotate(3deg);
+    }
+    75% {
+      transform: translate(15px, -15px) rotate(1deg);
+    }
+  }
+
+  /* Position each badge */
+  .tech-sidebar-badge:nth-child(1) {
+    left: 5%;
+    top: 20%;
+    animation: float1 8s ease-in-out infinite;
+  }
+
+  .tech-sidebar-badge:nth-child(2) {
+    left: 3%;
+    top: 45%;
+    animation: float2 7s ease-in-out infinite;
+    animation-delay: 0.5s;
+  }
+
+  .tech-sidebar-badge:nth-child(3) {
+    left: 7%;
+    top: 65%;
+    animation: float3 9s ease-in-out infinite;
+    animation-delay: 1s;
+  }
+
+  .tech-sidebar-badge:nth-child(4) {
+    left: 4%;
+    top: 80%;
+    animation: float4 7.5s ease-in-out infinite;
+    animation-delay: 1.5s;
+  }
+
+  .tech-sidebar-badge:nth-child(5) {
+    left: 6%;
+    top: 35%;
+    animation: float5 8.5s ease-in-out infinite;
+    animation-delay: 2s;
+  }
+
+  .tech-sidebar-badge:nth-child(6) {
+    left: 2%;
+    top: 55%;
+    animation: float1 9.5s ease-in-out infinite;
+    animation-delay: 2.5s;
+  }
+
+  .tech-sidebar-badge:nth-child(7) {
+    left: 8%;
+    top: 15%;
+    animation: float2 8.5s ease-in-out infinite;
+    animation-delay: 3s;
+  }
+
+  .tech-sidebar-badge:nth-child(8) {
+    left: 5%;
+    top: 75%;
+    animation: float3 7s ease-in-out infinite;
+    animation-delay: 3.5s;
+  }
+
+  .tech-sidebar-badge:nth-child(9) {
+    left: 3%;
+    top: 30%;
+    animation: float4 8s ease-in-out infinite;
+    animation-delay: 4s;
+  }
+
+  .tech-sidebar-badge:nth-child(10) {
+    left: 7%;
+    top: 50%;
+    animation: float5 9s ease-in-out infinite;
+    animation-delay: 4.5s;
+  }
+
+  /* Right Related Sidebar */
+  .right-related-sidebar {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+    max-width: 240px;
+  }
+
+  .related-sidebar-content {
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 1.25rem;
+    padding: 1.5rem;
+    box-shadow: var(--shadow-lg);
+  }
+
+  .related-sidebar-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--color-text-tertiary);
+    margin-bottom: 1rem;
+  }
+
+  .related-sidebar-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .related-sidebar-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.3s ease;
+    border-radius: 0.75rem;
+    overflow: hidden;
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
+  }
+
+  .related-sidebar-card:hover {
+    transform: translateX(-4px);
+    box-shadow: 0 8px 20px rgba(99, 102, 241, 0.2);
+    border-color: var(--color-primary);
+  }
+
+  .related-sidebar-image {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  }
+
+  .related-sidebar-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .related-sidebar-card:hover .related-sidebar-image img {
+    transform: scale(1.1);
+  }
+
+  .related-sidebar-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .related-sidebar-placeholder i {
+    font-size: 2rem;
+    color: var(--color-primary);
+    opacity: 0.5;
+  }
+
+  .related-sidebar-card-title {
+    padding: 0.75rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    line-height: 1.4;
+    margin: 0;
+    color: var(--color-text-primary);
+  }
+
+  /* Hero Section */
+  .magazine-hero {
+    position: relative;
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+  }
+
+  .back-link {
+    position: absolute;
+    top: 2rem;
+    left: 2rem;
+    z-index: 100;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border-radius: 2rem;
+    color: var(--color-text-primary);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.875rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  }
+
+  [data-theme="dark"] .back-link {
+    background: rgba(30, 41, 59, 0.95);
+  }
+
+  .back-link:hover {
+    transform: translateX(-4px);
+    box-shadow: 0 6px 25px rgba(99, 102, 241, 0.3);
+  }
+
+  .back-link i {
+    font-size: 1.25rem;
+  }
+
+  .hero-overlay {
+    position: relative;
+    flex: 1;
+    display: flex;
+    align-items: flex-end;
+    padding: 4rem 2rem;
+  }
+
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .image-gradient {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      rgba(0, 0, 0, 0.3) 50%,
+      rgba(0, 0, 0, 0.8) 100%
+    );
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 10;
+    max-width: 1000px;
+    margin: 0 auto;
+    width: 100%;
+    color: white;
+  }
+
+  .hero-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .status-pill {
+    padding: 0.5rem 1rem;
+    border-radius: 2rem;
+    font-size: 0.875rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-pill.status-maintain,
+  .status-pill.status-ongoing {
+    background: rgba(34, 197, 94, 0.2);
+    color: #4ade80;
+    border: 2px solid rgba(34, 197, 94, 0.5);
+  }
+
+  .status-pill.status-completed {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    border: 2px solid rgba(59, 130, 246, 0.5);
+  }
+
+  .date-text {
+    font-size: 0.875rem;
+    font-weight: 600;
+    opacity: 0.9;
+  }
+
+  .magazine-title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    color: #ffffff;
+  }
+
+  .magazine-subtitle {
+    font-size: 1.25rem;
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    opacity: 1;
+    max-width: 800px;
+    color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-details {
+    display: flex;
+    gap: 3rem;
+    padding-top: 1.5rem;
+    border-top: 2px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .detail-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .detail-label {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    opacity: 0.7;
     font-weight: 600;
   }
 
-  .content-body :global(p) {
+  .detail-value {
+    font-size: 1.125rem;
+    font-weight: 700;
+  }
+
+  /* Article Content */
+  .magazine-article {
+    padding: 6rem 2rem;
+    background: var(--color-bg);
+  }
+
+  .article-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+  }
+
+  /* Main Content */
+  .article-content {
+    width: 100%;
+    font-size: 1.0625rem;
+    line-height: 1.75;
+    color: var(--color-text-secondary);
+    background: transparent;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  }
+
+  .article-content :global(h2) {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 3rem;
     margin-bottom: 1rem;
+    color: var(--color-text-primary);
+    letter-spacing: -0.025em;
+    padding-bottom: 0;
+    border-bottom: none;
+  }
+
+  .article-content :global(h2:first-child) {
+    margin-top: 0;
+  }
+
+  .article-content :global(h3) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.3;
+    margin-top: 2.5rem;
+    margin-bottom: 0.75rem;
+    color: var(--color-text-primary);
+    letter-spacing: -0.02em;
+  }
+
+  .article-content :global(h4) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-text-primary);
+    letter-spacing: -0.01em;
+  }
+
+  .article-content :global(p) {
+    margin-bottom: 1.5rem;
+    color: var(--color-text-secondary);
+    font-weight: 400;
+  }
+
+  .article-content :global(p:first-of-type) {
+    font-size: 1.1875rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 2rem;
+    font-weight: 400;
+  }
+
+  .article-content :global(strong) {
+    font-weight: 700;
+    color: var(--color-text-primary);
+  }
+
+  .article-content :global(a) {
+    color: var(--color-primary);
+    text-decoration: none;
+    font-weight: 500;
+    border-bottom: 1px solid var(--color-primary);
+    transition: all 0.2s ease;
+    padding-bottom: 1px;
+  }
+
+  .article-content :global(a:hover) {
+    opacity: 0.7;
+  }
+
+  .article-content :global(ul),
+  .article-content :global(ol) {
+    margin-bottom: 1.5rem;
+    padding-left: 2rem;
+  }
+
+  .article-content :global(ul) {
+    list-style-type: disc;
+  }
+
+  .article-content :global(ol) {
+    list-style-type: decimal;
+  }
+
+  .article-content :global(ul li),
+  .article-content :global(ol li) {
+    margin-bottom: 0.5rem;
+    padding-left: 0.5rem;
+    color: var(--color-text-secondary);
+    line-height: 1.75;
+  }
+
+  .article-content :global(ul li::marker),
+  .article-content :global(ol li::marker) {
+    color: var(--color-text-tertiary);
+  }
+
+  .article-content :global(blockquote) {
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    border-left: 3px solid var(--color-text-tertiary);
+    font-size: 1.0625rem;
+    font-style: italic;
+    color: var(--color-text-secondary);
+    line-height: 1.7;
+    background: var(--color-surface);
+    border-radius: 0.25rem;
+  }
+
+  .article-content :global(blockquote p) {
+    margin-bottom: 0;
+  }
+
+  .article-content :global(blockquote p:last-child) {
+    margin-bottom: 0;
+  }
+
+  .article-content :global(code) {
+    background: var(--color-surface);
+    color: var(--color-primary);
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.25rem;
+    font-size: 0.875em;
+    font-weight: 500;
+    font-family: 'Monaco', 'Menlo', 'Consolas', monospace;
+    border: 1px solid var(--color-border);
+  }
+
+  .article-content :global(pre) {
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 0.5rem;
+    padding: 1.5rem;
+    margin: 2.5rem 0;
+    overflow-x: auto;
+    line-height: 1.6;
+  }
+
+  .article-content :global(pre code) {
+    background: transparent;
+    color: var(--color-text-primary);
+    padding: 0;
+    font-size: 0.875rem;
+    border: none;
+  }
+
+  .article-content :global(img),
+  .article-content :global(video) {
+    max-width: 100%;
+    width: 100%;
+    height: auto;
+    border-radius: 0.25rem;
+    margin: 2rem 0;
+    display: block;
+  }
+
+  .article-content :global(iframe) {
+    max-width: 100%;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border-radius: 0.25rem;
+    margin: 2rem 0;
+    border: 1px solid var(--color-border);
+  }
+
+  .article-content :global(figure) {
+    margin: 2rem 0;
+  }
+
+  .article-content :global(figure img) {
+    margin: 0;
+  }
+
+  .article-content :global(figcaption) {
+    font-size: 0.875rem;
+    color: var(--color-text-tertiary);
+    text-align: center;
+    margin-top: 0.5rem;
+    font-style: normal;
+  }
+
+  .article-content :global(table) {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 2rem 0;
+    font-size: 0.9375rem;
+  }
+
+  .article-content :global(th),
+  .article-content :global(td) {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .article-content :global(th) {
+    background: var(--color-surface);
+    font-weight: 600;
+    color: var(--color-text-primary);
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+  }
+
+  .article-content :global(td) {
+    color: var(--color-text-secondary);
+  }
+
+  .article-content :global(tr:last-child td) {
+    border-bottom: none;
+  }
+
+  .article-content :global(tbody tr:hover) {
+    background: var(--color-surface);
+  }
+
+  /* Magazine Footer */
+  .magazine-footer {
+    padding: 4rem 2rem;
+    background: var(--color-surface);
+    border-top: 2px solid var(--color-border);
+  }
+
+  .footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .footer-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 2.5rem;
+    background: var(--gradient-primary);
+    color: white;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.125rem;
+    border-radius: 3rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+  }
+
+  .footer-cta:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.5);
+  }
+
+  .footer-cta i {
+    font-size: 1.5rem;
+  }
+
+  /* Responsive Design */
+  @media (max-width: 1400px) {
+    .left-tech-sidebar,
+    .right-related-sidebar {
+      display: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .magazine-title {
+      font-size: 3rem;
+    }
+
+    .magazine-subtitle {
+      font-size: 1.125rem;
+    }
+
+    .hero-details {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .article-content {
+      font-size: 1rem;
+      padding: 2rem;
+    }
+
+    .article-content :global(h2) {
+      font-size: 2rem;
+    }
+
+    .article-content :global(h3) {
+      font-size: 1.5rem;
+    }
+
+    .article-content :global(p:first-of-type) {
+      font-size: 1.125rem;
+    }
+
+    .sidebar-section {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 576px) {
+    .magazine-title {
+      font-size: 2rem;
+    }
+
+    .magazine-subtitle {
+      font-size: 1rem;
+    }
+
+    .article-sidebar {
+      grid-template-columns: 1fr;
+    }
+
+    .article-content {
+      padding: 1.5rem;
+    }
+
+    .back-link {
+      top: 1rem;
+      left: 1rem;
+      padding: 0.625rem 1.25rem;
+    }
   }
 </style>

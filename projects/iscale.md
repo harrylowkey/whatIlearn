@@ -4,6 +4,8 @@ description: "Online course Registration"
 date: "30 Mar, 2024"
 status: "completed"
 team_size: "2"
+technologies: ["Python", "FastAPI", "AWS", "Postgres"]
+cover: "/project-covers/iscale.jpg"
 ---
 An online course registration platform.
 

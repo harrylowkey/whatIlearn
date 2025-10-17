@@ -1,9 +1,11 @@
 ---
-title: "Materiality (Hodfords)"
+title: "Materiality"
 description: "One of the service in microservice ecosystem"
 date: "26 Mar, 2022"
 status: "completed"
 team_size: "9"
+technologies: ["Kubernetes", "Helm", "Nestjs", "Typescript", "Postgres", "Redis", "Microservice", "Kafka"]
+cover: "/project-covers/materiality.png"
 ---
 ## One of the service in microservice ecosystem <br/>
 *Backend Developer* <br/>

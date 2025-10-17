@@ -1,9 +1,11 @@
 ---
-title: "Climate (Hodfords)"
+title: "Climate"
 description: "A service to calculate CO2 emissions"
 date: "26 Mar, 2021"
 status: "completed"
 team_size: "9"
+technologies: ["Kubernetes", "Helm", "Nestjs", "Typescript", "Postgres", "Redis"]
+cover: "/project-covers/climate.png"
 ---
 ## A service to calculate CO2 emissions <br/>
 *Backend Developer* <br/>

@@ -1,9 +1,11 @@
 ---
-title: "Mcashpay (Midas Protocol)"
+title: "Mcashpay"
 description: "A crypto wallet"
 date: "26 Mar, 2019"
 status: "completed"
 team_size: "9"
+technologies: ["Loopback 3", "Javascript", "RabbitMQ", "Socket", "Redis pub-sub", "Microservice"]
+cover: "/project-covers/mcashpay.png"
 ---
 ## A crypto wallet application <br/>
 *Intern, Fresher Backend Developer* <br/>

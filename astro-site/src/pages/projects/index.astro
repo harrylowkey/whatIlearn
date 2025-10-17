@@ -1,6 +1,6 @@
 ---
 import { getCollection } from 'astro:content';
-import PageLayout from '../../layouts/PageLayout.astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
 
 const allProjects = await getCollection('projects');
 
@@ -14,187 +14,893 @@ const sortedProjects = allProjects.sort((a, b) => {
   return a.data.title.localeCompare(b.data.title);
 });
 
+// Group projects by year
+const projectsByYear = sortedProjects.reduce((acc, project) => {
+  const year = project.data.date ? project.data.date.getFullYear() : 'Undated';
+  if (!acc[year]) {
+    acc[year] = [];
+  }
+  acc[year].push(project);
+  return acc;
+}, {} as Record<string, typeof sortedProjects>);
+
+// Sort years descending
+const years = Object.keys(projectsByYear).sort((a, b) => {
+  if (a === 'Undated') return 1;
+  if (b === 'Undated') return -1;
+  return Number(b) - Number(a);
+});
+
 const totalProjects = sortedProjects.length;
+
+// Extract all unique technologies (case-insensitive)
+const allTechnologies = [...new Set(
+  allProjects.flatMap(p =>
+    (p.data.technologies || []).map(tech => tech.toLowerCase())
+  )
+)].sort();
 ---
 
-<PageLayout
+<BaseLayout
   title="Projects - Harry Dang"
   description="My portfolio of projects"
-  activeTab="projects"
   fullWidth={true}
 >
-  <div class="projects-container">
-    <!-- About Section Below Header -->
-    <section class="about-section">
-      <div class="about-content">
-        <div class="about-icon">
-          <i class="mdi mdi-information"></i>
-        </div>
-        <div class="about-text">
-          <h3 class="about-title">About My Work</h3>
-          <p class="about-description">
-            Projects I've contributed to throughout my career. Specializing in backend development with Python, Node.js, databases, and DevOps.
-          </p>
-        </div>
-        <div class="projects-count">
-          <div class="count-number">{totalProjects}</div>
-          <div class="count-label">Projects</div>
-        </div>
-      </div>
-    </section>
+  <main class="projects-main">
+    <!-- Animated Background -->
+    <div class="animated-bg">
+      <div class="bg-gradient-1"></div>
+      <div class="bg-gradient-2"></div>
+      <div class="bg-gradient-3"></div>
+    </div>
 
-    <div class="tab-pane show active">
-      <div class="projects-header">
-        <h2 class="projects-heading">All Projects</h2>
-      </div>
-
-    <div class="projects-grid">
-      {sortedProjects.map((project) => (
-        <article class="project-card-modern">
-          <div class="project-card-header">
-            <div class="project-main-info">
-              <h3 class="project-title">
-                <a href={`/projects/${project.slug}`}>
-                  {project.data.title}
-                </a>
-              </h3>
-              {project.data.role && (
-                <div class="project-role">
-                  <i class="mdi mdi-account-outline"></i>
-                  <span>{project.data.role}</span>
+    <!-- Hero Section -->
+    <section class="projects-hero">
+      <!-- Floating Project Previews -->
+      <div class="floating-previews">
+        {sortedProjects.slice(0, 10).map((project, index) => (
+          <a href={`/projects/${project.slug}`} class={`preview-card preview-${index + 1}`}>
+            <div class="preview-image">
+              {project.data.cover ? (
+                <img src={project.data.cover} alt={project.data.title} />
+              ) : (
+                <div class="preview-placeholder">
+                  <i class="mdi mdi-code-braces-box"></i>
                 </div>
               )}
             </div>
-            {project.data.date && (
-              <div class="project-date">
-                <i class="mdi mdi-calendar"></i>
-                <span>
-                  {project.data.date.toLocaleDateString('en-US', {
-                    month: 'short',
-                    year: 'numeric',
-                  })}
-                </span>
-              </div>
-            )}
+            <div class="preview-info">
+              <h4 class="preview-title">{project.data.title}</h4>
+              {project.data.technologies && project.data.technologies.length > 0 && (
+                <div class="preview-techs">
+                  {project.data.technologies.slice(0, 2).map((tech) => (
+                    <span class="preview-tech-tag">{tech}</span>
+                  ))}
+                </div>
+              )}
+            </div>
+          </a>
+        ))}
+      </div>
+
+      <div class="hero-content-wrapper">
+          <div class="hero-badge">
+            <i class="mdi mdi-rocket-launch"></i>
+            <span>Portfolio</span>
           </div>
+          <h1 class="hero-title-projects">
+            My <span class="text-gradient">Projects</span>
+          </h1>
+          <p class="hero-description-projects">
+                        A timeline journey through 10+ projects showcasing my expertise in <br /> backend development,
+            cloud infrastructure and scalable system architecture
+          </p>
 
-          {project.data.description && (
-            <p class="project-description">{project.data.description}</p>
-          )}
-
-          {project.data.technologies && project.data.technologies.length > 0 && (
-            <div class="project-technologies">
-              <div class="tech-label">
-                <i class="mdi mdi-code-tags"></i>
-                <span>Tech Stack</span>
+          <div class="hero-stats-grid">
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="mdi mdi-briefcase-check"></i>
               </div>
-              <div class="tech-tags-wrapper">
-                {project.data.technologies.map((tech) => (
-                  <span class="tech-tag-project">{tech}</span>
-                ))}
+              <div class="stat-content">
+                <div class="stat-number">10+</div>
+                <div class="stat-label">Total Projects</div>
               </div>
             </div>
-          )}
-
-          <div class="project-footer">
-            {project.data.company && (
-              <div class="project-company">
-                <i class="mdi mdi-office-building"></i>
-                <span>{project.data.company}</span>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="mdi mdi-calendar-range"></i>
               </div>
-            )}
-            <a href={`/projects/${project.slug}`} class="project-link-btn">
-              <span>View Details</span>
-              <i class="mdi mdi-arrow-right"></i>
-            </a>
+              <div class="stat-content">
+                <div class="stat-number">5+</div>
+                <div class="stat-label">Years</div>
+              </div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-icon">
+                <i class="mdi mdi-code-braces"></i>
+              </div>
+              <div class="stat-content">
+                <div class="stat-number">20+</div>
+                <div class="stat-label">Technologies</div>
+              </div>
+            </div>
+            
           </div>
-        </article>
-      ))}
+        </div>
+    </section>
+
+    <div class="projects-container">
+      <!-- Filter Section -->
+      <section class="filter-section">
+        <div class="filter-content">
+          <div class="filter-header">
+            <div class="filter-title-wrapper">
+              <i class="mdi mdi-filter-variant"></i>
+              <h3>Filter By Techs</h3>
+            </div>
+            <button class="filter-reset" id="resetFilter">
+              <i class="mdi mdi-refresh"></i>
+              <span>Reset</span>
+            </button>
+          </div>
+          <div class="filter-buttons" id="filterButtons">
+            <button class="filter-btn active" data-filter="all">
+              <i class="mdi mdi-view-grid"></i>
+              <span>All</span>
+              <span class="filter-count">10+</span>
+            </button>
+            {allTechnologies.map((tech) => (
+              <button class="filter-btn" data-filter={tech}>
+                <span>{tech}</span>
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Year Navigation -->
+      <div class="year-nav-sticky" id="yearNav">
+        <div class="year-nav-content">
+          {years.map((year) => (
+            <button class="year-nav-btn" data-year={year}>
+              {year}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Timeline View -->
+      <section class="timeline-section">
+        {years.map((year, yearIndex) => (
+          <div class="year-section" id={`year-${year}`} data-year={year}>
+            <div class="year-header">
+              <div class="year-marker">
+                <div class="year-dot"></div>
+                {yearIndex !== years.length - 1 && <div class="year-line"></div>}
+              </div>
+              <div class="year-title-wrapper">
+                <h2 class="year-title">{year}</h2>
+                <span class="year-count">{projectsByYear[year].length} Project{projectsByYear[year].length !== 1 ? 's' : ''}</span>
+              </div>
+            </div>
+
+            <div class="projects-grid">
+              {projectsByYear[year].map((project) => (
+                <article class="project-card-grid" data-technologies={JSON.stringify(project.data.technologies || [])}>
+                  <a href={`/projects/${project.slug}`} class="project-card-link">
+                    <div class="project-cover">
+                      {project.data.cover ? (
+                        <img src={project.data.cover} alt={project.data.title} />
+                      ) : (
+                        <div class="project-cover-placeholder">
+                          <i class="mdi mdi-code-braces-box"></i>
+                        </div>
+                      )}
+                      <div class="project-overlay">
+                        <i class="mdi mdi-arrow-right-circle"></i>
+                      </div>
+                    </div>
+
+                    <div class="project-content">
+                      <div class="project-meta-top">
+                        {project.data.status && (
+                          <div class={`project-status-badge status-${project.data.status.toLowerCase()}`}>
+                            <i class={`mdi ${project.data.status.toLowerCase() === 'maintain' ? 'mdi-cog-sync' : project.data.status.toLowerCase() === 'completed' ? 'mdi-check-circle' : 'mdi-progress-clock'}`}></i>
+                            <span>{project.data.status.toLowerCase() === 'maintain' ? 'Ongoing' : project.data.status}</span>
+                          </div>
+                        )}
+                        {project.data.date && (
+                          <div class="project-date-small">
+                            <i class="mdi mdi-calendar"></i>
+                            <span>
+                              {project.data.date.toLocaleDateString('en-US', {
+                                month: 'short',
+                                year: 'numeric',
+                              })}
+                            </span>
+                          </div>
+                        )}
+                      </div>
+
+                      <div class="project-info-wrapper">
+                        <h3 class="project-title-grid">{project.data.title}</h3>
+
+                        {project.data.description && (
+                          <p class="project-description-grid">{project.data.description}</p>
+                        )}
+
+                        {project.data.technologies && project.data.technologies.length > 0 && (
+                          <div class="project-technologies-grid">
+                            {project.data.technologies.slice(0, 3).map((tech) => (
+                              <span class="tech-tag-small">{tech}</span>
+                            ))}
+                            {project.data.technologies.length > 3 && (
+                              <span class="tech-tag-more">+{project.data.technologies.length - 3}</span>
+                            )}
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              ))}
+            </div>
+          </div>
+        ))}
+      </section>
     </div>
-  </div>
-  </div>
-</PageLayout>
+  </main>
+</BaseLayout>
+
+<script>
+    // Filter functionality with multiple technology selection
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const projectCards = document.querySelectorAll('.project-card-grid');
+    const yearSectionsForFilter = document.querySelectorAll('.year-section');
+    const resetButton = document.getElementById('resetFilter');
+
+    let selectedFilters = new Set(['all']);
+
+    function updateFilter() {
+      let visibleCount = 0;
+
+      projectCards.forEach(card => {
+        const technologies = JSON.parse(card.getAttribute('data-technologies') || '[]');
+        const technologiesLower = technologies.map(t => t.toLowerCase());
+
+        // If 'all' is selected or if the card has ALL of the selected technologies (case-insensitive)
+        const matchesFilter = selectedFilters.has('all') ||
+          Array.from(selectedFilters).every(tech => technologiesLower.includes(tech.toLowerCase()));
+
+        if (matchesFilter) {
+          card.style.display = '';
+          card.style.animation = 'fadeInUp 0.5s ease-out';
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Hide year sections with no visible projects
+      yearSectionsForFilter.forEach(section => {
+        const visibleProjectsInYear = section.querySelectorAll('.project-card-grid:not([style*="display: none"])');
+        if (visibleProjectsInYear.length === 0) {
+          section.style.display = 'none';
+        } else {
+          section.style.display = '';
+        }
+      });
+    }
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter');
+
+        if (filter === 'all') {
+          // Reset to 'all'
+          selectedFilters.clear();
+          selectedFilters.add('all');
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+        } else {
+          // Remove 'all' if a specific tech is selected
+          selectedFilters.delete('all');
+
+          // Toggle the filter
+          if (selectedFilters.has(filter)) {
+            selectedFilters.delete(filter);
+            button.classList.remove('active');
+
+            // If no filters selected, reset to 'all'
+            if (selectedFilters.size === 0) {
+              selectedFilters.add('all');
+              filterButtons[0]?.classList.add('active');
+            }
+          } else {
+            selectedFilters.add(filter);
+            button.classList.add('active');
+            // Remove 'all' active state
+            filterButtons[0]?.classList.remove('active');
+          }
+        }
+
+        updateFilter();
+      });
+    });
+
+    resetButton?.addEventListener('click', () => {
+      selectedFilters.clear();
+      selectedFilters.add('all');
+      filterButtons.forEach(btn => btn.classList.remove('active'));
+      filterButtons[0]?.classList.add('active');
+      updateFilter();
+    });
+
+    // Year navigation scroll spy and click handlers
+    const yearNavButtons = document.querySelectorAll('.year-nav-btn');
+    const yearSections = document.querySelectorAll('.year-section');
+
+    // Smooth scroll to year
+    yearNavButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const year = button.getAttribute('data-year');
+        const section = document.getElementById(`year-${year}`);
+        if (section) {
+          const navHeight = document.querySelector('.projects-nav')?.offsetHeight || 0;
+          const yearNavHeight = document.querySelector('.year-nav-sticky')?.offsetHeight || 0;
+          const offset = navHeight + yearNavHeight + 20;
+
+          const elementPosition = section.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - offset;
+
+          window.scrollTo({
+            top: offsetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // Update active year on scroll
+    const observerOptions = {
+      threshold: 0.3,
+      rootMargin: '-100px 0px -50% 0px'
+    };
+
+    const yearObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const year = entry.target.getAttribute('data-year');
+          yearNavButtons.forEach(btn => {
+            if (btn.getAttribute('data-year') === year) {
+              btn.classList.add('active');
+            } else {
+              btn.classList.remove('active');
+            }
+          });
+        }
+      });
+    }, observerOptions);
+
+    yearSections.forEach(section => {
+      yearObserver.observe(section);
+    });
+
+    // Scroll animations for project cards
+    const cardObserverOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const cardObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, cardObserverOptions);
+
+    document.querySelectorAll('.project-card-grid, .stat-card, .filter-section').forEach(el => {
+      cardObserver.observe(el);
+    });
+</script>
 
 <style>
-  /* Projects Container - Centered with max width */
-  .projects-container {
-    max-width: 1000px;
-    margin: 0 auto;
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
   }
 
-  /* About Section Below Header */
-  .about-section {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-lg);
-    margin-bottom: var(--spacing-xl);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.08);
-    transition: all var(--transition-base);
+  :root {
+    --color-bg: #ffffff;
+    --color-surface: #f8fafc;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #64748b;
+    --color-border: #e2e8f0;
+    --color-primary: #6366f1;
+    --color-primary-light: #e0e7ff;
+    --color-accent: #ec4899;
+    --gradient-primary: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    --gradient-accent: linear-gradient(135deg, #ec4899 0%, #f59e0b 100%);
+    --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+    --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+    --shadow-lg: 0 10px 15px -3px rgb(0 0 0 / 0.1);
+    --shadow-xl: 0 20px 25px -5px rgb(0 0 0 / 0.1);
   }
 
-  .about-section:hover {
-    box-shadow: 0 8px 30px rgba(99, 102, 241, 0.15);
+  [data-theme="dark"] {
+    --color-bg: #0f172a;
+    --color-surface: #1e293b;
+    --color-text-primary: #f1f5f9;
+    --color-text-secondary: #cbd5e1;
+    --color-text-tertiary: #94a3b8;
+    --color-border: #334155;
+    --color-primary: #818cf8;
+    --color-primary-light: #312e81;
   }
 
-  [data-theme="dark"] .about-section {
-    background: rgba(30, 41, 59, 0.9);
+  /* Main Content */
+  .projects-main {
+    position: relative;
+    min-height: calc(100vh - 80px);
+    padding: 2rem 0;
   }
 
-  .about-content {
-    display: flex;
-    align-items: center;
-    gap: var(--spacing-xl);
-    flex-wrap: wrap;
+  /* Animated Background */
+  .animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
   }
 
-  .about-icon {
-    width: 48px;
-    height: 48px;
+  .bg-gradient-1,
+  .bg-gradient-2,
+  .bg-gradient-3 {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(80px);
+    opacity: 0.15;
+    animation: float 20s ease-in-out infinite;
+  }
+
+  .bg-gradient-1 {
+    width: 600px;
+    height: 600px;
     background: var(--gradient-primary);
-    border-radius: var(--radius-lg);
+    top: -200px;
+    right: -200px;
+    animation-delay: 0s;
+  }
+
+  .bg-gradient-2 {
+    width: 500px;
+    height: 500px;
+    background: var(--gradient-accent);
+    bottom: -150px;
+    left: -150px;
+    animation-delay: 7s;
+  }
+
+  .bg-gradient-3 {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(135deg, #06b6d4 0%, #3b82f6 100%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation-delay: 14s;
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(100px, -100px) scale(1.1);
+    }
+    66% {
+      transform: translate(-100px, 100px) scale(0.9);
+    }
+  }
+
+  /* Container */
+  .projects-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  /* Hero Section */
+  .projects-hero {
+    min-height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
-    color: white;
-    flex-shrink: 0;
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+    padding: 4rem 2rem;
+    margin-bottom: 0;
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out 0.2s forwards;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
   }
 
-  .about-text {
-    flex: 1;
-    min-width: 250px;
+  /* Floating Project Previews */
+  .floating-previews {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
   }
 
-  .about-title {
-    font-size: 1.125rem;
-    font-weight: 700;
-    color: var(--color-text-primary);
-    margin-bottom: 0.375rem;
-  }
-
-  .about-description {
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin: 0;
-    font-size: 0.9375rem;
-  }
-
-  .projects-count {
+  .preview-card {
+    position: absolute;
+    width: 240px;
+    height: 160px;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    text-decoration: none;
+    color: inherit;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    cursor: pointer;
+    pointer-events: auto;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    padding: var(--spacing-md);
-    background: rgba(99, 102, 241, 0.1);
-    border-radius: var(--radius-lg);
-    border: 2px solid var(--color-primary);
-    min-width: 90px;
+    background: rgba(255, 255, 255, 0.95);
+    opacity: 0.2;
   }
 
-  .count-number {
+  [data-theme="dark"] .preview-card {
+    background: rgba(30, 41, 59, 0.95);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .preview-card:hover {
+    transform: scale(1.15) translateY(-10px) !important;
+    opacity: 1 !important;
+    z-index: 1000;
+    box-shadow: 0 20px 60px rgba(99, 102, 241, 0.5);
+    border-color: var(--color-primary);
+    animation-play-state: paused !important;
+  }
+
+  .preview-image {
+    width: 100%;
+    height: 100px;
+    flex-shrink: 0;
+    overflow: hidden;
+  }
+
+  .preview-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+  }
+
+  .preview-card:hover .preview-image img {
+    transform: scale(1.1);
+  }
+
+  .preview-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.3) 0%, rgba(139, 92, 246, 0.3) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .preview-placeholder i {
     font-size: 2rem;
+    color: var(--color-primary);
+  }
+
+  .preview-info {
+    padding: 0.75rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .preview-title {
+    font-size: 0.875rem;
+    font-weight: 700;
+    margin: 0;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .preview-techs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.25rem;
+  }
+
+  .preview-tech-tag {
+    padding: 0.125rem 0.375rem;
+    background: var(--color-primary-light);
+    border: 1px solid var(--color-primary);
+    border-radius: 0.25rem;
+    font-size: 0.625rem;
+    font-weight: 600;
+    color: var(--color-primary);
+  }
+
+  /* Positioning and animations for each preview card */
+  .preview-1 {
+    top: 5%;
+    left: 8%;
+    animation: float1 15s ease-in-out infinite;
+  }
+
+  .preview-2 {
+    top: 5%;
+    right: 8%;
+    animation: float2 18s ease-in-out infinite;
+  }
+
+  .preview-3 {
+    top: 30%;
+    left: 2%;
+    animation: float3 20s ease-in-out infinite;
+  }
+
+  .preview-4 {
+    top: 30%;
+    right: 2%;
+    animation: float4 16s ease-in-out infinite;
+  }
+
+  .preview-5 {
+    bottom: 5%;
+    left: 8%;
+    animation: float5 22s ease-in-out infinite;
+  }
+
+  .preview-6 {
+    bottom: 5%;
+    right: 8%;
+    animation: float6 19s ease-in-out infinite;
+  }
+
+  .preview-7 {
+    top: 50%;
+    left: 2%;
+    animation: float7 17s ease-in-out infinite;
+  }
+
+  .preview-8 {
+    top: 50%;
+    right: 2%;
+    animation: float8 21s ease-in-out infinite;
+  }
+
+  .preview-9 {
+    top: 80%;
+    left: 40%;
+    transform: translate(-10%, -10%);
+    animation: float9 23s ease-in-out infinite;
+  }
+
+  .preview-10 {
+    bottom: 80%;
+    left: 40%;
+    transform: translate(-50%, 50%);
+    animation: float10 24s ease-in-out infinite;
+  }
+
+  @keyframes float1 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(-5deg);
+    }
+    50% {
+      transform: translate(20px, -30px) rotate(5deg);
+    }
+  }
+
+  @keyframes float2 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(5deg);
+    }
+    50% {
+      transform: translate(-25px, 25px) rotate(-3deg);
+    }
+  }
+
+  @keyframes float3 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(3deg);
+    }
+    50% {
+      transform: translate(30px, 20px) rotate(-5deg);
+    }
+  }
+
+  @keyframes float4 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(-3deg);
+    }
+    50% {
+      transform: translate(-20px, -25px) rotate(4deg);
+    }
+  }
+
+  @keyframes float5 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(4deg);
+    }
+    50% {
+      transform: translate(-20px, 25px) rotate(-6deg);
+    }
+  }
+
+  @keyframes float6 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(-4deg);
+    }
+    50% {
+      transform: translate(-30px, -20px) rotate(5deg);
+    }
+  }
+
+  @keyframes float7 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(6deg);
+    }
+    50% {
+      transform: translate(25px, -20px) rotate(-4deg);
+    }
+  }
+
+  @keyframes float8 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(-6deg);
+    }
+    50% {
+      transform: translate(-25px, 20px) rotate(3deg);
+    }
+  }
+
+  @keyframes float9 {
+    0%, 100% {
+      transform: translate(-10%, -10%) translate(0, 0) rotate(2deg);
+    }
+    50% {
+      transform: translate(-10%, -10%) translate(30px, 25px) rotate(-5deg);
+    }
+  }
+
+  @keyframes float10 {
+    0%, 100% {
+      transform: translate(0, 0) rotate(6deg);
+    }
+    50% {
+      transform: translate(25px, -20px) rotate(-4deg);
+    }
+  }
+
+  .hero-content-wrapper {
+    text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 10;
+    pointer-events: auto;
+  }
+
+  .hero-content-wrapper * {
+    pointer-events: auto;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    background: var(--color-primary-light);
+    border: 2px solid var(--color-primary);
+    border-radius: 2rem;
+    color: var(--color-primary);
+    font-weight: 700;
+    font-size: 0.875rem;
+    margin-bottom: 1.5rem;
+    animation: pulse 2s ease-in-out infinite;
+  }
+
+  .hero-badge i {
+    font-size: 1.125rem;
+  }
+
+  .hero-title-projects {
+    font-size: 5rem;
+    font-weight: 900;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: var(--color-text-primary);
+  }
+
+  .text-gradient {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .hero-description-projects {
+    font-size: 1.5rem;
+    line-height: 1.7;
+    color: var(--color-text-secondary);
+    margin-bottom: 4rem;
+  }
+
+  .hero-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-top: 4rem;
+  }
+
+  .stat-card {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 2rem;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 1.5rem;
+    transition: all 0.3s ease;
+    opacity: 0;
+    animation: fadeInUp 0.6s ease-out forwards;
+  }
+
+  .stat-card:nth-child(1) { animation-delay: 0.3s; }
+  .stat-card:nth-child(2) { animation-delay: 0.4s; }
+  .stat-card:nth-child(3) { animation-delay: 0.5s; }
+
+  .stat-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.2);
+  }
+
+  .stat-icon {
+    width: 64px;
+    height: 64px;
+    background: var(--gradient-primary);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    flex-shrink: 0;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  }
+
+  .stat-content {
+    flex: 1;
+    text-align: left;
+  }
+
+  .stat-number {
+    font-size: 2.5rem;
     font-weight: 800;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -203,347 +909,743 @@ const totalProjects = sortedProjects.length;
     line-height: 1;
   }
 
-  .count-label {
-    font-size: 0.75rem;
+  .stat-label {
+    font-size: 0.875rem;
     font-weight: 600;
-    color: var(--color-primary);
-    margin-top: 0.25rem;
+    color: var(--color-text-secondary);
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: 0.05em;
+    margin-top: 0.25rem;
   }
 
-  /* Projects Header */
-  .projects-header {
-    margin-bottom: var(--spacing-lg);
+  /* Filter Section */
+  .filter-section {
+    background: transparent;
+    border: none;
+    padding: 3rem 0;
+    margin-bottom: 3rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
   }
 
-  .projects-heading {
-    font-size: 1.5rem;
-    font-weight: 700;
+  .filter-section.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .filter-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .filter-title-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .filter-title-wrapper i {
+    font-size: 2rem;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .filter-title-wrapper h3 {
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .filter-reset {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(99, 102, 241, 0.1);
+    border: 2px solid rgba(99, 102, 241, 0.3);
+    border-radius: 1rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+  }
+
+  .filter-reset:hover {
+    background: rgba(99, 102, 241, 0.2);
+    border-color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.2);
+  }
+
+  .filter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  .filter-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    background: rgba(255, 255, 255, 0.8);
+    border: 2px solid var(--color-border);
+    border-radius: 2rem;
     color: var(--color-text-primary);
-    margin-bottom: 0;
+    font-weight: 600;
+    font-size: 0.875rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  }
+
+  [data-theme="dark"] .filter-btn {
+    background: rgba(30, 41, 59, 0.8);
+  }
+
+  .filter-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+  }
+
+  .filter-btn.active {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    transform: translateY(-2px);
+  }
+
+  .filter-btn i {
+    font-size: 1.25rem;
+  }
+
+  .filter-count {
+    padding: 0.25rem 0.625rem;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  /* Year Navigation */
+  .year-nav-sticky {
+    position: fixed;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 90;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    border: 2px solid var(--color-border);
+    border-radius: 1rem;
+    padding: 1rem;
+    box-shadow: var(--shadow-md);
+    max-width: 120px;
+  }
+
+  [data-theme="dark"] .year-nav-sticky {
+    background: rgba(30, 41, 59, 0.95);
+  }
+
+  .year-nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    overflow-y: auto;
+    max-height: 60vh;
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-primary) transparent;
+  }
+
+  .year-nav-content::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  .year-nav-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  .year-nav-content::-webkit-scrollbar-thumb {
+    background: var(--color-primary);
+    border-radius: 3px;
+  }
+
+  .year-nav-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 0.75rem;
+    color: var(--color-text-primary);
+    font-weight: 700;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    white-space: nowrap;
+    text-align: center;
+  }
+
+  .year-nav-btn:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateX(-4px);
+  }
+
+  .year-nav-btn.active {
+    background: var(--gradient-primary);
+    border-color: transparent;
+    color: white;
+    box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+  }
+
+  /* Timeline Section */
+  .timeline-section {
+    position: relative;
+  }
+
+  .year-section {
+    margin-bottom: 5rem;
+    scroll-margin-top: 200px;
+  }
+
+  .year-header {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    align-items: center;
+  }
+
+  .year-marker {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .year-dot {
+    width: 40px;
+    height: 40px;
+    background: var(--gradient-primary);
+    border: 5px solid var(--color-bg);
+    border-radius: 50%;
+    box-shadow: 0 0 0 5px rgba(99, 102, 241, 0.2);
+    flex-shrink: 0;
+    z-index: 10;
+  }
+
+  .year-line {
+    width: 4px;
+    height: 100%;
+    min-height: 100px;
+    background: linear-gradient(180deg, var(--color-primary) 0%, rgba(99, 102, 241, 0.2) 100%);
+    margin-top: 1rem;
+    border-radius: 2px;
+  }
+
+  .year-title-wrapper {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .year-title {
+    font-size: 3rem;
+    font-weight: 900;
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin: 0;
+  }
+
+  .year-count {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
   }
 
   /* Projects Grid */
   .projects-grid {
     display: grid;
-    gap: var(--spacing-lg);
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 1.25rem;
   }
 
-  /* Project Card Modern */
-  .project-card-modern {
-    background: rgba(255, 255, 255, 0.9);
-    backdrop-filter: blur(10px);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-xl);
-    padding: var(--spacing-lg);
-    transition: all var(--transition-base);
+  /* Project Card Grid Style */
+  .project-card-grid {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.4s ease;
+  }
+
+  .project-card-grid.visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .project-card-link {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-surface);
+    border: 2px solid var(--color-border);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    text-decoration: none;
+    color: inherit;
+    height: 100%;
+    box-shadow: var(--shadow-md);
     position: relative;
+  }
+
+  .project-card-link:hover {
+    transform: translateY(-8px);
+    border-color: var(--color-primary);
+    box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
+  }
+
+  /* Project Cover */
+  .project-cover {
+    position: relative;
+    width: 100%;
+    height: 200px;
+    flex-shrink: 0;
+    overflow: hidden;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  }
+
+  .project-cover img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease;
+  }
+
+  .project-card-link:hover .project-cover img {
+    transform: scale(1.1);
+  }
+
+  .project-cover-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+  }
+
+  .project-cover-placeholder i {
+    font-size: 2.5rem;
+    color: var(--color-primary);
+    opacity: 0.5;
+  }
+
+  .project-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.95) 0%, rgba(139, 92, 246, 0.95) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .project-card-link:hover .project-overlay {
+    opacity: 1;
+  }
+
+  .project-overlay i {
+    font-size: 2rem;
+    color: white;
+    transform: scale(0.8);
+    transition: transform 0.3s ease;
+  }
+
+  .project-card-link:hover .project-overlay i {
+    transform: scale(1);
+  }
+
+  /* Project Content */
+  .project-content {
+    flex: 1;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     overflow: hidden;
   }
 
-  .project-card-modern::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(99, 102, 241, 0.05), transparent);
-    transition: left 0.5s ease;
-  }
-
-  .project-card-modern:hover::before {
-    left: 100%;
-  }
-
-  .project-card-modern:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.15);
-    border-color: var(--color-primary);
-  }
-
-  [data-theme="dark"] .project-card-modern {
-    background: rgba(30, 41, 59, 0.9);
-  }
-
-  [data-theme="dark"] .project-card-modern:hover {
-    box-shadow: 0 12px 40px rgba(99, 102, 241, 0.3);
-  }
-
-  /* Project Card Header */
-  .project-card-header {
+  .project-meta-top {
     display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: var(--spacing-md);
-    margin-bottom: var(--spacing-md);
-    flex-wrap: wrap;
-  }
-
-  .project-main-info {
-    flex: 1;
-    min-width: 200px;
-  }
-
-  .project-title {
-    font-size: 1.25rem;
-    font-weight: 700;
+    gap: 0.375rem;
     margin-bottom: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
   }
 
-  .project-title a {
-    color: var(--color-text-primary);
-    text-decoration: none;
-    transition: all var(--transition-fast);
-    position: relative;
-  }
-
-  .project-title a::after {
-    content: '';
-    position: absolute;
-    bottom: -2px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: var(--gradient-primary);
-    transition: width var(--transition-base);
-  }
-
-  .project-title a:hover {
-    color: var(--color-primary);
-  }
-
-  .project-title a:hover::after {
-    width: 100%;
-  }
-
-  .project-role {
+  .project-status-badge {
     display: inline-flex;
     align-items: center;
-    gap: 0.375rem;
-    padding: 0.25rem 0.75rem;
-    background: rgba(99, 102, 241, 0.1);
-    border: 1px solid rgba(99, 102, 241, 0.3);
-    border-radius: var(--radius-full);
-    font-size: 0.8125rem;
+    gap: 0.25rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 0.375rem;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    text-transform: capitalize;
+    border: 1px solid;
+  }
+
+  .status-maintain {
+    background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 185, 129, 0.1) 100%);
+    border-color: rgba(34, 197, 94, 0.3);
+    color: #16a34a;
+  }
+
+  .status-maintain i {
+    color: #16a34a;
+    animation: spin 3s linear infinite;
+  }
+
+  @keyframes spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .status-completed {
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1) 0%, rgba(37, 99, 235, 0.1) 100%);
+    border-color: rgba(59, 130, 246, 0.3);
+    color: #2563eb;
+  }
+
+  .status-completed i {
+    color: #2563eb;
+  }
+
+  .status-in-progress,
+  .status-ongoing {
+    background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(234, 88, 12, 0.1) 100%);
+    border-color: rgba(249, 115, 22, 0.3);
+    color: #ea580c;
+  }
+
+  .status-in-progress i,
+  .status-ongoing i {
+    color: #ea580c;
+  }
+
+  .project-date-small,
+  .project-company-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.6875rem;
     font-weight: 600;
+    color: var(--color-text-tertiary);
+  }
+
+  .project-date-small i,
+  .project-company-small i {
+    color: var(--color-primary);
+    font-size: 0.875rem;
+  }
+
+  .project-info-wrapper {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .project-title-grid {
+    font-size: 0.9375rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    color: var(--color-text-primary);
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .project-card-link:hover .project-title-grid {
     color: var(--color-primary);
   }
 
-  .project-role i {
-    font-size: 0.9375rem;
+  .project-role-small {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    margin-bottom: auto;
   }
 
-  .project-date {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
-    padding: 0.375rem 0.875rem;
-    background: var(--color-bg-secondary);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-lg);
+  .project-role-small i {
+    color: var(--color-primary);
+    font-size: 0.875rem;
+  }
+
+  .project-description-grid {
+    color: var(--color-text-secondary);
     font-size: 0.8125rem;
+    line-height: 1.5;
+    margin-bottom: auto;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .project-technologies-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.375rem;
+    margin-top: auto;
+  }
+
+  .tech-tag-small {
+    padding: 0.25rem 0.5rem;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 0.375rem;
+    font-size: 0.625rem;
     font-weight: 600;
     color: var(--color-text-secondary);
+    transition: all 0.3s ease;
     white-space: nowrap;
   }
 
-  .project-date i {
-    font-size: 1rem;
-    color: var(--color-primary);
-  }
-
-  /* Project Description */
-  .project-description {
-    color: var(--color-text-secondary);
-    line-height: 1.5;
-    margin-bottom: var(--spacing-md);
-    font-size: 0.9375rem;
-  }
-
-  /* Project Technologies */
-  .project-technologies {
-    margin-bottom: var(--spacing-md);
-  }
-
-  .tech-label {
-    display: flex;
-    align-items: center;
-    gap: 0.375rem;
-    font-size: 0.8125rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    margin-bottom: 0.5rem;
-  }
-
-  .tech-label i {
-    font-size: 1rem;
-    color: var(--color-primary);
-  }
-
-  .tech-tags-wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.375rem;
-  }
-
-  .tech-tag-project {
-    padding: 0.25rem 0.75rem;
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(8px);
-    border: 1px solid var(--color-border);
-    border-radius: var(--radius-full);
-    font-size: 0.75rem;
-    font-weight: 600;
-    color: var(--color-text-primary);
-    transition: all var(--transition-fast);
-    cursor: default;
-  }
-
-  .tech-tag-project:hover {
-    background: var(--color-primary-light);
+  .tech-tag-small:hover {
     border-color: var(--color-primary);
     color: var(--color-primary);
-    transform: translateY(-2px);
   }
 
-  [data-theme="dark"] .tech-tag-project {
-    background: rgba(30, 41, 59, 0.8);
+  .tech-tag-more {
+    padding: 0.25rem 0.5rem;
+    background: var(--color-primary-light);
+    border: 1px solid var(--color-primary);
+    border-radius: 0.375rem;
+    font-size: 0.625rem;
+    font-weight: 700;
+    color: var(--color-primary);
   }
 
-  /* Project Footer */
-  .project-footer {
+  /* Footer */
+  .projects-footer {
+    background: var(--color-surface);
+    border-top: 2px solid var(--color-border);
+    padding: 2rem 0;
+    margin-top: 5rem;
+  }
+
+  .footer-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: var(--spacing-sm);
-    padding-top: var(--spacing-md);
-    border-top: 1px solid var(--color-border);
     flex-wrap: wrap;
+    gap: 1rem;
   }
 
-  .project-company {
+  .footer-content p {
+    color: var(--color-text-secondary);
+    margin: 0;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .footer-links a {
+    width: 44px;
+    height: 44px;
     display: flex;
     align-items: center;
-    gap: 0.375rem;
-    font-size: 0.8125rem;
-    font-weight: 500;
-    color: var(--color-text-secondary);
-  }
-
-  .project-company i {
-    font-size: 1rem;
-    color: var(--color-primary);
-  }
-
-  .project-link-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-    padding: 0.5rem 1rem;
-    background: var(--gradient-primary);
-    color: white;
-    border-radius: var(--radius-lg);
-    font-weight: 600;
-    font-size: 0.8125rem;
-    text-decoration: none;
-    transition: all var(--transition-fast);
-    box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-    position: relative;
-    overflow: hidden;
-  }
-
-  .project-link-btn::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
+    justify-content: center;
+    background: var(--color-bg);
+    border: 2px solid var(--color-border);
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    transform: translate(-50%, -50%);
-    transition: width 0.6s ease, height 0.6s ease;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: all 0.3s ease;
   }
 
-  .project-link-btn:hover::before {
-    width: 300px;
-    height: 300px;
+  .footer-links a:hover {
+    border-color: var(--color-primary);
+    color: var(--color-primary);
+    transform: translateY(-3px);
   }
 
-  .project-link-btn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(99, 102, 241, 0.4);
-    color: white;
+  .footer-links a i {
+    font-size: 1.25rem;
   }
 
-  .project-link-btn i {
-    font-size: 1rem;
-    transition: transform var(--transition-fast);
+  /* Animations */
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
-  .project-link-btn:hover i {
-    transform: translateX(4px);
+  @keyframes pulse {
+    0%, 100% {
+      box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+    }
+    50% {
+      box-shadow: 0 4px 25px rgba(99, 102, 241, 0.6);
+    }
   }
 
-  /* Responsive */
+  /* Responsive Design */
+  @media (max-width: 1400px) {
+    .year-nav-sticky {
+      display: none;
+    }
+  }
+
+  @media (max-width: 1024px) {
+    .hero-stats-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
   @media (max-width: 768px) {
     .projects-container {
-      max-width: 100%;
+      padding: 0 1rem;
     }
 
-    .about-content {
-      flex-direction: column;
-      text-align: center;
+    .hero-title-projects {
+      font-size: 2.5rem;
     }
 
-    .about-icon {
-      margin: 0 auto;
+    .hero-description-projects {
+      font-size: 1.125rem;
     }
 
-    .about-text {
-      min-width: auto;
+    .floating-previews {
+      opacity: 0.08;
     }
 
-    .projects-count {
-      width: 100%;
+    .preview-card {
+      width: 180px;
+      height: 120px;
     }
 
-    .projects-heading {
-      font-size: 1.25rem;
+    .preview-image {
+      height: 70px;
     }
 
-    .project-card-header {
-      flex-direction: column;
+    .preview-info {
+      padding: 0.5rem;
     }
 
-    .project-footer {
-      flex-direction: column;
-      align-items: flex-start;
+    .preview-title {
+      font-size: 0.75rem;
     }
 
-    .project-link-btn {
-      width: 100%;
-      justify-content: center;
+    .preview-tech-tag {
+      font-size: 0.5rem;
+    }
+
+    .year-header {
+      grid-template-columns: 40px 1fr;
+      gap: 1rem;
+    }
+
+    .year-dot {
+      width: 30px;
+      height: 30px;
+    }
+
+    .year-title {
+      font-size: 2rem;
+    }
+
+    .projects-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .filter-buttons {
+      gap: 0.5rem;
+    }
+
+    .filter-btn {
+      font-size: 0.8125rem;
+      padding: 0.5rem 1rem;
+    }
+
+    .project-card-link {
+      height: 120px;
+    }
+
+    .project-cover {
+      width: 120px;
     }
   }
 
   @media (max-width: 576px) {
-    .about-section {
-      padding: var(--spacing-md);
+    .hero-title-projects {
+      font-size: 2rem;
     }
 
-    .project-card-modern {
-      padding: var(--spacing-md);
-    }
-
-    .project-title {
-      font-size: 1.125rem;
-    }
-
-    .count-number {
+    .year-title {
       font-size: 1.75rem;
+    }
+
+    .floating-previews {
+      display: none;
+    }
+
+    .project-card-link {
+      height: 110px;
+    }
+
+    .project-cover {
+      width: 100px;
+    }
+
+    .project-content {
+      padding: 0.75rem;
+    }
+
+    .project-title-grid {
+      font-size: 0.875rem;
     }
   }
 </style>

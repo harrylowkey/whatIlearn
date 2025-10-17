@@ -1,9 +1,11 @@
 ---
-title: "Tornomy (Homa Ltd)"
+title: "Tornomy"
 description: "A crypto exchange"
 date: "26 Mar, 2020"
 status: "completed"
 team_size: "9"
+technologies: ["Loopback 3", "Javascript", "RabbitMQ", "socket", "Redis pub-sub"]
+cover: "/project-covers/tornomy.webp"
 ---
 ## A crypto exchange <br/>
 *Fresher Backend Developer* <br/>

@@ -4,6 +4,8 @@ description: "Forum for blogger, reviewer"
 date: "09 Aug, 2021"
 status: "completed"
 team_size: "1"
+technologies: ["Docker", "Javascript", "MongoDB", "Mongoose", "Cloudinary", "Socket"]
+cover: "/project-covers/coder-tokyo-forum.png"
 ---
 ## A forum for blogger <br/>
 *A side project to learn and practice Javascript* <br/>

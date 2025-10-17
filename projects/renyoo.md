@@ -2,8 +2,10 @@
 title: "Renyoo"
 description: "A social application, then b2b enterprise"
 date: "26 Oct, 2023"
-status: "on-going"
+status: "maintain"
 team_size: "9"
+technologies: ["AWS", "Kubernetes", "Nestjs", "Typescript", "Postgres", "Redis", "Microservice", "Kafka"]
+cover: "/project-covers/renyoo.avif"
 ---
 
 ## A Social Application, then B2B Enterprise <br/>
