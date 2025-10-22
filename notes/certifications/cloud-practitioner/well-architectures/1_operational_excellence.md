@@ -1,5 +1,7 @@
 ---
 title: "Pillar 1: Operational Excellence"
+description: "AWS Well-Architected Framework: Operational Excellence pillar with IaC, automation, and continuous improvement"
+tags: [aws, well-architected, operational-excellence, iac, devops]
 ---
 - Run and monitor systemwces to **deliver business value** and **continually improve suppoting processes and procdures**
 - Design Principles:

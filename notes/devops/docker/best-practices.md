@@ -1,5 +1,7 @@
 ---
 title: "Best practices"
+description: "Docker Dockerfile best practices: prefer COPY over ADD, with exceptions for downloads and archive extraction"
+tags: [docker, dockerfile, best-practices, devops, containers]
 ---
 ## Prefer COPY over ADD
 Prefer COPY over ADD when copying files from a location to a Docker image.

@@ -1,5 +1,7 @@
 ---
 title: "Pillar 4: Performance Efficiency"
+description: "AWS Well-Architected Framework: Performance Efficiency pillar with serverless, global deployment, and monitoring"
+tags: [aws, well-architected, performance, serverless, optimization]
 ---
 - Ability to use computing resources efficiently to meet system requirements and to maintain efficiency as demand changes and technologies evolve
 

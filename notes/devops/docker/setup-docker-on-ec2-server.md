@@ -1,8 +1,8 @@
 ---
 title: "Setup docker on ec2 server"
 description: "command to not to using sudo su to run docker"
+tags: [aws, docker, ec2-server, devops, permissions]
 ---
-<!-- tags: aws, docker, ec2-server -->
 
 After install docker we need to run command to not to using sudo su to run docker command later
 

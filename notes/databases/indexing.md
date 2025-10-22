@@ -1,5 +1,12 @@
 ---
 title: "Database Index"
+description: "Guide to database indexes including clustered, composite, and function-based indexes with PostgreSQL commands"
+tags:
+  - database
+  - indexing
+  - postgresql
+  - performance
+  - b-tree
 ---
 - Index is constructed from b-tree
 

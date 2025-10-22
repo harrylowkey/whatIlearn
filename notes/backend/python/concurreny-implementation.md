@@ -191,21 +191,23 @@ This approach spawns other threads to handle uploading files, which can block I/
 ### Let's take some examples to understand
 
 **Case 1**: Using aysyncio with boto3
-```
+
+```markdown
 [Main Thread (asyncio Event Loop)]
      |
-     |--- Upload File 1 (blocking) ---|
+     |--- Upload File 1 (blocking) --|
      |                               |
      |--- Upload File 2 (waiting) ---|
      |                               |
      |--- Upload File 3 (waiting) ---|
 ```
+
 Even using asyncio with boto3, we still face blocking.
 
 ---
 
 **Case 2**: Using threading with boto3
-```
+```markdown
 [Main Thread]
    |--> [Thread 1] --- Upload File 1 --- (blocked)
    |--> [Thread 2] --- Upload File 2 --- (blocked)
@@ -217,6 +219,7 @@ Let's the blocking I/O in other threads instead of main thread
 
 **Case 3**: Using asyncio with boto3 and thread pool
 
+```markdown
 ```
 [Main Thread (asyncio Event Loop)]
      |                                     

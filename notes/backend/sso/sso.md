@@ -1,5 +1,7 @@
 ---
 title: "SSO"
+description: "Single Sign-On (SSO) flow explained: authentication process with identity providers like Auth0 and Keycloak"
+tags: [sso, authentication, auth0, keycloak, security]
 ---
 1. Service proivders
     - Gmail

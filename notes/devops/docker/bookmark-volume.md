@@ -1,5 +1,7 @@
 ---
 title: "Bookmark a volume"
+description: "Docker volume bookmarking technique to preserve container directories like node_modules without local mapping"
+tags: [docker, volumes, node-modules, containers, devops]
 ---
 We can bookmark a volume within our docker container without mapping it to a file/folder within our local directory.
 

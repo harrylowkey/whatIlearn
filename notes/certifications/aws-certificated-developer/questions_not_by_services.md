@@ -1,6 +1,7 @@
 ---
 title: "Notes"
----
+description: "AWS Developer Associate exam practice questions and answers organized by topic"
+tags: [aws, certification, developer-associate, exam-prep, practice-questions]
 ---
 
 ## **Amazon CloudFront**

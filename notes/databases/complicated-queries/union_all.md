@@ -1,5 +1,7 @@
 ---
 title: "UNION ALL"
+description: "Using UNION ALL to solve complex join issues: case study with media aggregation across posts and hotspots"
+tags: [database, sql, union-all, complex-queries, postgresql]
 ---
 ## Case Study
 

@@ -1,5 +1,7 @@
 ---
 title: "Volumne Note"
+description: "Kubernetes PV and PVC cross-namespace access using StorageClass for dynamic provisioning"
+tags: [kubernetes, volumes, ckad, storage, pv-pvc]
 ---
 - PV can not be bounded to PVC in differnet namespace by default
   - To resolve that we can use storage-class.

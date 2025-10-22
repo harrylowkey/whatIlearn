@@ -1,5 +1,7 @@
 ---
 title: "Docker command"
+description: "Docker run commands for common databases: MongoDB, PostgreSQL, and PostGIS with environment variables"
+tags: [docker, database, mongodb, postgresql, devops]
 ---
 ```bash
 docker run -d --name "my_container" -e "ENV_VARIABLE1=VALUE1" -e "ENV_VARIABLE2=VALUE2" -p HOST_PORT:CONTAINER_PORT my_image_name

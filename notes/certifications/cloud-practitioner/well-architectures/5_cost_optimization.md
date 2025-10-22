@@ -1,5 +1,7 @@
 ---
 title: "Pillar 5: Cost Optimization"
+description: "AWS Well-Architected Framework: Cost Optimization pillar with pay-as-you-go, right-sizing, and cost monitoring"
+tags: [aws, well-architected, cost-optimization, budgets, reserved-instances]
 ---
 - Ability to run systems to deliver business value at the lowest price point
 

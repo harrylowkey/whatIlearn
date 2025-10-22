@@ -1,5 +1,7 @@
 ---
 title: "EC2 Instance Purching Option"
+description: "AWS EC2 purchasing options explained: On-Demand, Reserved, Spot, Dedicated Hosts, and Capacity Reservations"
+tags: [aws, ec2, pricing, cost-optimization, cloud]
 ---
 Which purchasing option is right for me?
 - On demand: coming and staying in resort whenever we like, we pay the full price

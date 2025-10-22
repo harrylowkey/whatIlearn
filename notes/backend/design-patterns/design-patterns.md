@@ -1,5 +1,7 @@
 ---
 title: "Design patterns"
+description: "Design patterns explained: Factory Method (Creational) and Repository Pattern (DDD) with implementation examples"
+tags: [design-patterns, factory-method, repository-pattern, ddd, software-design]
 ---
 ## Creational patterns
 

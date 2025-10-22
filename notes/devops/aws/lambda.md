@@ -1,5 +1,7 @@
 ---
 title: "Test lambda function"
+description: "Testing AWS Lambda functions locally using SAM CLI: building with containers and invoking with test events"
+tags: [aws, lambda, sam-cli, serverless, testing]
 ---
 ## Use the SAM CLI to build and test locally
 

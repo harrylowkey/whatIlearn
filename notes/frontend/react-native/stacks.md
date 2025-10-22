@@ -1,5 +1,7 @@
 ---
 title: "Stacks"
+description: "React Native tech stack recommendations: navigation, state management, networking, UI, forms, storage, and tools"
+tags: [react-native, tech-stack, libraries, tools, mobile-development]
 ---
 ## Navigation
 

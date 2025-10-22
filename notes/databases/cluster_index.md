@@ -1,5 +1,12 @@
 ---
 title: "Cluster Index"
+description: "Understanding clustered indexes: data storage order, one-per-table limitation, and optimal use cases for range queries"
+tags:
+  - database
+  - indexing
+  - clustered-index
+  - performance
+  - query-optimization
 ---
 ## Key Points
 - Data Stored in Index Order: A clustered index sorts and stores the data rows of the table based on the values of the indexed column(s). Therefore, the index and the actual data rows are stored together, making the table itself the index.

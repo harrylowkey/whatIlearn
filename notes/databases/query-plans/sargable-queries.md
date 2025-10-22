@@ -1,5 +1,7 @@
 ---
 title: "To write sargable queries"
+description: "Writing SARGable queries: avoid functions on indexed columns and use direct comparisons for optimal performance"
+tags: [database, sargable, query-optimization, indexing, performance]
 ---
 - Avoid using functions or calculations on indexes columns in WHERE cluase
 - Use direct comparision when possible, instead of wrapping the column in a function

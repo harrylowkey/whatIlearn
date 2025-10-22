@@ -1,5 +1,7 @@
 ---
 title: "Concepts"
+description: "Essential React and React Native concepts: effects, state, context, hooks, MMKV, QueryClient, and navigation"
+tags: [react-native, react, concepts, hooks, state-management]
 ---
 ## React concepts
 

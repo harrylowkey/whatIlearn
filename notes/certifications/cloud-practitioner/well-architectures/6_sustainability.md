@@ -1,5 +1,7 @@
 ---
 title: "Pillar 6: Sustainability"
+description: "AWS Well-Architected Framework: Sustainability pillar with energy efficiency, resource utilization, and environmental impact"
+tags: [aws, well-architected, sustainability, green-computing, efficiency]
 ---
 - Focus on minimizing the environment impacts of running cloud workloads
 

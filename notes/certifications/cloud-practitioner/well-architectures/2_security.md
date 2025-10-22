@@ -1,5 +1,7 @@
 ---
 title: "Pillar 2: Security"
+description: "AWS Well-Architected Framework: Security pillar with IAM, encryption, and defense in depth strategies"
+tags: [aws, well-architected, security, iam, encryption]
 ---
 - Protect information, systems, assets while delivering business value through risk assessments and mitigation strategies
 - Design Principles:

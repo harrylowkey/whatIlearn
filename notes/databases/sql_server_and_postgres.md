@@ -1,5 +1,12 @@
 ---
 title: "SQL Server and PostgreSQL Cheatsheet"
+description: "Side-by-side comparison of SQL Server vs PostgreSQL syntax covering data types, functions, joins, and commands"
+tags:
+  - database
+  - sql-server
+  - postgresql
+  - cheatsheet
+  - syntax-comparison
 ---
 ### 1. **Data Types**
 | Concept             | SQL Server         | PostgreSQL              |

@@ -1,5 +1,12 @@
 ---
 title: "Query Optimization Tips"
+description: "Best practices for JOIN vs WHERE conditions in INNER and LEFT JOINs with performance considerations"
+tags:
+  - database
+  - query-optimization
+  - sql
+  - joins
+  - performance
 ---
 ## Condition in Join And Where
 

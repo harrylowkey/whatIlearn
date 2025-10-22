@@ -1,5 +1,7 @@
 ---
 title: "Notes"
+description: "AWS Developer Associate certification notes: key AWS services, configurations, and best practices"
+tags: [aws, certification, developer-associate, cloud, study-notes]
 ---
 ## Services
 

@@ -1,5 +1,7 @@
 ---
 title: "Microservice"
+description: "Microservice communication patterns: synchronous (REST, gRPC) vs asynchronous (Kafka, NATS, RabbitMQ) with pros/cons"
+tags: [kafka, distributed-systems, architecture, microservices, grpc]
 ---
 ## Synchronous and Asynchronous Communication
 

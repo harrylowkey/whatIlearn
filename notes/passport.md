@@ -1,5 +1,7 @@
 ---
 title: "Passport"
+description: "Passport.js authentication flow: standard vs customized strategies with Guards and JWT implementation examples"
+tags: [nodejs, passport, authentication, jwt, security]
 ---
 Passport strategies diferrent by how it extract the params then process (validate) them.
 

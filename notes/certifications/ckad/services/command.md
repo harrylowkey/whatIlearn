@@ -1,5 +1,7 @@
 ---
 title: "Command"
+description: "Kubernetes service creation commands: exposing deployments and managing node scheduling"
+tags: [kubernetes, kubectl, ckad, services, commands]
 ---
 Create a service that expose the deployment with selector "redis-deployment"
 

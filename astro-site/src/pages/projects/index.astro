@@ -84,10 +84,6 @@ const allTechnologies = [...new Set(
       </div>
 
       <div class="hero-content-wrapper">
-          <div class="hero-badge">
-            <i class="mdi mdi-rocket-launch"></i>
-            <span>Portfolio</span>
-          </div>
           <h1 class="hero-title-projects">
             My <span class="text-gradient">Projects</span>
           </h1>
@@ -281,13 +277,27 @@ const allTechnologies = [...new Set(
         }
       });
 
-      // Hide year sections with no visible projects
+      // Update the count on the "All" button
+      const allButton = document.querySelector('.filter-btn[data-filter="all"]');
+      const countSpan = allButton?.querySelector('.filter-count');
+      if (countSpan) {
+        countSpan.textContent = visibleCount.toString();
+      }
+
+      // Hide year sections with no visible projects and update counts
       yearSectionsForFilter.forEach(section => {
         const visibleProjectsInYear = section.querySelectorAll('.project-card-grid:not([style*="display: none"])');
+        const yearCount = section.querySelector('.year-count');
+
         if (visibleProjectsInYear.length === 0) {
           section.style.display = 'none';
         } else {
           section.style.display = '';
+          // Update the year count
+          if (yearCount) {
+            const count = visibleProjectsInYear.length;
+            yearCount.textContent = `${count} Project${count !== 1 ? 's' : ''}`;
+          }
         }
       });
     }

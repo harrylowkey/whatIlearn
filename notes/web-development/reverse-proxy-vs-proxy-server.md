@@ -1,8 +1,8 @@
 ---
 title: "Reverse Proxy and Proxy Server"
 description: "Compare reverse proxy and proxy server"
+tags: [web-development, reverse-proxy, proxy, networking, load-balancing]
 ---
-<!-- tags: web-development, reverse-proxy, proxy -->
 
 
 A reverse proxy and a regular proxy (sometimes referred to as a forward proxy) serve similar purposes but operate in opposite directions. Here's a breakdown of each:

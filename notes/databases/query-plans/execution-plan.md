@@ -1,5 +1,7 @@
 ---
 title: "Execution Plan"
+description: "Understanding SQL execution plans: operators, nodes, data flow, and optimization techniques for better query performance"
+tags: [database, execution-plan, query-optimization, performance, sql]
 ---
 ## Components
 

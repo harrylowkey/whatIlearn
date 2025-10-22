@@ -1,5 +1,7 @@
 ---
 title: "Useful Commands"
+description: "Kubernetes kubectl command cheatsheet: pod creation, deployment, service exposure, debugging, and port forwarding"
+tags: [kubernetes, kubectl, ckad, commands, cheatsheet]
 ---
 - k8s cluster config is stored here: /etc/kubernetes/manifests/
 

@@ -1,5 +1,7 @@
 ---
 title: "Cloud Practioner"
+description: "AWS Cloud Practitioner certification: Well-Architected Framework principles and six pillars overview"
+tags: [aws, cloud-practitioner, certification, well-architected, cloud]
 ---
 ## Well Architected Framework General Guiding Principles
 

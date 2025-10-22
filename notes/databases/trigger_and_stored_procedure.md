@@ -1,5 +1,12 @@
 ---
 title: "Trigger and Stored Procedure"
+description: "Differences between triggers and stored procedures: event-driven vs on-demand execution and usage scope"
+tags:
+  - database
+  - triggers
+  - stored-procedures
+  - sql
+  - database-design
 ---
 ## Usage Scope
 

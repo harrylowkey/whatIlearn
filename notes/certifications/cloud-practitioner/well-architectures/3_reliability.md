@@ -1,5 +1,7 @@
 ---
 title: "Pillar 3: Reliability"
+description: "AWS Well-Architected Framework: Reliability pillar with disaster recovery, auto-scaling, and failure handling"
+tags: [aws, well-architected, reliability, disaster-recovery, high-availability]
 ---
 - Recover from infra or service disruptions dynamically acuire computing resources to meet demand and
   mitigate disruption such as misconfigurations or transient network issues

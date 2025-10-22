@@ -1,5 +1,7 @@
 ---
 title: "Threading vs. Asyncio vs. Process"
+description: "Python concurrency comparison: Threading with GIL limitations vs Asyncio event loops for I/O-bound tasks"
+tags: [python, concurrency, threading, asyncio, gil]
 ---
 https://dev.to/coderatul/threading-vs-asyncio-vs-multiprocessing-10ed
 

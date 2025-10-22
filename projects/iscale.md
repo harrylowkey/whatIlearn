@@ -5,7 +5,7 @@ date: "30 Mar, 2024"
 status: "completed"
 team_size: "2"
 technologies: ["Python", "FastAPI", "AWS", "Postgres"]
-cover: "/project-covers/iscale.jpg"
+cover: "/project-covers/iscale.webp"
 ---
 An online course registration platform.
 
