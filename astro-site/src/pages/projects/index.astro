@@ -249,6 +249,19 @@ const allTechnologies = [...new Set(
 </BaseLayout>
 
 <script>
+    // Track view count (hidden - no display)
+    async function trackPageView() {
+      try {
+        await fetch('/api/views/projects', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+        });
+      } catch (error) {
+        console.error('Error tracking view:', error);
+      }
+    }
+    trackPageView();
+
     // Filter functionality with multiple technology selection
     const filterButtons = document.querySelectorAll('.filter-btn');
     const projectCards = document.querySelectorAll('.project-card-grid');

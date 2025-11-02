@@ -152,7 +152,7 @@ and <span class="highlight">secure deployments</span><br />
           <div class="project-detail">
             <div class="project-header">
               <h5>Social Network Platform + Shopify Drop-shipping</h5>
-              <span class="project-date">Nov 2022 - Jan 2025</span>
+              <span class="project-date">Nov 2025 - Jan 2025</span>
             </div>
             <p class="project-description">
               Social media application then became to drop-shipping and multi-tenant product management for B2B Enterprise
@@ -310,6 +310,40 @@ and <span class="highlight">secure deployments</span><br />
 
 </BaseLayout>
 
+<script>
+  // Track and display view count for index page
+  async function trackView() {
+    const pagePath = 'index';
+    const apiUrl = `/api/views/${pagePath}`;
+
+    try {
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        const data = await response.json();
+        const viewCountElement = document.getElementById('view-count');
+        if (viewCountElement && data.views !== undefined) {
+          viewCountElement.textContent = data.views.toLocaleString();
+        }
+      }
+    } catch (error) {
+      console.error('Error tracking view:', error);
+    }
+  }
+
+  // Track view when page loads
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', trackView);
+  } else {
+    trackView();
+  }
+</script>
+
 <style>
   /* ===============================================
      HERO SECTION
@@ -420,6 +454,31 @@ and <span class="highlight">secure deployments</span><br />
     line-height: 1.1;
     margin-bottom: var(--spacing-lg);
     color: var(--color-text-primary);
+  }
+
+  .page-views {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    padding: 0.5rem 1rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 1.5rem;
+    margin-bottom: var(--spacing-lg);
+    transition: all 0.3s ease;
+  }
+
+  [data-theme="dark"] .page-views {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .page-views i {
+    font-size: 1.125rem;
+    color: var(--color-primary);
   }
 
   .hero-subtitle {

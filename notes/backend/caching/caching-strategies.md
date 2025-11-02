@@ -5,7 +5,19 @@ tags:
   - redis
   - caching
 ---
-### 1. Lazy Loading / Cache-aside / Lazy population
+
+Reference: https://neetcode.io/courses/system-design-for-beginners/10
+
+## The client's perspective
+When a browser needs to load a resource, such as an image file, it follows a sequence of steps to determine where to get the file:
+
+Check the Memory Cache: The browser first checks its memory cache. This is used for resources downloaded in the current browsing sessions (since memory is non-persistent).
+Check the Disk Cache: If the resource isn't in the memory cache, the browser checks the disk cache, a more persistent cache that contains resources from sites visited in the past.
+Network Request: If the resource isn't in either the memory or disk, the browser makes a network request to the server hosting the resource.
+
+## The server's perspective
+
+### 1. Write around / Lazy Loading / Cache-aside / Lazy population
 
 
 ```mermaid
@@ -85,11 +97,23 @@ def save_user(user_id, values):
 user = save_user(1, {'name': 'Harry', 'age': 25})
 ```
 
-### 3. Cache Eviction and Time to live (TTL)
+### 3. Write-back cache
+A write-back cache policy will write data only to the cache initially.
+This data is written into the cache every time a change occurs but to the disk only when the cache is full.
+The cached data can be written to the disk when the system is less busy.
 
-- Caching evitions can occur in 3 ways:
-  1. Eviction based on TTL
-  2. We delete them explicitly in the cache
-  3. Because of memory is full and not recent used (LRU)
+## Eviction Policies
+An eviction policy is a system that determines which items get removed from the cache when the cache is full and new items need to be added. Since the cache size is limited, the system has to decide what to evict from the cache. There are a couple of eviction policies that are important to discuss:
 
-*Quote: There are only 2 hard things in Computer Science: cache invalidation and naming things.* 
+### 1. Time to live (TTL)
+
+### 2. FIFO (First In First Out)
+One example of an eviction policy is First In First Out (FIFO). The FIFO policy is similar to the queue interface. When the cache becomes full, the first piece of data to be cached is evicted first.
+
+### 3. LRU (Least Recently Used)
+Imagine doing spring cleaning, where your aim is to get rid of the least recently used items such as clothing and office supplies. The concept of the Least Recently Used (LRU) cache is based on the same idea. The principle behind LRU caching is that if an item has not been accessed for a long time, it is less likely to be accessed in the future as well. Therefore, the item should be evicted from the cache. LRU caching would be particularly useful if there were a single person with a really popular tweet, as we wouldn't want that tweet to be removed from our cache.
+
+### 4. LFU (Least Frequently Used)
+This one might make more sense now that we understand LRU. Least Frequently Used (LFU) eviction policy evicts the items that are used least frequently. It assumes that if an item is not accessed frequently, it is unlikely to be accessed frequently in the future as well.
+In terms of implementation, LFU can be implemented using key-value pairs, where the key represents the item and the value represents the frequency of its usage. When the cache space runs out, the item with the smallest frequency is evicted.
+While this approach seems reasonable, it has limitations when applied to Twitter. For example, tweets from 2013 that have a large number of views might never be evicted due to their frequency, which would prevent new tweets from being stored. Consequently, LRU is a better model for Twitter.

@@ -5,8 +5,10 @@ tags: [nodejs, passport, authentication, jwt, security]
 ---
 Passport strategies diferrent by how it extract the params then process (validate) them.
 
+```markdown
 Standard: Guard (extends AuthGuard('strategy-name')) -> trggier Strategy with canActivate function
 Customized: Guard -> Guard(super.canActivate) -> Strategy -> Strategy(validate) -> Guard(after canActivate() codes - custom)
+```
 
 ```typescript
 @Injectable()
@@ -50,7 +52,7 @@ export class JwtStrategy extends PassportStrategy(Strategy) {
 ```
 
 ✅ Timeline (in order)
-
+```markdown
 canActivate() is called.
 await super.canActivate(context) runs.
 Inside this:
@@ -60,6 +62,7 @@ Calls JwtStrategy.validate(payload)
 Attaches request.user
 Back to your JwtAuthGuard → extra checks (like token blacklist).
 If all good → true returned → controller executes.
+```
 
 ## Customized Strategy
 

@@ -1,0 +1,28 @@
+version: '3.8'
+
+services:
+  portfolio-astro:
+    image: ${ECR_REGISTRY}/portfolio-astro:latest
+    container_name: portfolio-astro
+    restart: unless-stopped
+    ports:
+      - "4321:4321"  # Map host port 4321 to container port 4321
+    environment:
+      - NODE_ENV=production
+      - HOST=0.0.0.0
+      - PORT=4321
+    volumes:
+      # Mount view_counts.txt as a volume to persist data across deployments
+      - ./view_counts.txt:/view_counts.txt
+    networks:
+      - web
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4321"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+networks:
+  web:
+    external: true  # Use existing network if you have one, or remove this

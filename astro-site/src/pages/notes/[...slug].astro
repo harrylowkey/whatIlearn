@@ -1,16 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-export async function getStaticPaths() {
-  const notes = await getCollection('notes');
-  return notes.map((note) => ({
-    params: { slug: note.slug },
-    props: { note },
-  }));
+// Get the slug from the URL
+const { slug } = Astro.params;
+
+// Fetch the note dynamically
+const note = await getEntry('notes', slug as string);
+
+// If note doesn't exist, return 404
+if (!note) {
+  return Astro.redirect('/404');
 }
 
-const { note } = Astro.props;
 const { Content } = await note.render();
 
 // Get related notes (same tags)
@@ -88,6 +90,10 @@ const relatedNotes = allNotes
                 })}
               </span>
             )}
+            <span class="views-count">
+              <i class="mdi mdi-eye-outline"></i>
+              <span id="view-count">0</span> views
+            </span>
           </div>
 
           <h1 class="magazine-title">{note.data.title}</h1>
@@ -120,6 +126,65 @@ const relatedNotes = allNotes
     </footer>
   </main>
 </BaseLayout>
+
+<script define:vars={{ slug: note.slug }}>
+  // Track and display view count
+  async function trackView() {
+    const pagePath = `notes/${slug}`;
+    const apiUrl = `/api/views/${pagePath}`;
+
+    console.log('Tracking view for:', pagePath);
+    console.log('API URL:', apiUrl);
+
+    try {
+      // Increment view count
+      const response = await fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+
+      console.log('Response status:', response.status);
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Response data:', data);
+        const viewCountElement = document.getElementById('view-count');
+        console.log('View count element:', viewCountElement);
+        if (viewCountElement && data.views !== undefined) {
+          viewCountElement.textContent = data.views.toLocaleString();
+          console.log('Updated view count to:', data.views);
+        }
+      } else {
+        console.error('Response not OK:', response.status, await response.text());
+      }
+    } catch (error) {
+      console.error('Error tracking view:', error);
+      // If API fails, try to get existing count
+      try {
+        const getResponse = await fetch(apiUrl);
+        if (getResponse.ok) {
+          const data = await getResponse.json();
+          const viewCountElement = document.getElementById('view-count');
+          if (viewCountElement && data.views !== undefined) {
+            viewCountElement.textContent = data.views.toLocaleString();
+          }
+        }
+      } catch (getError) {
+        console.error('Error getting view count:', getError);
+      }
+    }
+  }
+
+  // Track view when page loads
+  console.log('Document ready state:', document.readyState);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', trackView);
+  } else {
+    trackView();
+  }
+</script>
 
 <style>
   * {
@@ -691,6 +756,30 @@ const relatedNotes = allNotes
     font-size: 0.875rem;
     font-weight: 600;
     color: var(--color-text-tertiary);
+  }
+
+  .views-count {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--color-text-tertiary);
+    padding: 0.25rem 0.75rem;
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+    border: 1px solid rgba(99, 102, 241, 0.2);
+    border-radius: 1rem;
+    transition: all 0.3s ease;
+  }
+
+  [data-theme="dark"] .views-count {
+    background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(139, 92, 246, 0.15) 100%);
+    border-color: rgba(99, 102, 241, 0.3);
+  }
+
+  .views-count i {
+    font-size: 1rem;
+    color: var(--color-primary);
   }
 
   .magazine-title {

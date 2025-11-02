@@ -1,4 +1,4 @@
-# Multi-stage build for Astro static site
+# Multi-stage build for Astro server mode
 FROM node:20-alpine AS builder
 
 WORKDIR /app
@@ -12,20 +12,32 @@ RUN npm ci
 # Copy source files
 COPY . .
 
-# Build the site
+# Copy view_counts.txt from project root (one level up)
+COPY ../view_counts.txt /app/view_counts.txt
+
+# Build the site for server mode
 RUN npm run build
 
-# Production stage - serve with nginx
-FROM nginx:alpine
+# Production stage - run with Node.js
+FROM node:20-alpine AS runtime
 
-# Copy built files to nginx
-COPY --from=builder /app/dist /usr/share/nginx/html
+WORKDIR /app
 
-# Copy custom nginx config if needed
-COPY nginx.conf /etc/nginx/conf.d/default.conf
+# Copy built files from builder
+COPY --from=builder /app/dist ./dist
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
 
-# Expose port 80
-EXPOSE 80
+# Copy view_counts.txt
+COPY --from=builder /app/view_counts.txt ../view_counts.txt
 
-# Start nginx
-CMD ["nginx", "-g", "daemon off;"]
+# Set environment to production
+ENV NODE_ENV=production
+ENV HOST=0.0.0.0
+ENV PORT=4321
+
+# Expose port
+EXPOSE 4321
+
+# Start the Astro server
+CMD ["node", "./dist/server/entry.mjs"]

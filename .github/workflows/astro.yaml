@@ -67,10 +67,17 @@ jobs:
             # Pull new image
             docker pull $IMAGE_REPO_NAME:$IMAGE_TAG
 
+            # Copy view_counts.txt from container before stopping (preserve data)
+            docker cp portfolio-astro:/view_counts.txt ./view_counts.txt || echo "No existing view_counts.txt"
+
             # Restart the service
             docker-compose stop portfolio-astro
             docker-compose rm --force portfolio-astro
             docker-compose up -d --no-deps portfolio-astro
+
+            # Restore view_counts.txt to new container
+            sleep 5  # Wait for container to start
+            docker cp ./view_counts.txt portfolio-astro:/view_counts.txt || echo "Failed to restore view_counts.txt"
 
             echo "Deployed new image: $IMAGE_REPO_NAME:$IMAGE_TAG"
 

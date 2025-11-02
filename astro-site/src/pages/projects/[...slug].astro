@@ -1,16 +1,19 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ViewCounter from '../../components/ViewCounter.astro';
 
-export async function getStaticPaths() {
-  const projects = await getCollection('projects');
-  return projects.map((project) => ({
-    params: { slug: project.slug },
-    props: { project },
-  }));
+// Get the slug from the URL
+const { slug } = Astro.params;
+
+// Fetch the project dynamically
+const project = await getEntry('projects', slug as string);
+
+// If project doesn't exist, return 404
+if (!project) {
+  return Astro.redirect('/404');
 }
 
-const { project } = Astro.props;
 const { Content } = await project.render();
 
 // Get related projects (same technologies)
