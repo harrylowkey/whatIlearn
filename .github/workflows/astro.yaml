@@ -72,12 +72,25 @@ jobs:
             # Tag as latest for docker-compose
             docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $IMAGE_REPO_NAME:latest
 
-            # Copy view_counts.txt from container before stopping (preserve data)
-            docker cp portfolio-astro:/view_counts.txt ./view_counts_backup.txt 2>/dev/null || echo "No existing view_counts.txt to backup"
+            # Backup view_counts.txt from running container
+            if docker ps -q -f name=portfolio-astro | grep -q .; then
+              echo "Backing up view_counts.txt from running container..."
+              docker cp portfolio-astro:/view_counts.txt ./view_counts_backup.txt 2>/dev/null || echo "No view_counts.txt to backup"
+            fi
 
-            # Stop and remove old container
-            docker-compose stop portfolio-astro || true
-            docker-compose rm --force portfolio-astro || true
+            # Stop and remove old container completely
+            echo "Stopping and removing old container..."
+            docker stop portfolio-astro 2>/dev/null || true
+            docker rm -f portfolio-astro 2>/dev/null || true
+
+            # Ensure view_counts.txt exists on host
+            if [ -f ./view_counts_backup.txt ]; then
+              cp ./view_counts_backup.txt ./view_counts.txt
+              echo "Restored view_counts.txt to host"
+            else
+              touch ./view_counts.txt
+              echo "Created new view_counts.txt"
+            fi
 
             # Start new container with latest image
             docker-compose up -d portfolio-astro
@@ -86,11 +99,8 @@ jobs:
             echo "Waiting for container to start..."
             sleep 5
 
-            # Restore view_counts.txt if backup exists
-            if [ -f ./view_counts_backup.txt ]; then
-              docker cp ./view_counts_backup.txt portfolio-astro:/view_counts.txt
-              echo "Restored view_counts.txt"
-            fi
+            # Verify container is running
+            docker ps | grep portfolio-astro
 
             echo "Deployed new image: $IMAGE_REPO_NAME:$IMAGE_TAG"
 
