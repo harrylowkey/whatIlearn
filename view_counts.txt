@@ -1,8 +1,8 @@
-projects:7
-index:13
-notes:7
+projects:8
+index:18
+notes:9
 notes/backend/caching/caching-strategies:2
 projects/social-network-shopify:3
 notes/architectures/clean_architecture:1
 projects/employee-platform:1
-notes/backend/design-patterns/design-patterns:2
+notes/backend/design-patterns/design-patterns:3

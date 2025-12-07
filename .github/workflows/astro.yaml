@@ -3,13 +3,13 @@ name: Astro CI/CD
 on:
   push:
     branches:
-      - master  # or your main branch
+      - develop
     paths:
-      - 'astro-site/**'
-      - 'notes/**'
-      - 'projects/**'
-      - 'interviews/**'
-      - '.github/workflows/astro.yaml'
+      - "astro-site/**"
+      - "notes/**"
+      - "projects/**"
+      - "interviews/**"
+      - ".github/workflows/astro.yaml"
 
 jobs:
   build:
@@ -61,26 +61,37 @@ jobs:
             IMAGE_REPO_NAME=${{ env.ECR_REGISTRY }}/${{ env.ECR_REPOSITORY }}
             IMAGE_TAG=${{ env.RUNNER_ID }}
 
-            # Update docker-compose.yaml with new image tag
-            sed -i "s|$IMAGE_REPO_NAME:[0-9]*|$IMAGE_REPO_NAME:$IMAGE_TAG|g" docker-compose.yaml
+            cd ~
 
             # Pull new image
+            echo "Pulling new image: $IMAGE_REPO_NAME:$IMAGE_TAG"
             docker pull $IMAGE_REPO_NAME:$IMAGE_TAG
 
+            # Tag as latest for docker-compose
+            docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $IMAGE_REPO_NAME:latest
+
             # Copy view_counts.txt from container before stopping (preserve data)
-            docker cp portfolio-astro:/view_counts.txt ./view_counts.txt || echo "No existing view_counts.txt"
+            docker cp portfolio-astro:/view_counts.txt ./view_counts_backup.txt 2>/dev/null || echo "No existing view_counts.txt to backup"
 
-            # Restart the service
-            docker-compose stop portfolio-astro
-            docker-compose rm --force portfolio-astro
-            docker-compose up -d --no-deps portfolio-astro
+            # Stop and remove old container
+            docker-compose stop portfolio-astro || true
+            docker-compose rm --force portfolio-astro || true
 
-            # Restore view_counts.txt to new container
-            sleep 5  # Wait for container to start
-            docker cp ./view_counts.txt portfolio-astro:/view_counts.txt || echo "Failed to restore view_counts.txt"
+            # Start new container with latest image
+            docker-compose up -d portfolio-astro
+
+            # Wait for container to be ready
+            echo "Waiting for container to start..."
+            sleep 5
+
+            # Restore view_counts.txt if backup exists
+            if [ -f ./view_counts_backup.txt ]; then
+              docker cp ./view_counts_backup.txt portfolio-astro:/view_counts.txt
+              echo "Restored view_counts.txt"
+            fi
 
             echo "Deployed new image: $IMAGE_REPO_NAME:$IMAGE_TAG"
 
-            # Cleanup old images
-            docker image prune --all --force
-            echo "Cleanup old images successfully"
+            # Cleanup old images (keep last 2)
+            docker images $IMAGE_REPO_NAME --format "{{.ID}} {{.Tag}}" | grep -v latest | tail -n +3 | awk '{print $1}' | xargs -r docker rmi || true
+            echo "Cleanup completed"

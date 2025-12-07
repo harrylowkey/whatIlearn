@@ -12,9 +12,6 @@ RUN npm ci
 # Copy source files
 COPY . .
 
-# Copy view_counts.txt from project root (one level up)
-COPY ../view_counts.txt /app/view_counts.txt
-
 # Build the site for server mode
 RUN npm run build
 
@@ -27,9 +24,6 @@ WORKDIR /app
 COPY --from=builder /app/dist ./dist
 COPY --from=builder /app/node_modules ./node_modules
 COPY --from=builder /app/package.json ./package.json
-
-# Copy view_counts.txt
-COPY --from=builder /app/view_counts.txt ../view_counts.txt
 
 # Set environment to production
 ENV NODE_ENV=production
