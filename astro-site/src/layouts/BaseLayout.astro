@@ -1,4 +1,6 @@
 ---
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description?: string;
@@ -40,9 +42,6 @@ const { title, description, fullWidth = false } = Astro.props;
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     />
-
-    <!-- Global Styles -->
-    <link rel="stylesheet" href="/src/styles/global.css" />
 
     <slot name="head" />
   </head>
