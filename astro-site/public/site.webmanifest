@@ -1,0 +1,16 @@
+{
+  "name": "Harry Dang - Backend Developer",
+  "short_name": "Harry Dang",
+  "description": "Backend developer specializing in scalable systems, databases, and cloud infrastructure",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ],
+  "theme_color": "#667eea",
+  "background_color": "#ffffff",
+  "display": "standalone",
+  "start_url": "/"
+}

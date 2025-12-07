@@ -1,6 +1,6 @@
 projects:8
-index:18
-notes:9
+index:19
+notes:10
 notes/backend/caching/caching-strategies:2
 projects/social-network-shopify:3
 notes/architectures/clean_architecture:1
